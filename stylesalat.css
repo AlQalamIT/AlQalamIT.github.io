@@ -49,8 +49,8 @@ header {
     position: absolute;
     top: 20px;
     right: 20px;
+    font-weight: bold;
 }
-
 #menu li {
     margin-right: 20px;
     margin-top: 12px;
