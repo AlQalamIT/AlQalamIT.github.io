@@ -1,0 +1,560 @@
+/* Reset some default styles */
+body, h1, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply overall styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    color: #0D203B;
+}
+
+/* Aggiorna gli stili per l'intestazione */
+header {
+    background-color: #333;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+#header-content {
+    display: flex;
+    align-items: center;
+}
+
+/* Stili per desktop */
+#logo {
+    width: 150px;
+    height: 150px;
+    margin-right: 10px;
+    margin: 20px;
+    margin-bottom: -50px;
+    margin-top: -40px;
+}
+
+#site-title {
+    margin-top: 18px;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#menu {
+    list-style: none;
+    display: flex;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-weight: bold;
+}
+
+#menu li {
+    margin-right: 20px;
+    margin-top: 12px;
+}
+
+#menu li a {
+    text-decoration: none; /* Rimuove la sottolineatura predefinita dei link */
+    color: #06146F; /* Colore del testo per i link */
+    font-weight: bold; /* Testo in grassetto per i link */
+    font-size: 19px;
+}
+
+#menu li a:hover {
+    color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
+}
+
+/* Stili per dispositivi mobili */
+@media (max-width: 600px) {
+    #logo {
+        width: 75px;
+        height: 75px;
+        margin: 10px;
+        margin-bottom: -25px;
+        margin-top: -20px;
+    }
+
+    #menu {
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+}
+
+
+
+.carosello {
+    position: relative;
+    width: 100%;
+  }
+  
+  .carosello img {
+    width: 100%;
+    display: none;
+  }
+  
+  .carosello img:first-child {
+    display: block;
+  }
+  
+  .carosello a {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0,0,0,0.5);
+    color: white;
+    padding: 10px;
+    text-decoration: none;
+  }
+  
+  .carosello .precedente {
+    left: 0;
+  }
+  
+  .carosello .successivo {
+    right: 0;
+  }
+  
+  
+#title {
+    width: 100%;
+    position: absolute;
+    padding: 0px;
+    margin: 0px auto;
+    text-align: center;
+    font-size: 27px;
+    color: rgba(255, 255, 255, 1);
+    font-family: 'Open Sans', sans-serif;
+    z-index: 9999;
+    text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.33), -1px 0px 2px rgba(255, 255, 255, 0);
+}
+
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#quotidiani {
+    text-align: center;
+    margin: 20px;
+}
+
+#quotidiani img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.quotidiani-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#quotidiani button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo2 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo2 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo2-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo2 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo3 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo2 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo3-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo3 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo4 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo4 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo4-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo4 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo5 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo5 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo5-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo5 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo6 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo6 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo6-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo6 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo7 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo7 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo7-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo7 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo8 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo8 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo8-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo8 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo9 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo9 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo9-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo9 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo10 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo10 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo10-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo10 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo11 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo11 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo11-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo11 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
+#capitolo12 {
+    text-align: center;
+    margin: 20px;
+}
+
+#capitolo12 img {
+    max-width: 100%;
+    height: 120px;
+}
+
+.capitolo12-item {
+    display: inline-block;
+    margin-right: 10px; /* Spazio tra gli elementi */
+    margin-bottom: 50px;
+    text-align: center;
+}
+
+.image-button-container {
+    text-align: center;
+}
+
+#capitolo12 button {
+    border-radius: 4px;
+    margin-top: 40px;
+    display: block;
+    margin: auto;
+    font-size: 15px;
+    color: #0D203B;
+    background-color: #fff;
+    
+}
+
+
+/* Responsive design */
+@media screen and (max-width: 600px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #menu {
+        margin-top: 10px;
+    }
+
+    #carousel {
+        height: 200px;
+    }
+}
+
+
