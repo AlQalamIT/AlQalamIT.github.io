@@ -477,6 +477,7 @@ header {
 #capitolo11 {
     text-align: center;
     margin: 20px;
+    width: 25vw;
 }
 
 #capitolo11 img {
@@ -503,6 +504,8 @@ header {
     font-size: 15px;
     color: #0D203B;
     background-color: #fff;
+    width: 26vw;
+   
     
 }
 
