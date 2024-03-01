@@ -1,39 +1,40 @@
-/* Reset some default styles */
+/* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
 body, h1, ul, li {
     margin: 0;
     padding: 0;
 }
 
-/* Apply overall styles */
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #f0f0f0;
     color: #333;
 }
 
-/* Header styles */
 header {
     background-color: #f0f0f0;
     color: #333;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 10px 20px;
+    padding: 15px 60px;
     box-shadow: 0px 3px 3px rgb(2, 36, 90);
 }
 
 #header-content {
     display: flex;
     align-items: center;
+    flex-wrap: wrap; /* Permette agli elementi di andare a capo quando lo spazio è insufficiente */
+    justify-content: center; /* Centra gli elementi orizzontalmente */
 }
 
 #logo {
     width: 160px;
-    height: 160px; /* Larghezza e altezza del logo */
-    margin-right: 10px; /* Spazio tra il logo e il titolo del sito */
+    height: 160px;
+    margin-right: 10px;
     margin: 20px;
     margin-bottom: -50px;
-    margin-top: -50px;
+    margin-top: -90px;
+    position: absolute;
 }
 
 #site-title {
@@ -42,30 +43,46 @@ header {
     font-weight: bold;
 }
 
-/* Stili per i link nel menu */
 #menu {
     list-style: none;
     display: flex;
-    position: absolute;
-    top: 20px;
+   position: sticky;
+    top: 10%;
     right: 20px;
     font-weight: bold;
+    align-items: center;
 }
 
 #menu li {
     margin-right: 20px;
-    margin-top: 12px;
+    margin-top: 80px;
 }
 
 #menu li a {
-    text-decoration: none; /* Rimuove la sottolineatura predefinita dei link */
-    color: #06146F; /* Colore del testo per i link */
-    font-weight: bold; /* Testo in grassetto per i link */
+    text-decoration: none;
+    color: #06146F;
+    font-weight: bold;
     font-size: 19px;
 }
 
 #menu li a:hover {
-    color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
+    color: #8c95ac;
+}
+
+/* Modifica il layout quando la larghezza dello schermo è inferiore a 600px */
+@media (max-width: 600px) {
+    #header-content {
+        flex-direction: column; /* Imposta la direzione degli elementi in colonna */
+    }
+
+    #logo {
+        margin: 0 auto; /* Centra il logo orizzontalmente */
+    }
+
+    #menu {
+        position: static; /* Rimuove la posizione assoluta */
+        margin: 0 auto; /* Centra il menu orizzontalmente */
+    }
 }
 
 
