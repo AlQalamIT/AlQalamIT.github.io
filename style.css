@@ -33,7 +33,7 @@ header {
     margin-right: 10px;
     margin: 20px;
     margin-bottom: -50px;
-    margin-top: -90px;
+    margin-top: -60px;
     position: absolute;
 }
 
@@ -46,7 +46,6 @@ header {
 #menu {
     list-style: none;
     display: flex;
-   position: sticky;
     top: 10%;
     right: 20px;
     font-weight: bold;
