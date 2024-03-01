@@ -32,11 +32,12 @@ header {
 #logo {
     width: 300px;
     height: 90px;
-    margin: 20px auto; /* Centra il logo orizzontalmente */
+    margin: 0px; /* Centra il logo orizzontalmente */
+    margin-top: 30px;
 }
 
 #site-title {
-    margin-top: 18px;
+    margin-top: 14px;
     font-size: 40px;
     font-weight: bold;
 }
