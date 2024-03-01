@@ -43,9 +43,15 @@ header {
     font-weight: bold;
 }
 
-#menu li {
-    margin: 0 20px; /* Space between menu items */
+#menu li a {
+    text-decoration: none; /* Rimuove la sottolineatura */
+    color: #333; /* Cambia il colore del testo per i link */
 }
+
+#menu li a:hover {
+    color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
+}
+
 /* Styles for audio containers */
 .audio-container {
     display: flex;
