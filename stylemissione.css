@@ -97,20 +97,18 @@ header {
     justify-content: space-between;
 }
 
-#qr {
-    /* Stile specifico per l'immagine del QR */
-    width: auto; /* Larghezza desiderata */
-    height: 280px; /* Altezza automatica mantenendo le proporzioni */
-    margin-left: 180px ;
-    margin-top: 100px;
+#contenitore {
+    max-width: 100%; /* Larghezza massima del contenitore */
+    margin: 0 auto; /* Centra il contenitore orizzontalmente */
+    text-align: center; /* Centra il testo all'interno del contenitore */
+    margin-top: 60px;
 }
 
-#listen {
-    /* Stile specifico per l'immagine da ascoltare */
-    width: auto; /* Larghezza desiderata */
-    height: 280px; /* Altezza automatica mantenendo le proporzioni */
-    margin-right: 180px;
-    margin-top: 100px ;
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height: 500px;
+    width: 310px;
 }
-
 
