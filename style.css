@@ -67,22 +67,6 @@ header {
 #menu li a:hover {
     color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
 }
-/* Stili per dispositivi mobili */
-@media (max-width: 600px) {
-    #logo {
-        width: 75px;
-        height: 75px;
-        margin: 10px;
-        margin-bottom: -25px;
-        margin-top: -20px;
-    }
-
-    #menu {
-        position: relative;
-        top: auto;
-        right: auto;
-    }
-}
 
 
 
