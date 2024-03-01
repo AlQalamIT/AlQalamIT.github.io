@@ -6,19 +6,20 @@ body, h1, ul, li {
 
 /* Apply overall styles */
 body {
-    font-family: Arial, sans-serif;
-    background-color: #fff;
-    color: #0D203B;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: #f0f0f0;
+    color: #333;
 }
 
-/* Aggiorna gli stili per l'intestazione */
+/* Header styles */
 header {
-    background-color: #333;
-    color: white;
+    background-color: #f0f0f0;
+    color: #333;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    box-shadow: 0px 3px 3px rgb(2, 36, 90);
 }
 
 #header-content {
@@ -26,14 +27,13 @@ header {
     align-items: center;
 }
 
-/* Stili per desktop */
 #logo {
-    width: 150px;
-    height: 150px;
-    margin-right: 10px;
+    width: 160px;
+    height: 160px; /* Larghezza e altezza del logo */
+    margin-right: 10px; /* Spazio tra il logo e il titolo del sito */
     margin: 20px;
     margin-bottom: -50px;
-    margin-top: -40px;
+    margin-top: -50px;
 }
 
 #site-title {
@@ -42,11 +42,12 @@ header {
     font-weight: bold;
 }
 
+/* Stili per i link nel menu */
 #menu {
     list-style: none;
     display: flex;
     position: absolute;
-    top: 10px;
+    top: 20px;
     right: 20px;
     font-weight: bold;
 }
@@ -66,7 +67,6 @@ header {
 #menu li a:hover {
     color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
 }
-
 /* Stili per dispositivi mobili */
 @media (max-width: 600px) {
     #logo {
