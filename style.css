@@ -198,7 +198,6 @@ header {
     font-size: 15px;
     color: #0D203B;
     background-color: #fff;
-    
 }
 
 
@@ -208,7 +207,7 @@ header {
     margin: 20px;
 }
 
-#capitolo2 img {
+#capitolo3 img {
     max-width: 100%;
     height: 120px;
 }
@@ -368,7 +367,6 @@ header {
     font-size: 15px;
     color: #0D203B;
     background-color: #fff;
-    
 }
 
 
@@ -470,14 +468,12 @@ header {
     font-size: 15px;
     color: #0D203B;
     background-color: #fff;
-    
 }
 
 /* Aggiungi il seguente CSS per disporre gli elementi orizzontalmente e centrare i bottoni sotto le immagini */
 #capitolo11 {
     text-align: center;
     margin: 20px;
-    width: 25vw;
 }
 
 #capitolo11 img {
@@ -504,8 +500,6 @@ header {
     font-size: 15px;
     color: #0D203B;
     background-color: #fff;
-    width: 26vw;
-   
     
 }
 
@@ -541,23 +535,12 @@ header {
     color: #0D203B;
     background-color: #fff;
     
+    
 }
 
 
-/* Responsive design */
-@media screen and (max-width: 600px) {
-    header {
-        flex-direction: column;
-        text-align: center;
-    }
 
-    #menu {
-        margin-top: 10px;
-    }
 
-    #carousel {
-        height: 200px;
-    }
-}
+
 
 
