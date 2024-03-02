@@ -8,15 +8,13 @@ body, h1, ul, li {
 body {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     background-color: #f0f0f0;
-    color: #333;
+    color: #020469;
 }
 
 /* Header styles */
 header {
-    background-color: #f0f0f0;
-    color: #333;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0px 3px 3px rgb(2, 36, 90);
@@ -24,47 +22,39 @@ header {
 
 #header-content {
     display: flex;
+    flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 #logo {
-    width: 160px;
-    height: 160px; /* Larghezza e altezza del logo */
-    margin-right: 10px; /* Spazio tra il logo e il titolo del sito */
-    margin: 20px;
-    margin-bottom: -50px;
-    margin-top: -50px;
+    width: 100%; /* Full width */
+    max-width: 160px; /* Maximum width */
+    height: auto; /* Auto height to maintain aspect ratio */
+    margin: 20px auto; /* Center logo */
+    margin-top: -48px;
+    margin-bottom: -48px;
 }
 
-#site-title {
-    margin-top: 18px;
-    font-size: 40px;
-    font-weight: bold;
-}
-/* Stili per i link nel menu */
 #menu {
     list-style: none;
     display: flex;
-    position: absolute;
-    top: 20px;
-    right: 20px;
+    justify-content: center; /* Center menu items */
     font-weight: bold;
 }
 
 #menu li {
-    margin-right: 20px;
-    margin-top: 12px;
+    margin: 0 20px; /* Space between menu items */
 }
 
 #menu li a {
-    text-decoration: none; /* Rimuove la sottolineatura predefinita dei link */
-    color: #06146F; /* Colore del testo per i link */
-    font-weight: bold; /* Testo in grassetto per i link */
-    font-size: 19px;
+    text-decoration: none;
+    color: #020469;
+    transition: color 0.3s; /* Cambia la durata della transizione se necessario */
 }
 
 #menu li a:hover {
-    color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
+    color: #b3b4da; /* Cambia il colore desiderato */
 }
 
 /* Styles for audio containers */
