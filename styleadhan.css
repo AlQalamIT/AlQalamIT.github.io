@@ -43,13 +43,18 @@ header {
     font-weight: bold;
 }
 
+#menu li {
+    margin: 0 20px; /* Space between menu items */
+}
+
 #menu li a {
-    text-decoration: none; /* Rimuove la sottolineatura */
-    color: #333; /* Cambia il colore del testo per i link */
+    text-decoration: none;
+    color: #020469;
+    transition: color 0.3s; /* Cambia la durata della transizione se necessario */
 }
 
 #menu li a:hover {
-    color: #8c95ac; /* Cambia colore quando il mouse ci passa sopra */
+    color: #b3b4da; /* Cambia il colore desiderato */
 }
 
 /* Styles for audio containers */
