@@ -20,10 +20,25 @@ document.getElementById('inviaButton').addEventListener('click', function() {
     console.log('Oggetto: ' + oggetto);
     console.log('Messaggio: ' + messaggio);
 
-    // Qui puoi inserire il codice per inviare il messaggio a "alqalam.ita@gmail.com" tramite PHP o altre soluzioni server-side.
+    // Invio dell'email tramite PHP
+    const formData = new FormData();
+    formData.append('email', email);
+    formData.append('oggetto', oggetto);
+    formData.append('messaggio', messaggio);
 
-    // Mostra un messaggio di invio avvenuto con successo
-    alert('Invio avvenuto con successo!');
+    fetch('contact.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data); // Messaggio di conferma dal server
+        alert('Invio avvenuto con successo!');
+    })
+    .catch(error => {
+        console.error('Errore durante l\'invio del messaggio:', error);
+        alert('Errore durante l\'invio del messaggio. Controlla la console per i dettagli.');
+    });
 });
 
 // Funzione di validazione dell'email
