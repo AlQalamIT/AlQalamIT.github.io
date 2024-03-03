@@ -28,10 +28,10 @@ header {
 }
 
 #logo {
-    width: 100%; /* Full width */
-    max-width: 160px; /* Maximum width */
-    height: auto; /* Auto height to maintain aspect ratio */
-    margin: 20px auto; /* Center logo */
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 20px auto;
     margin-top: -48px;
     margin-bottom: -48px;
 }
@@ -39,23 +39,24 @@ header {
 #menu {
     list-style: none;
     display: flex;
-    justify-content: center; /* Center menu items */
+    justify-content: center;
     font-weight: bold;
 }
 
 #menu li {
-    margin: 0 20px; /* Space between menu items */
+    margin: 0 20px;
 }
 
 #menu li a {
     text-decoration: none;
     color: #020469;
-    transition: color 0.3s; /* Cambia la durata della transizione se necessario */
+    transition: color 0.3s;
 }
 
 #menu li a:hover {
-    color: #b3b4da; /* Cambia il colore desiderato */
+    color: #b3b4da;
 }
+
 
 /* Styles for audio containers */
 .audio-container {
