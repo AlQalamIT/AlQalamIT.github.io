@@ -57,55 +57,40 @@ header {
     color: #b3b4da; /* Cambia il colore desiderato */
 }
 
-.contatti-form {
-    width: 70%;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+/* Main container styles */
+.container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 0 auto; /* Aggiungi questa riga per centrare il form */
-    margin-top: 50px;
-}
-
-
-.contatti-form h2 {
+    justify-content: center;
+    height: 10vh;
     text-align: center;
-    margin-bottom: 20px;
-    color: rgb(3, 36, 90);
+    margin-top: 250px;
 }
 
-.contatti-form input[type="email"],
-.contatti-form input[type="text"],
-.contatti-form textarea {
-    width: calc(100% - 40px);
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    max-width: 400px;
+/* Image styles */
+#logo-instagram {
+    display: block;
+    margin: 0 auto;
+    max-width: 8%;
+    /* Aggiungi qui ulteriori stili per il logo Instagram */
 }
 
-.contatti-form textarea {
-    height: 100px;
+#logo-gmail {
+    display: block;
+    margin: 0 auto;
+    max-width: 8%;
+    /* Aggiungi qui ulteriori stili per il logo Gmail */
 }
 
-#inviaButton {
-    width: 100px;
-    padding: 10px;
-    border: none;
-    background-color: rgb(2, 36, 90);
-    color: #fff;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s, transform 0.3s;
-    margin-top: 20px;
+/* Titolo styles */
+.titolo-instagram {
+    font-size: 15px;
+
 }
 
-#inviaButton:hover {
-    background-color: #8c95ac;
+.titolo-email {
+   font-size: 15px;
 }
 
 /* Stili per il footer */
