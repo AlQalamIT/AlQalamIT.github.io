@@ -77,6 +77,121 @@ Fonti: [Registro .it — Drop Time](https://www.nic.it/en/droptime) e
 
 **In ogni caso la questione e' teorica:** il dominio e' in uso attivo.
 
+## DOMINIO SCELTO: alqalamit.it — registrato il 2026-09-06
+
+### Motivazione
+
+| Criterio | alqalamit.it |
+|---|---|
+| Disponibilita' | unico `.it` sicuro tra quelli valutati |
+| Coerenza | coincide con l'account GitHub `AlQalamIT` |
+| Coerenza | coincide con l'handle Instagram `@alqalam.it` |
+| Distinzione | non confondibile col progetto omonimo su `alqalam.it` |
+| Pubblico | `.it` e' l'estensione giusta per un pubblico all'80,7% italiano |
+
+### Scartati, e perche'
+
+**`al-qalam.it`** — e' **il nome esatto dell'altro progetto** (*al-Qalam • Il
+Calamo*, islamologia e arabistica) con l'aggiunta di un trattino. Confondibilita'
+reale, sia per i lettori sia nei motori di ricerca. Rischio inutile.
+
+**`alqalam.org`** — estensione valida per un progetto divulgativo, ma il pubblico
+e' all'80,7% italiano e cerca `.it`. Da tenere come riserva se un giorno il
+progetto diventasse internazionale.
+
+**`alqalam.it`** — occupato da un progetto attivo, vedi WHOIS sopra.
+
+---
+
+## SEQUENZA DI ATTIVAZIONE — passo per passo
+
+Stato attuale: **dominio registrato, DNS da impostare.**
+
+### Passo 1 — DNS (Aniss)
+
+Nel pannello del registrar, sul dominio nudo (`@` oppure campo vuoto):
+
+**Quattro record A**
+```
+185.199.108.153
+185.199.109.153
+185.199.110.153
+185.199.111.153
+```
+
+**Quattro record AAAA** (IPv6, consigliati)
+```
+2606:50c0:8000::153
+2606:50c0:8001::153
+2606:50c0:8002::153
+2606:50c0:8003::153
+```
+
+**Un record CNAME**: `www` -> `alqalamit.github.io`
+
+**Attesa:** da pochi minuti a 24 ore.
+
+**Verifica (la faccio io):**
+```
+curl -s "https://dns.google/resolve?name=alqalamit.it&type=A"
+```
+Deve restituire i quattro indirizzi `185.199.10x.153`. Finche' non li restituisce,
+**non si prosegue**.
+
+### Passo 2 — File CNAME nel repo (io)
+
+Rinomino `CNAME.da-attivare` in `CNAME`, committo e spingo.
+GitHub rileva il file e imposta il dominio personalizzato.
+
+**Perche' solo ora:** un file `CNAME` con un dominio che non risolve ancora rende
+il sito **irraggiungibile**. E' il motivo per cui il file ha un nome inerte.
+
+**Verifica:** `https://alqalamit.it` risponde e mostra il sito.
+
+### Passo 3 — HTTPS (io, poi Aniss conferma)
+
+In *Settings -> Pages* si attende che compaia **Enforce HTTPS** e si spunta.
+
+**Attesa:** fino a 24 ore dopo il passo 2 perche' l'opzione diventi disponibile.
+
+**Verifica:**
+```
+curl -sI https://alqalamit.it | head -3
+```
+Deve dare `HTTP/2 200`, senza errori di certificato.
+
+### Passo 4 — Collaudo (Aniss)
+
+Aprire `https://alqalamit.it` **dal telefono**, in rete mobile, non in wifi.
+Verificare che il lucchetto compaia e che un audio parta.
+
+---
+
+## Se dopo 48 ore il certificato non si attiva
+
+Nell'ordine:
+
+1. **Controllare che non esistano record AAAA sbagliati.** Se il dominio ha AAAA
+   che puntano altrove, GitHub non emette il certificato. O sono i quattro
+   corretti, o vanno rimossi del tutto.
+2. **Controllare che non ci sia un record CAA** che vieta a Let's Encrypt di
+   emettere. Verifica:
+   ```
+   curl -s "https://dns.google/resolve?name=alqalamit.it&type=CAA"
+   ```
+   Se esiste e non include `letsencrypt.org`, va corretto o rimosso.
+3. **Togliere e rimettere il dominio** in *Settings -> Pages*: forza una nuova
+   richiesta di certificato.
+4. **Verificare che il dominio non sia dietro un proxy** (es. Cloudflare in
+   modalita' arancione): con GitHub Pages i record devono essere DNS puri.
+5. Se nessuna delle precedenti risolve, aprire un ticket al supporto GitHub
+   allegando l'output di `dig alqalamit.it A` e `dig alqalamit.it CAA`.
+
+**Nel frattempo il sito resta raggiungibile in HTTP** e su
+`alqalamit.github.io`: nessuna interruzione di servizio.
+
+---
+
 ## Cosa deve fare Aniss al momento dell'acquisto
 
 **1. Registrare il dominio** presso un registrar (~9-20 EUR/anno).
