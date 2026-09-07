@@ -2,20 +2,80 @@
 
 Verifica WHOIS eseguita il 2026-09-06 sul registro ufficiale `.it` (porta 43).
 
-## Disponibilita' verificata
+## WHOIS integrale di alqalam.it — registro .it, porta 43, 2026-09-06
 
-| Dominio | Stato | Note |
-|---|---|---|
-| `alqalam.it` | **OCCUPATO** | Registrato 2025-09-17, **scadenza 2026-09-17** (fra 11 giorni). Intestato a un privato tramite Mondadori Digital |
-| **`al-qalam.it`** | **LIBERO** | Consigliato |
-| **`alqalamit.it`** | **LIBERO** | Corrisponde al nome dell'account GitHub |
-| **`alqalam.org`** | **LIBERO** | Estensione adatta a un progetto divulgativo |
-| `alqalam.com` | occupato | |
-| `alqalam.net` | occupato | |
+| Campo | Valore |
+|---|---|
+| Domain | alqalam.it |
+| **Status** | **ok** (attivo, non in scadenza tecnica) |
+| Signed (DNSSEC) | no |
+| **Created** | **2025-09-17 13:05:13** |
+| Last Update | 2025-09-17 13:10:10 |
+| **Expire Date** | **2026-09-17** |
+| **Registrante** | **Alessio Pinna** — persona fisica, non oscurato. Indirizzo presente nel record: non lo riporto, e' un dato personale di un terzo e non serve alla decisione |
+| Admin Contact | Alessio Pinna |
+| Technical Contact | Gianluca Danesin — Arnoldo Mondadori Editore S.p.A. |
+| **Registrar** | **Mondadori Digital s.p.a.** (AVD-REG) |
+| **Nameserver** | ns1 / ns2 / ns3 .altervista.com |
 
-> `alqalam.it` scade il **17 settembre 2026**. Se non viene rinnovato entra nel
-> periodo di grazia e poi torna libero. La maggior parte dei domini viene rinnovata
-> automaticamente: **non contarci**, ma vale la pena ricontrollare a fine ottobre.
+## Il dominio risolve, ed e' un sito reale
+
+Risoluzione via DNS pubblico Google: **status 0, record A 3.73.135.230**.
+(Il DNS del router di casa non e' utilizzabile: risponde con un wildcard
+`*.homenet.telecomitalia.it` verso 127.0.0.1 per qualunque dominio.)
+
+Aperto col browser il 2026-09-06:
+
+> **al-Qalam • Il Calamo**
+> *Esegesi ed ermeneutica coraniche • Islamologia comparata • Arabistica*
+> Risorse | Corsi | Eventi | Link | About — Osservatorio islamologico | Radio
+
+**Non e' un parcheggio pubblicitario: e' un progetto attivo**, nello stesso campo
+— studi islamici in italiano — con lo stesso nome e la stessa calligrafia araba.
+
+### Il "dettaglio temporale" che avevo accennato
+
+La scadenza e' il **17 settembre 2026, fra 11 giorni**. Lo avevo segnalato come
+occasione. **Alla luce del contenuto del sito, la ritiro:** il dominio ospita un
+progetto vivo, con corsi ed eventi, registrato tramite Mondadori Digital.
+Sara' quasi certamente rinnovato. **Non e' una strategia su cui contare.**
+
+C'e' pero' un secondo aspetto, piu' rilevante del dominio: **esiste gia' un
+progetto italiano di studi islamici che si chiama al-Qalam.** Non e' un problema
+legale automatico — il nome e' un termine comune del Corano — ma e' un fatto di
+posizionamento da conoscere.
+
+## Disponibilita' verificata delle alternative
+
+| Dominio | Stato |
+|---|---|
+| alqalam.it | **OCCUPATO** — vedi sopra |
+| **al-qalam.it** | **LIBERO** |
+| **alqalamit.it** | **LIBERO** — corrisponde al nome dell'account GitHub |
+| **alqalam.org** | **LIBERO** |
+| alqalam.com | occupato |
+| alqalam.net | occupato |
+
+**Raccomandazione: `alqalamit.it`.** Coincide con l'account GitHub e col profilo
+Instagram (@alqalam.it), e non si confonde con il progetto omonimo.
+`al-qalam.it` e' graficamente troppo vicino a quello esistente.
+
+## Cosa succede a un .it dopo la scadenza
+
+Fonti: [Registro .it — Drop Time](https://www.nic.it/en/droptime) e
+[Regolamento di assegnazione v7.1](https://www.nic.it/sites/default/files/archivio/docs/Regolamento_assegnazione_v7.1.pdf).
+
+- [V] I domini .it si rinnovano **automaticamente** alla scadenza
+- [V] Alla cancellazione il dominio passa a **pendingDelete/redemptionPeriod**,
+  poi a **pendingDelete/pendingDelete**, e **il giorno seguente** e' cancellato
+  in via definitiva dal database del Registro
+- [V] La cancellazione definitiva avviene secondo il processo **Drop Time**, a
+  orari programmati
+- **[ND] La durata esatta in giorni** di redemptionPeriod e pendingDelete non
+  l'ho estratta dalla documentazione ufficiale. Non riporto numeri non verificati.
+- **[ND] La finestra esatta** in cui solo il titolare puo' recuperare il dominio
+
+**In ogni caso la questione e' teorica:** il dominio e' in uso attivo.
 
 ## Cosa deve fare Aniss al momento dell'acquisto
 
@@ -56,7 +116,7 @@ personalizzato. Se il dominio non e' ancora registrato, il sito diventerebbe
 irraggiungibile. Il file e' gia' pronto col contenuto corretto, ma inerte finche'
 non lo rinomino.
 
-**Contenuto attuale:** `al-qalam.it` — da cambiare se scegli un altro dominio.
+**Contenuto attuale del file:** `al-qalam.it`. **Da cambiare in `alqalamit.it`** se accetti la raccomandazione — dimmelo e lo aggiorno.
 
 ## Tempi
 
