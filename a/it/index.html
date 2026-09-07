@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="it" class="senza-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Le recitazioni · Al-Qalam</title>
+<meta name="description" content="Tutte le recitazioni audio della Raccolta di du'a — Al-Qalam.">
+<meta name="theme-color" content="#f5f3f5" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
+<link rel="icon" href="../../assets/logo-72.png">
+<script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<style>
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-SemiBold.woff2)format('woff2');font-weight:600;font-display:swap}
+:root,:root[data-tema=light]{
+  --fondo:#f5f3f5; --superficie:#ffffff; --testo:#0d203b; --tenue:#55607a;
+  --bordo:#e2e0e4; --bordo-controllo:#868fa1; --brand:#f78012; --link:#a95400;
+  --ombra:0 1px 3px rgba(13,32,59,.08);
+}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --bordo:#2b3e5c; --bordo-controllo:#6d7c96; --brand:#f78012; --link:#f78012;
+  --ombra:0 1px 3px rgba(0,0,0,.45);
+}}
+:root[data-tema=dark]{
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --bordo:#2b3e5c; --bordo-controllo:#6d7c96; --brand:#f78012; --link:#f78012;
+  --ombra:0 1px 3px rgba(0,0,0,.45);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--testo);
+  font:400 16px/1.6 Poppins,system-ui,sans-serif;
+  padding:0 20px calc(20px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center}
+main{width:100%;max-width:520px}
+header{padding:18px 0 6px}
+.nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
+.filetto{display:block;width:34px;height:3px;border-radius:2px;background:var(--brand);margin-top:6px}
+h1{font-size:24px;font-weight:600;line-height:1.25;margin:22px 0 6px}
+.sotto{color:var(--tenue);margin:0 0 22px}
+.avviso{background:var(--superficie);border:1px solid var(--bordo-controllo);
+  border-radius:16px;padding:16px 18px;box-shadow:var(--ombra);color:var(--tenue);font-size:14px}
+ul{list-style:none;padding:0;margin:20px 0 0}
+li a{display:block;background:var(--superficie);border:1px solid var(--bordo);
+  border-radius:16px;padding:16px 18px;margin-bottom:10px;text-decoration:none;
+  color:var(--testo);box-shadow:var(--ombra);font-weight:600}
+li a span{display:block;font-weight:400;font-size:13px;color:var(--tenue);
+  letter-spacing:.05em;text-transform:uppercase;margin-bottom:3px}
+footer{margin:26px 0 30px;font-size:14px;color:var(--tenue);text-align:center;line-height:2}
+footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowrap}
+.sep{opacity:.4;margin:0 7px}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <span class="nome">AL-QALAM</span>
+  <span class="filetto" aria-hidden="true"></span>
+</header>
+
+<h1>Le recitazioni</h1>
+<p class="sotto">Gli audio della <em>Raccolta di du'a</em>.</p>
+
+<p class="avviso">Questo indice è provvisorio: viene generato insieme alle 41
+pagine, dalla banca dati dei du'a. Per ora contiene la sola pagina campione.</p>
+
+<ul>
+  <li><a href="0010.html"><span>Capitolo 1 · Du'a quotidiani</span>Quando si entra in casa</a></li>
+</ul>
+
+<footer>
+  <a href="../../vai/instagram.html">@alqalam.it</a>
+  <span class="sep">·</span>
+  <a href="../../vai/recensione.html">Lascia una recensione</a>
+  <span class="sep">·</span>
+  <a href="../../vai/libro.html">Il libro</a>
+</footer>
+</main>
+<script>document.documentElement.className='';</script>
+</body>
+</html>

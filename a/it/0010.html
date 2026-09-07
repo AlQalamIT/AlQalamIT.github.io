@@ -29,8 +29,9 @@
   --accento:#0d203b;              /* play, badge, cursore slider */
   --su-accento:#ffffff;           /* cio' che sta sopra l'accento */
   --accento-ombra:rgba(13,32,59,.24);
-  --link:#a95400;                 /* arancio scurito: 5,3:1 su bianco */
-  --logo-piatto:transparent;      /* su chiaro il medaglione sta da solo */
+  --brand:#f78012;                /* l'arancio vero, SOLO per elementi grafici */
+  --link:#a95400;                 /* 4,81:1 sul fondo chiaro. Piu' chiaro di cosi'
+                                     il testo non passa: e' un vincolo, non un gusto */
   --ombra:0 1px 3px rgba(13,32,59,.08);
 }
 @media(prefers-color-scheme:dark){
@@ -40,8 +41,8 @@
     --accento:#eef2f8;            /* invertito: chiaro sul fondo scuro */
     --su-accento:#0d203b;
     --accento-ombra:rgba(0,0,0,.55);
-    --link:#f9a24a;               /* arancio schiarito: 7,4:1 su #16263d */
-    --logo-piatto:#f5f3f5;        /* piattello chiaro, come nei post blu */
+    --brand:#f78012;
+    --link:#f78012;               /* nello scuro passa l'arancio VERO: 5,84:1 sul riquadro */
     --ombra:0 1px 3px rgba(0,0,0,.45);
   }
 }
@@ -49,7 +50,7 @@
   --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
   --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
   --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
-  --link:#f9a24a; --logo-piatto:#f5f3f5; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
 }
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -59,16 +60,18 @@ body{margin:0;background:var(--fondo);color:var(--testo);
   display:flex;flex-direction:column;align-items:center}
 main{width:100%;max-width:520px}
 
-/* ---------- Testata e marchio ----------
-   Area di rispetto: il medaglione ha il bordo smerlato e ha bisogno d'aria.
-   Il piattello e' 1,5x il segno: 25% di margine libero per lato. */
-header{display:flex;align-items:center;justify-content:space-between;
-  padding:16px 0 6px;min-height:60px}
-.marchio{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--testo)}
-.bollo{width:42px;height:42px;border-radius:50%;background:var(--logo-piatto);
-  display:grid;place-items:center;flex:0 0 auto}
-.bollo img{width:28px;height:28px;display:block}
-.nome{font-weight:600;font-size:15px;letter-spacing:.05em}
+/* ---------- Testata ----------
+   Il medaglione e' stato tolto: a 28 px il bordo smerlato e la calligrafia si
+   impastano, e un segno illeggibile comunica sciatteria piu' di quanto la sua
+   assenza comunichi assenza. Resta il logotipo, con il filetto arancio di
+   marca sotto - che e' anche il solo punto in cui #f78012 puo' stare a piena
+   forza sul chiaro, perche' non e' testo e non ha soglia di contrasto. */
+header{display:flex;align-items:flex-start;justify-content:space-between;
+  padding:18px 0 6px;min-height:56px}
+.marchio{text-decoration:none;color:var(--testo);display:inline-block;padding-top:6px}
+.nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
+.filetto{display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--brand);margin-top:6px}
 #tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
   color:var(--tenue);border-radius:12px;display:grid;place-items:center}
 #tema:hover{background:var(--bordo)}
@@ -91,10 +94,12 @@ h1{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 22px}
 #play svg{width:38px;height:38px;fill:currentColor}
 .barra{width:100%;display:flex;align-items:center;gap:12px}
 #avanz{flex:1;height:44px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
-#avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:var(--traccia)}
+#avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
 #avanz::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
   border-radius:50%;background:var(--accento);margin-top:-6px}
-#avanz::-moz-range-track{height:8px;border-radius:4px;background:var(--traccia)}
+#avanz::-moz-range-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
 #avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--accento)}
 #avanz:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:8px}
 .tempo{font-variant-numeric:tabular-nums;font-size:14px;color:var(--tenue);
@@ -111,6 +116,9 @@ h1{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 22px}
   border-radius:20px;padding:24px 20px;box-shadow:var(--ombra)}
 .ar{font-family:DroidNaskh,serif;font-size:27px;line-height:1.95;color:var(--testo);
   direction:rtl;unicode-bidi:isolate;text-align:right;margin:0 0 20px}
+/* Con l'ancora #dNNNN il browser scorre da solo, ma su una pagina da 23 du'a
+   non basta: serve vedere su quale si e' atterrati. */
+.testo:target{border-left:3px solid var(--brand);border-radius:20px}
 .tr{font-style:italic;color:var(--tenue);margin:0 0 14px;font-size:15.5px}
 .it{margin:0;color:var(--testo)}
 .fonte{margin-top:20px;padding-top:16px;border-top:1px solid var(--bordo);
@@ -145,9 +153,9 @@ audio{width:100%;margin:8px 0 0;display:block}
 <main>
 
 <header>
-  <a class="marchio" href="../../index.html" aria-label="Al-Qalam — vai all'indice">
-    <span class="bollo"><img src="../../assets/logo-144.png" width="28" height="28" alt="" aria-hidden="true"></span>
+  <a class="marchio" href="index.html" aria-label="Al-Qalam — vai all'indice degli audio">
     <span class="nome">AL-QALAM</span>
+    <span class="filetto" aria-hidden="true"></span>
   </a>
   <button id="tema" aria-label="Cambia tema chiaro o scuro">
     <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -221,6 +229,7 @@ audio{width:100%;margin:8px 0 0;display:block}
     return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
   function aggiorna(){
     if(!trascino && au.duration) avanz.value=(au.currentTime/au.duration)*100;
+    avanz.style.setProperty('--p', avanz.value+'%');
     tempo.textContent=mmss(au.currentTime)+' / '+mmss(au.duration);
   }
   play.addEventListener('click',function(){ au.paused?au.play():au.pause(); });
@@ -240,7 +249,8 @@ audio{width:100%;margin:8px 0 0;display:block}
   });
   au.addEventListener('timeupdate',aggiorna);
   au.addEventListener('loadedmetadata',aggiorna);
-  avanz.addEventListener('input',function(){ trascino=true; });
+  avanz.addEventListener('input',function(){ trascino=true;
+    avanz.style.setProperty('--p', avanz.value+'%'); });
   avanz.addEventListener('change',function(){
     if(au.duration) au.currentTime=(avanz.value/100)*au.duration; trascino=false; });
 
