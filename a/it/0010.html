@@ -5,49 +5,77 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Quando si entra in casa · Al-Qalam</title>
 <meta name="description" content="Du'a da recitare entrando in casa — arabo, traslitterazione, traduzione e recitazione audio. Sahih Muslim 2018.">
-<meta name="theme-color" content="#0d203b">
-<link rel="icon" href="../../Items/e9i0aa6w.png">
+<meta name="theme-color" content="#f5f3f5" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
+<link rel="icon" href="../../assets/logo-72.png">
 <style>
-/* ---------- Font: locali, sottoinsiemati in produzione, zero CDN ---------- */
-@font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.ttf)format('truetype');font-weight:400;font-display:swap}
-@font-face{font-family:Poppins;src:url(../../assets/Poppins-SemiBold.ttf)format('truetype');font-weight:600;font-display:swap}
-@font-face{font-family:Poppins;src:url(../../assets/Poppins-Italic.ttf)format('truetype');font-style:italic;font-display:swap}
-@font-face{font-family:DroidNaskh;src:url(../../assets/DroidNaskh-Regular.ttf)format('truetype');font-display:swap}
+/* ---------- Font sottoinsiemati: 30,2 KB in tutto, zero CDN ---------- */
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-SemiBold.woff2)format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-Italic.woff2)format('woff2');font-style:italic;font-display:swap}
+@font-face{font-family:DroidNaskh;src:url(../../assets/DroidNaskh-Regular.woff2)format('woff2');font-display:swap}
 
-/* ---------- Palette da 00-brand/identita-visiva.md ---------- */
-:root{
-  --navy:#0d203b; --arancio:#f78012; --arancio-testo:#b85c00;
-  --fondo:#f5f3f5; --superficie:#fff; --testo:#0d203b; --tenue:#5a6478;
-  --bordo:#e2e0e4; --ombra:0 1px 3px rgba(13,32,59,.08);
+/* ==============================================================
+   PALETTE
+   Regola: nessuna variabile e' definita una volta sola.
+   Il bug precedente era --navy dichiarata solo in :root e usata
+   per play, badge e cursore: restava blu su fondo blu nello scuro.
+   Ora ogni token esiste in tutti e tre i blocchi (auto/chiaro/scuro).
+   ============================================================== */
+:root,:root[data-tema=light]{
+  --fondo:#f5f3f5; --superficie:#ffffff; --testo:#0d203b; --tenue:#55607a;
+  --bordo:#e2e0e4; --traccia:#d8d5da; --bordo-controllo:#868fa1;
+  --accento:#0d203b;              /* play, badge, cursore slider */
+  --su-accento:#ffffff;           /* cio' che sta sopra l'accento */
+  --accento-ombra:rgba(13,32,59,.24);
+  --link:#a95400;                 /* arancio scurito: 5,3:1 su bianco */
+  --logo-piatto:transparent;      /* su chiaro il medaglione sta da solo */
+  --ombra:0 1px 3px rgba(13,32,59,.08);
 }
 @media(prefers-color-scheme:dark){
-  :root{--fondo:#0b1524; --superficie:#132238; --testo:#eef2f8;
-        --tenue:#9aa8bd; --bordo:#24354f; --arancio-testo:#f79b45;
-        --ombra:0 1px 3px rgba(0,0,0,.4)}
+  :root:not([data-tema=light]){
+    --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+    --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+    --accento:#eef2f8;            /* invertito: chiaro sul fondo scuro */
+    --su-accento:#0d203b;
+    --accento-ombra:rgba(0,0,0,.55);
+    --link:#f9a24a;               /* arancio schiarito: 7,4:1 su #16263d */
+    --logo-piatto:#f5f3f5;        /* piattello chiaro, come nei post blu */
+    --ombra:0 1px 3px rgba(0,0,0,.45);
+  }
 }
-:root[data-tema=light]{--fondo:#f5f3f5;--superficie:#fff;--testo:#0d203b;--tenue:#5a6478;--bordo:#e2e0e4;--arancio-testo:#b85c00}
-:root[data-tema=dark]{--fondo:#0b1524;--superficie:#132238;--testo:#eef2f8;--tenue:#9aa8bd;--bordo:#24354f;--arancio-testo:#f79b45}
+:root[data-tema=dark]{
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --link:#f9a24a; --logo-piatto:#f5f3f5; --ombra:0 1px 3px rgba(0,0,0,.45);
+}
 
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--fondo);color:var(--testo);
   font:400 16px/1.6 Poppins,system-ui,sans-serif;
-  padding:0 20px env(safe-area-inset-bottom) 20px;
+  padding:0 20px calc(20px + env(safe-area-inset-bottom));
   display:flex;flex-direction:column;align-items:center}
 main{width:100%;max-width:520px}
 
-/* ---------- Testata ---------- */
+/* ---------- Testata e marchio ----------
+   Area di rispetto: il medaglione ha il bordo smerlato e ha bisogno d'aria.
+   Il piattello e' 1,5x il segno: 25% di margine libero per lato. */
 header{display:flex;align-items:center;justify-content:space-between;
-  padding:14px 0;min-height:56px}
-.marchio{display:flex;align-items:center;gap:8px;font-weight:600;font-size:15px;
-  letter-spacing:.04em;color:var(--testo);text-decoration:none}
-.marchio img{width:26px;height:26px}
+  padding:16px 0 6px;min-height:60px}
+.marchio{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--testo)}
+.bollo{width:42px;height:42px;border-radius:50%;background:var(--logo-piatto);
+  display:grid;place-items:center;flex:0 0 auto}
+.bollo img{width:28px;height:28px;display:block}
+.nome{font-weight:600;font-size:15px;letter-spacing:.05em}
 #tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
-  font-size:19px;color:var(--tenue);border-radius:12px}
+  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
 #tema:hover{background:var(--bordo)}
+#tema svg{width:21px;height:21px}
 
 /* ---------- Titolo ---------- */
 .occhiello{color:var(--tenue);font-size:13px;letter-spacing:.06em;
-  text-transform:uppercase;margin:6px 0 2px}
+  text-transform:uppercase;margin:12px 0 3px}
 h1{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 22px}
 
 /* ---------- Player: il centro visivo ---------- */
@@ -55,41 +83,46 @@ h1{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 22px}
   border-radius:20px;padding:26px 20px 20px;box-shadow:var(--ombra);
   display:flex;flex-direction:column;align-items:center;gap:16px}
 #play{width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;
-  background:var(--navy);color:#fff;display:grid;place-items:center;
-  box-shadow:0 4px 14px rgba(13,32,59,.24);transition:transform .12s}
+  background:var(--accento);color:var(--su-accento);display:grid;place-items:center;
+  box-shadow:0 4px 14px var(--accento-ombra);transition:transform .12s}
 #play:active{transform:scale(.95)}
+#play:focus-visible{outline:3px solid var(--link);outline-offset:3px}
 #play svg{width:38px;height:38px;fill:currentColor}
 .barra{width:100%;display:flex;align-items:center;gap:12px}
 #avanz{flex:1;height:44px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
-#avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:var(--bordo)}
+#avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;background:var(--traccia)}
 #avanz::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
-  border-radius:50%;background:var(--navy);margin-top:-6px}
-#avanz::-moz-range-track{height:8px;border-radius:4px;background:var(--bordo)}
-#avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--navy)}
-.tempo{font-variant-numeric:tabular-nums;font-size:14px;color:var(--tenue);min-width:76px;text-align:right}
+  border-radius:50%;background:var(--accento);margin-top:-6px}
+#avanz::-moz-range-track{height:8px;border-radius:4px;background:var(--traccia)}
+#avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--accento)}
+#avanz:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:8px}
+.tempo{font-variant-numeric:tabular-nums;font-size:14px;color:var(--tenue);
+  min-width:78px;text-align:right}
 .controlli{display:flex;gap:10px;width:100%}
-.ctrl{flex:1;min-height:44px;border:1px solid var(--bordo);background:var(--superficie);
+.ctrl{flex:1;min-height:44px;border:1px solid var(--bordo-controllo);background:var(--superficie);
   color:var(--testo);border-radius:12px;font:inherit;font-size:14px;cursor:pointer;
   display:flex;align-items:center;justify-content:center;gap:7px}
-.ctrl[aria-pressed=true]{background:var(--navy);color:#fff;border-color:var(--navy)}
+.ctrl svg{width:17px;height:17px;fill:currentColor}
+.ctrl[aria-pressed=true]{background:var(--accento);color:var(--su-accento);border-color:var(--accento)}
 
 /* ---------- Testo del du'a ---------- */
 .testo{margin-top:26px;background:var(--superficie);border:1px solid var(--bordo);
   border-radius:20px;padding:24px 20px;box-shadow:var(--ombra)}
-.ar{font-family:DroidNaskh,serif;font-size:27px;line-height:1.95;
+.ar{font-family:DroidNaskh,serif;font-size:27px;line-height:1.95;color:var(--testo);
   direction:rtl;unicode-bidi:isolate;text-align:right;margin:0 0 20px}
 .tr{font-style:italic;color:var(--tenue);margin:0 0 14px;font-size:15.5px}
-.it{margin:0}
+.it{margin:0;color:var(--testo)}
 .fonte{margin-top:20px;padding-top:16px;border-top:1px solid var(--bordo);
   font-size:14px;color:var(--tenue);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.grado{background:var(--navy);color:#fff;padding:2px 9px;border-radius:20px;
-  font-size:12px;font-weight:600;letter-spacing:.04em}
+.fonte svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
+.grado{background:var(--accento);color:var(--su-accento);padding:2px 9px;
+  border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.04em}
 
 /* ---------- Piede ---------- */
-footer{margin:26px 0 30px;font-size:14px;color:var(--tenue);text-align:center;line-height:1.9}
-footer a{color:var(--arancio-testo);text-decoration:none;font-weight:600}
+footer{margin:26px 0 30px;font-size:14px;color:var(--tenue);text-align:center;line-height:2}
+footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowrap}
 footer a:hover{text-decoration:underline}
-.sep{opacity:.4;margin:0 8px}
+.sep{opacity:.4;margin:0 7px}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
@@ -98,17 +131,23 @@ footer a:hover{text-decoration:underline}
 <main>
 
 <header>
-  <a class="marchio" href="../../index.html">
-    <img src="../../Items/e9i0aa6w.png" alt="" aria-hidden="true">Al-Qalam
+  <a class="marchio" href="../../index.html" aria-label="Al-Qalam — vai all'indice">
+    <span class="bollo"><img src="../../assets/logo-144.png" width="28" height="28" alt="" aria-hidden="true"></span>
+    <span class="nome">AL-QALAM</span>
   </a>
-  <button id="tema" aria-label="Cambia tema chiaro o scuro">◐</button>
+  <button id="tema" aria-label="Cambia tema chiaro o scuro">
+    <svg viewBox="0 0 24 24" aria-hidden="true">
+      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
+      <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>
+    </svg>
+  </button>
 </header>
 
 <p class="occhiello">Capitolo 1 · Du'a quotidiani</p>
 <h1>Quando si entra in casa</h1>
 
 <!-- preload="metadata": su rete lenta scaricare tutto l'audio prima che la
-     pagina sia usabile e' controproducente. Il caricamento vero parte al tocco. -->
+     pagina sia usabile e' controproducente. Il download vero parte al tocco. -->
 <audio id="au" preload="metadata"
        src="../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20entra%20a%20casa%201.mp3"></audio>
 
@@ -122,7 +161,8 @@ footer a:hover{text-decoration:underline}
     <span class="tempo" id="tempo">0:00 / --:--</span>
   </div>
   <div class="controlli">
-    <button class="ctrl" id="loop" aria-pressed="false"><svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>Ripeti</button>
+    <button class="ctrl" id="loop" aria-pressed="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>Ripeti</button>
     <button class="ctrl" id="vel">1× velocità</button>
   </div>
 </section>
@@ -131,39 +171,43 @@ footer a:hover{text-decoration:underline}
   <p class="ar" lang="ar">بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا</p>
   <p class="tr" lang="ar-Latn">Bismillāhi walajnā, wa bismillāhi kharajnā, wa ʿalā Rabbinā tawakkalnā</p>
   <p class="it">Nel Nome di Allah entriamo e nel Nome di Allah usciamo, e al nostro Signore affidiamo la nostra fiducia.</p>
-  <p class="fonte"><svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true"><path d="M4 4h7v16H4zm9 0h7v16h-7z" opacity=".25"/><path d="M3 3h8a2 2 0 0 1 2 2 2 2 0 0 1 2-2h8v18h-8a1 1 0 0 0-1 1 1 1 0 0 0-1-1H3V3zm2 2v14h6V5H5zm8 0v14h6V5h-6z"/></svg>Sahih Muslim 2018 <span class="grado">sahih</span></p>
+  <p class="fonte">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3h8a2 2 0 0 1 2 2 2 2 0 0 1 2-2h8v18h-8a1 1 0 0 0-1 1 1 1 0 0 0-1-1H3V3zm2 2v14h6V5H5zm8 0v14h6V5h-6z"/></svg>
+    Sahih Muslim 2018 <span class="grado">sahih</span>
+  </p>
 </section>
 
 <footer>
   Dal libro <em>Raccolta di du'a</em>, pagina 18
   <br>
-  <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a>
+  <a href="../../vai/instagram.html">@alqalam.it</a>
   <span class="sep">·</span>
-  <a href="https://www.amazon.it/dp/B0CY7JYPZ3">Il libro</a>
+  <a href="../../vai/recensione.html">Lascia una recensione</a>
+  <span class="sep">·</span>
+  <a href="../../vai/libro.html">Il libro</a>
 </footer>
 
 </main>
 <script>
 (function(){
   var au=document.getElementById('au'), play=document.getElementById('play'),
-      icona=document.getElementById('icona'), avanz=document.getElementById('avanz'),
-      tempo=document.getElementById('tempo'), loop=document.getElementById('loop'),
-      vel=document.getElementById('vel'), tema=document.getElementById('tema');
+      icona=document.getElementById('icona').firstElementChild,
+      avanz=document.getElementById('avanz'), tempo=document.getElementById('tempo'),
+      loop=document.getElementById('loop'), vel=document.getElementById('vel'),
+      tema=document.getElementById('tema');
   var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
   var velocita=[1,1.25,0.75], iv=0, trascino=false;
 
   function mmss(s){ if(!isFinite(s))return'--:--';
-    var m=Math.floor(s/60); return m+':'+String(Math.floor(s%60)).padStart(2,'0'); }
+    return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
   function aggiorna(){
     if(!trascino && au.duration) avanz.value=(au.currentTime/au.duration)*100;
     tempo.textContent=mmss(au.currentTime)+' / '+mmss(au.duration);
   }
-  play.addEventListener('click',function(){
-    if(au.paused){ au.play(); } else { au.pause(); }
-  });
-  au.addEventListener('play',function(){ icona.firstElementChild.setAttribute('d',PAUSA);
+  play.addEventListener('click',function(){ au.paused?au.play():au.pause(); });
+  au.addEventListener('play',function(){ icona.setAttribute('d',PAUSA);
     play.setAttribute('aria-label','Metti in pausa'); });
-  au.addEventListener('pause',function(){ icona.firstElementChild.setAttribute('d',PLAY);
+  au.addEventListener('pause',function(){ icona.setAttribute('d',PLAY);
     play.setAttribute('aria-label','Riproduci la recitazione'); });
   au.addEventListener('timeupdate',aggiorna);
   au.addEventListener('loadedmetadata',aggiorna);
@@ -172,7 +216,7 @@ footer a:hover{text-decoration:underline}
     if(au.duration) au.currentTime=(avanz.value/100)*au.duration; trascino=false; });
 
   // Il loop e' la funzione piu' usata: e' un testo che si impara a memoria.
-  try{ if(localStorage.getItem('alq_loop')==='1'){ au.loop=true; loop.setAttribute('aria-pressed','true'); } }catch(e){}
+  try{ if(localStorage.getItem('alq_loop')==='1'){au.loop=true;loop.setAttribute('aria-pressed','true');} }catch(e){}
   loop.addEventListener('click',function(){
     au.loop=!au.loop; loop.setAttribute('aria-pressed',au.loop?'true':'false');
     try{ localStorage.setItem('alq_loop',au.loop?'1':'0'); }catch(e){}

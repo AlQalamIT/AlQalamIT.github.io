@@ -1,0 +1,78 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Audit contrasto</title>
+<!--
+  Banco di prova dei colori della pagina QR.
+  Non viene pubblicato: GitHub Pages non serve le cartelle che iniziano con un punto.
+  Uso:  http://localhost:8765/.qa/audit.html?tema=dark   (oppure light)
+  In headless:  chrome --headless=new --virtual-time-budget=8000 --dump-dom <url>
+-->
+<style>body{font:13px/1.5 monospace;white-space:pre;margin:16px}iframe{width:390px;height:1200px;border:0;position:absolute;left:-9999px}</style>
+<div id="out">in corso…</div>
+<script>
+const tema = new URLSearchParams(location.search).get('tema') || 'light';
+try { localStorage.setItem('alq_tema', tema); } catch (e) {}
+const fr = document.createElement('iframe');
+fr.src = '../a/it/0010.html';
+document.body.appendChild(fr);
+
+fr.onload = () => {
+  const D = fr.contentDocument, W = fr.contentWindow;
+  const L = c => { const s = c/255; return s <= 0.03928 ? s/12.92 : Math.pow((s+0.055)/1.055, 2.4); };
+  const px = s => { const m = (s||'').match(/[\d.]+/g); if (!m) return null;
+                    const v = m.map(Number); return v.length > 3 && v[3] === 0 ? null : v.slice(0,3); };
+  const lum = ([r,g,b]) => 0.2126*L(r) + 0.7152*L(g) + 0.0722*L(b);
+  const cr = (a,b) => { const x = lum(a), y = lum(b);
+                        return (Math.max(x,y) + 0.05) / (Math.min(x,y) + 0.05); };
+  const dietro = el => { let n = el;
+    while (n && n !== D.documentElement) { const c = px(W.getComputedStyle(n).backgroundColor); if (c) return c; n = n.parentElement; }
+    return px(W.getComputedStyle(D.body).backgroundColor) || [255,255,255]; };
+  const varc = n => { const v = W.getComputedStyle(D.documentElement).getPropertyValue(n).trim();
+    const d = D.createElement('div'); d.style.color = v; D.body.appendChild(d);
+    const c = px(W.getComputedStyle(d).color); d.remove(); return c; };
+
+  const loop = D.getElementById('loop');
+  loop.setAttribute('aria-pressed','true');           // misura anche lo stato attivo
+
+  const testo = [
+    ['titolo h1','h1'], ['occhiello','.occhiello'], ['nome marchio','.nome'],
+    ['icona tema','#tema'], ['icona play sul pulsante','#play'],
+    ['tempo trascorso','.tempo'], ['bottone Ripeti ATTIVO','#loop'],
+    ['bottone velocita','#vel'], ['arabo','.ar'], ['traslitterazione','.tr'],
+    ['traduzione','.it'], ['riga fonte','.fonte'], ['badge grado','.grado'],
+    ['piede','footer'], ['link del piede','footer a'],
+  ];
+  const righe = [];
+  let rotti = 0;
+  for (const [nome, sel] of testo) {
+    const el = D.querySelector(sel), cs = W.getComputedStyle(el);
+    const r = cr(px(cs.color), dietro(el));
+    const fs = parseFloat(cs.fontSize);
+    const grande = fs >= 24 || (fs >= 18.66 && +cs.fontWeight >= 600);
+    const soglia = grande ? 3 : 4.5;
+    const ok = r >= soglia; if (!ok) rotti++;
+    righe.push(`${nome.padEnd(26)} ${r.toFixed(2).padStart(6)}:1  min ${soglia}   ${ok ? 'OK' : '*** SOTTO ***'}`);
+  }
+
+  righe.push('');
+  righe.push('componenti non testuali (min 3:1 dove sono controlli)');
+  for (const [nome, a, b, obbl] of [
+    ['pulsante play sul riquadro','--accento','--superficie', true],
+    ['cursore slider sulla traccia','--accento','--traccia', true],
+    ['bordo dei bottoni','--bordo-controllo','--superficie', true],
+    ['piattello del logo sul fondo','--logo-piatto','--fondo', false],
+    ['riquadro sul fondo','--superficie','--fondo', false],
+  ]) {
+    const A = varc(a), B = varc(b);
+    if (!A || !B) { righe.push(`${nome.padEnd(30)}  trasparente — non applicabile`); continue; }
+    const r = cr(A,B), ok = r >= 3;
+    if (obbl && !ok) rotti++;
+    righe.push(`${nome.padEnd(30)} ${r.toFixed(2).padStart(6)}:1  ${obbl ? (ok ? 'OK' : '*** SOTTO ***') : '(decorativo)'}`);
+  }
+
+  loop.setAttribute('aria-pressed','false');
+  document.getElementById('out').textContent =
+    `TEMA ${tema.toUpperCase()}\n` + '='.repeat(60) + '\n' + righe.join('\n') +
+    `\n\nESITO: ${rotti === 0 ? 'nessun elemento sotto soglia' : rotti + ' ELEMENTI SOTTO SOGLIA'}`;
+};
+</script>
