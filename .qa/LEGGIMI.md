@@ -32,3 +32,24 @@ poi si ritaglia a 390 px di larghezza.
 chrome --headless=new --virtual-time-budget=8000 --dump-dom \
        "http://localhost:8765/.qa/audit.html?tema=dark"
 ```
+
+## Come si prova il caso "l'audio non risponde"
+
+Il file di prova non sta nel repo: si genera al volo e si cancella.
+
+```
+sed 's#src="\.\./\.\./Capitolo%20quotidiani/Audio/[^"]*"#src="../../assets/NON-ESISTE.mp3"#' \
+    a/it/0010.html > a/it/_rotta.html
+chrome --headless=new ... http://localhost:8765/.qa/tel-rotta.html
+rm a/it/_rotta.html
+```
+
+Atteso: pulsante play spento e non cliccabile, riga di guasto leggibile con un
+collegamento diretto al file. **Non** una pagina muta.
+
+## Come si prova il caso "il JavaScript non parte"
+
+Nel browser, disattivare JS e ricaricare `a/it/0010.html`.
+Atteso: il player nostro sparisce e compare il lettore audio di sistema.
+La pagina resta ascoltabile. Il pulsante da 96 px non deve mai restare visibile
+e inerte.

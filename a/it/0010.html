@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" class="senza-js">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
@@ -8,6 +8,7 @@
 <meta name="theme-color" content="#f5f3f5" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
 <link rel="icon" href="../../assets/logo-72.png">
+<script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
 <style>
 /* ---------- Font sottoinsiemati: 30,2 KB in tutto, zero CDN ---------- */
 @font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}
@@ -124,6 +125,19 @@ footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowr
 footer a:hover{text-decoration:underline}
 .sep{opacity:.4;margin:0 7px}
 
+/* Senza JS il pulsante da 96 px non farebbe niente e non ci sarebbe altro
+   modo di ascoltare. Il lettore di sistema resta li' finche' il nostro non
+   e' pronto: e' brutto, ma funziona sempre. */
+audio{width:100%;margin:8px 0 0;display:block}
+.senza-js .player{display:none}
+:root:not(.senza-js) audio{display:none}
+
+/* Se l'mp3 non risponde, la pagina lo dice invece di restare muta. */
+.guasto{margin:14px 0 0;padding:12px 14px;border-radius:12px;font-size:14px;
+  border:1px solid var(--bordo-controllo);background:var(--superficie);color:var(--testo)}
+.guasto a{color:var(--link);font-weight:600}
+.player.rotto #play{opacity:.4;cursor:not-allowed;box-shadow:none}
+
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
@@ -148,7 +162,7 @@ footer a:hover{text-decoration:underline}
 
 <!-- preload="metadata": su rete lenta scaricare tutto l'audio prima che la
      pagina sia usabile e' controproducente. Il download vero parte al tocco. -->
-<audio id="au" preload="metadata"
+<audio id="au" preload="metadata" controls
        src="../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20entra%20a%20casa%201.mp3"></audio>
 
 <section class="player">
@@ -166,6 +180,8 @@ footer a:hover{text-decoration:underline}
     <button class="ctrl" id="vel">1× velocità</button>
   </div>
 </section>
+
+<p id="guasto" class="guasto" hidden></p>
 
 <section class="testo">
   <p class="ar" lang="ar">بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا</p>
@@ -190,11 +206,14 @@ footer a:hover{text-decoration:underline}
 </main>
 <script>
 (function(){
+  document.documentElement.className='';   // il player nostro e' vivo
   var au=document.getElementById('au'), play=document.getElementById('play'),
       icona=document.getElementById('icona').firstElementChild,
       avanz=document.getElementById('avanz'), tempo=document.getElementById('tempo'),
       loop=document.getElementById('loop'), vel=document.getElementById('vel'),
       tema=document.getElementById('tema');
+  au.removeAttribute('controls');            // ora il nostro player esiste
+  var guasto=document.getElementById('guasto');
   var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
   var velocita=[1,1.25,0.75], iv=0, trascino=false;
 
@@ -209,6 +228,16 @@ footer a:hover{text-decoration:underline}
     play.setAttribute('aria-label','Metti in pausa'); });
   au.addEventListener('pause',function(){ icona.setAttribute('d',PLAY);
     play.setAttribute('aria-label','Riproduci la recitazione'); });
+  au.addEventListener('error',function(){
+    // L'unico compito della pagina e' far partire la recitazione. Se il file
+    // non risponde, dirlo e dare comunque una via d'uscita: muta e' peggio.
+    document.querySelector('.player').classList.add('rotto');
+    play.disabled=true;
+    guasto.hidden=false;
+    guasto.innerHTML='La recitazione non si carica. '
+      +'<a href="'+au.getAttribute('src')+'">Prova ad aprire il file audio</a> '
+      +'oppure riprova con una connessione migliore.';
+  });
   au.addEventListener('timeupdate',aggiorna);
   au.addEventListener('loadedmetadata',aggiorna);
   avanz.addEventListener('input',function(){ trascino=true; });
@@ -233,7 +262,6 @@ footer a:hover{text-decoration:underline}
     r.setAttribute('data-tema',nuovo);
     try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
   });
-  try{ var t=localStorage.getItem('alq_tema'); if(t) document.documentElement.setAttribute('data-tema',t); }catch(e){}
 })();
 </script>
 </body>
