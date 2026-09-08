@@ -11,10 +11,9 @@
 <script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
 <style>
 /* ---------- Font sottoinsiemati: 30,2 KB in tutto, zero CDN ---------- */
-/* DroidNaskh si carica subito: e' l'arabo, ed e' la ragione della pagina.
-   Le tre Poppins invece aspettano - il ripiego e' system-ui, che sul latino
-   si distingue appena, e i loro 17,8 KB toglievano banda all'audio.
-   Misurato sul dominio vero, 3G lento: vedi ROADMAP fase 5. */
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-SemiBold.woff2)format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:Poppins;src:url(../../assets/Poppins-Italic.woff2)format('woff2');font-style:italic;font-display:swap}
 @font-face{font-family:DroidNaskh;src:url(../../assets/DroidNaskh-Regular.woff2)format('woff2');font-display:swap}
 
 /* ==============================================================
@@ -272,16 +271,6 @@ audio{width:100%;margin:8px 0 0;display:block}
     var nuovo=ora==='dark'?'light':'dark';
     r.setAttribute('data-tema',nuovo);
     try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
-  });
-  // Le Poppins entrano quando la pagina ha finito di caricare: il testo
-  // latino resta leggibile in system-ui nel frattempo.
-  addEventListener('load', function(){
-    var st = document.createElement('style');
-    st.textContent =
-      "@font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}" +
-      "@font-face{font-family:Poppins;src:url(../../assets/Poppins-SemiBold.woff2)format('woff2');font-weight:600;font-display:swap}" +
-      "@font-face{font-family:Poppins;src:url(../../assets/Poppins-Italic.woff2)format('woff2');font-style:italic;font-display:swap}";
-    document.head.appendChild(st);
   });
 })();
 </script>
