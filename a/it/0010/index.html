@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="it" class="senza-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Du’a quando si entra ed esce da casa · Al-Qalam</title>
+<meta name="description" content="Du’a quando si entra ed esce da casa — 2 invocazione con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
+<meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
+<link rel="icon" href="../../../assets/logo-72.png">
+<script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<style>
+/* ─────────────────────────────────────────────────────────────────────
+   PUNTO 315 · la scala, cinque gradini. Misure su 390px di viewport.
+   I corpi NON sono trasportati dal carosello: sono rifatti sull'altezza
+   ottica di EB Garamond (0,400 em), con i rapporti del carosello.
+   ───────────────────────────────────────────────────────────────────── */
+@font-face{font-family:Gar;src:url(../../../assets/EBGaramond.woff2)format('woff2');
+  font-weight:400 800;font-display:swap}
+@font-face{font-family:Gar;src:url(../../../assets/EBGaramond-Italic.woff2)format('woff2');
+  font-weight:400 800;font-style:italic;font-display:swap}
+@font-face{font-family:DroidNaskh;src:url(../../../assets/DroidNaskh-Regular.woff2)format('woff2');
+  font-display:block}
+/* Noto sta in TUTTE E DUE le pile: e' il solo font del progetto con U+FDFA,
+   e il ﷺ compare nel testo italiano, non nel blocco arabo. */
+@font-face{font-family:NotoNaskh;src:url(../../../assets/NotoNaskh.woff2)format('woff2');
+  font-display:block}
+
+:root,:root[data-tema=light]{
+  --fondo:#f7f3ec;          /* crema: e' il pilastro du'a, punto 190 */
+  --superficie:#fffdf8;     /* bianco caldo: su crema il bianco puro stacca freddo */
+  --testo:#0d203b;          /* 14,75 su crema */
+  --tenue:#485868;          /* ardesia, 6,61. NON #55607a, che da' 5,68 */
+  --fonte:#000000;          /* 18,99 — il contrasto piu' alto, dove serve */
+  --bordo:#e4ded2; --traccia:#ddd6c8; --bordo-controllo:#8a8375;
+  --accento:#0d203b; --su-accento:#fffdf8; --accento-ombra:rgba(13,32,59,.22);
+  --brand:#f78012;          /* 2,36 — SOLO grafica, mai testo */
+  --link:#a95400;           /* 4,80: passa anche il testo piccolo.
+                               #bb5d06 da' 4,06 e NON passa: la decisione del
+                               punto 190 valeva per i TITOLI del carosello */
+  --ombra:0 1px 3px rgba(13,32,59,.07);
+}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;          /* bianco CALDO: in bianco puro le harakat fioriscono */
+}}
+:root[data-tema=dark]{
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;
+}
+
+:root{
+  --t-titolo:clamp(29px,7.6vw,38px);  /* fisso romperebbe su 41 titoli diversi */
+  --t-arabo:40px;      /* 2,2x il pavimento di 18. Nel feed si vede a 39px */
+  --t-quote:23px;      /* la traduzione */
+  --t-prosa:18px;      /* il contesto E la traslitterazione: il 5o gradino */
+  --t-minuto:14px;     /* fonte e occhiello */
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--fondo);color:var(--testo);
+  font:400 var(--t-prosa)/1.65 Gar,NotoNaskh,Georgia,serif;
+  text-wrap:pretty;
+  padding:0 20px calc(28px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center}
+main{width:100%;max-width:560px}
+
+header{display:flex;align-items:flex-start;justify-content:space-between;
+  padding:18px 0 6px;min-height:56px}
+.marchio{text-decoration:none;color:var(--testo);display:inline-block;padding-top:6px}
+.nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
+.filetto{display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--brand);margin-top:6px}
+#tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
+  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
+#tema:hover{background:var(--bordo)}
+#tema svg{width:21px;height:21px}
+
+.occhiello{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;margin:14px 0 4px}
+h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
+  text-wrap:balance}   /* 41 titoli da 23 a 51 caratteri: l'orfana e' certa */
+
+/* ── La voce: un du'a. Da 1 a 23 per pagina. ──
+   NIENTE riquadro attorno al testo: il player e' l'unico oggetto rialzato.
+   Due scatole identiche di fila leggono come un template, e la misura di
+   riga guadagna 40px. */
+.voce{margin:0 0 44px}
+.voce+.voce{border-top:1px solid var(--bordo);padding-top:34px}
+.voce:target{box-shadow:-14px 0 0 -11px var(--brand)}
+
+.player{background:var(--superficie);border:1px solid var(--bordo);
+  border-radius:20px;padding:24px 18px 18px;box-shadow:var(--ombra);
+  display:flex;flex-direction:column;align-items:center;gap:15px;margin-bottom:28px}
+.play{width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--accento);color:var(--su-accento);display:grid;place-items:center;
+  box-shadow:0 4px 14px var(--accento-ombra);transition:transform .12s}
+.play:active{transform:scale(.95)}
+.play:focus-visible{outline:3px solid var(--link);outline-offset:3px}
+.play svg{width:38px;height:38px;fill:currentColor}
+.barra{width:100%;display:flex;align-items:center;gap:12px}
+.avanz{flex:1;height:44px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
+.avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
+  border-radius:50%;background:var(--accento);margin-top:-6px}
+.avanz::-moz-range-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--accento)}
+.avanz:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:8px}
+.tempo{font-variant-numeric:tabular-nums;font-size:var(--t-minuto);
+  color:var(--tenue);min-width:76px;text-align:right}
+.controlli{display:flex;gap:10px;width:100%}
+.ctrl{flex:1;min-height:44px;border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo);border-radius:12px;font:inherit;
+  font-size:var(--t-minuto);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px}
+.ctrl svg{width:17px;height:17px;fill:currentColor}
+.ctrl[aria-pressed=true]{background:var(--accento);color:var(--su-accento);
+  border-color:var(--accento)}
+
+/* ── L'arabo. 40px e interlinea 1,9 ──
+   L'interlinea sta SOPRA la linea-guida 1,6-1,8 di proposito: su Naskh
+   pienamente vocalizzato lo stack shadda+fatha arriva a ~1,25em sopra la
+   linea di base e la kasra scende sotto. A 1,9 restano ~0,4em di franco.
+   E mai `justify`: la giustificazione araba vuole la kashida, che nessun
+   browser fa, e produce vuoti enormi fra le parole. */
+.ar{font-family:DroidNaskh,NotoNaskh,serif;font-size:var(--t-arabo);
+  line-height:1.9;color:var(--arabo,var(--testo));direction:rtl;
+  unicode-bidi:isolate;text-align:right;text-align-last:right;margin:0 0 22px}
+/* la traslitterazione: TONDA e semibold, non corsiva. Il corsivo e' della
+   traduzione. E si legge ad alta voce, quindi interlinea larga. */
+.tr{font-size:var(--t-prosa);font-weight:600;letter-spacing:.03em;
+  line-height:1.7;color:var(--tenue);margin:0 0 16px}
+.it{font-size:var(--t-quote);font-style:italic;line-height:1.45;
+  color:var(--testo);margin:0}
+.fonte{margin-top:20px;padding-top:15px;border-top:1px solid var(--bordo);
+  font-size:var(--t-minuto);font-weight:500;color:var(--fonte);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fonte svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
+.grado{background:var(--accento);color:var(--su-accento);padding:2px 9px;
+  border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.04em}
+/* il contesto: la prosa lunga, ed e' il ruolo che il carosello non ha */
+.ctx{margin:22px 0 0;font-size:var(--t-prosa);line-height:1.7;color:var(--testo)}
+.ctx b{font-weight:600;color:var(--tenue);display:block;font-size:var(--t-minuto);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+
+footer{margin:10px 0 30px;font-size:var(--t-minuto);color:var(--tenue);
+  text-align:center;line-height:2}
+footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowrap}
+footer a:hover{text-decoration:underline}
+.sep{opacity:.4;margin:0 7px}
+
+audio{width:100%;margin:8px 0 0;display:block}
+.senza-js .player{display:none}
+:root:not(.senza-js) audio{display:none}
+.guasto{margin:14px 0 0;padding:12px 14px;border-radius:12px;
+  font-size:var(--t-minuto);border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo)}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="marchio" href="/"><span class="nome">AL-QALAM</span><span class="filetto"></span></a>
+  <button id="tema" aria-label="Cambia tema">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+  </button>
+</header>
+<p class="occhiello">Capitolo 1</p>
+<h1>Du’a quando si entra ed esce da casa</h1>
+
+  <section class="voce" id="d0001">
+    <!-- translit d0001: dal .docx, campo `testa`, divisa da separa_riga. Il PDF non la separa su questo blocco. -->
+    <!-- rif Sahih muslim 2018 -> Sahih Muslim 2018: la raccolta era in minuscolo: unica su 131 riferimenti distinti. Il libro lo stampa cosi' a pag. 19 e si corregge in riedizione; sul sito si corregge subito. -->
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20entra%20a%20casa%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا</p>
+    <p class="tr">Bismillāhi walajnā, wa bismillāhi kharajnā, wa ʿalā Rabbinā tawakkalnā</p>
+    <p class="it">Nel Nome di Allah entriamo e nel Nome di Allah usciamo, e al nostro Signore affidiamo la nostra fiducia</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih Muslim 2018 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ disse: “Quando una persona entra nella sua casa e ricorda Allah all&#x27;ingresso e prima di mangiare, shaytān dice: (ai suoi compagni shaytān) &#x27;Non c&#x27;è posto per te dove passare la notte e non c&#x27;è cena per te.&#x27; Quando entra nella casa e non ricorda Allah, Shaytān dice: &#x27;Hai trovato un posto dove passare la notte.&#x27; Quando non ricorda Allah prima di mangiare il cibo, shaytān dice: &#x27;Hai trovato un posto dove stare e qualcosa da mangiare.”</div>
+  </section>
+  <section class="voce" id="d0002">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20esce%20di%20casa%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">بِسْمِ اللَّه تَوَكَّلْـتُ عَلَى اللَّهِ، وَلاَ حَوْلَ وَلاَ قُـوَّةَ إِلا بِاللَّهِِ</p>
+    <p class="tr">Bismil-lah, tawakkaltu AAalal-lah, wala ḥawla wala quwwata illa billah</p>
+    <p class="it">Nel Nome di Allah, ripongo la mia fiducia in Allah, e non vi è forza né potere se non in Allah</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Abi Dawud 5095 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ disse: “Chiunque pronunci [quanto sopra riportato] quando lascia la sua casa gli verrà detto: &#x27;Sei stato guidato, sei stato provveduto e sei stato protetto.&#x27; Poi un diavolo dice a un altro diavolo: &#x27;Come puoi raggiungere un uomo che è stato guidato, provveduto e protetto?”</div>
+  </section>
+<footer>
+  <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a><span class="sep">·</span>
+  <a href="/recensione/">Lascia una recensione</a><span class="sep">·</span>
+  <a href="/vai/libro.html">Il libro</a>
+</footer>
+</main>
+<script>
+(function(){
+  document.documentElement.className='';
+  var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
+  function mmss(s){ if(!isFinite(s))return'--:--';
+    return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
+  var tutti=[];
+  Array.prototype.forEach.call(document.querySelectorAll('.voce'),function(v){
+    var au=v.querySelector('audio'); if(!au) return;
+    var play=v.querySelector('.play'), icona=play.querySelector('path'),
+        avanz=v.querySelector('.avanz'), tempo=v.querySelector('.tempo'),
+        loop=v.querySelector('.loop'), vel=v.querySelector('.vel'),
+        guasto=v.querySelector('.guasto');
+    au.removeAttribute('controls');
+    tutti.push(au);
+    var velocita=[1,1.25,0.75], iv=0, trascino=false;
+    function aggiorna(){
+      if(!trascino && au.duration) avanz.value=(au.currentTime/au.duration)*100;
+      avanz.style.setProperty('--p', avanz.value+'%');
+      tempo.textContent=mmss(au.currentTime)+' / '+mmss(au.duration);
+    }
+    play.addEventListener('click',function(){
+      if(au.paused){
+        // una voce per volta: chi parla zittisce le altre
+        tutti.forEach(function(a){ if(a!==au) a.pause(); });
+        au.play().catch(function(){ if(guasto) guasto.hidden=false; });
+      } else au.pause();
+    });
+    au.addEventListener('play',function(){ icona.setAttribute('d',PAUSA);
+      play.setAttribute('aria-label','Metti in pausa'); });
+    au.addEventListener('pause',function(){ icona.setAttribute('d',PLAY);
+      play.setAttribute('aria-label','Ascolta'); });
+    au.addEventListener('timeupdate',aggiorna);
+    au.addEventListener('loadedmetadata',aggiorna);
+    au.addEventListener('error',function(){ if(guasto) guasto.hidden=false; });
+    avanz.addEventListener('input',function(){ trascino=true;
+      avanz.style.setProperty('--p', avanz.value+'%'); });
+    avanz.addEventListener('change',function(){ trascino=false;
+      if(au.duration) au.currentTime=(avanz.value/100)*au.duration; });
+    loop.addEventListener('click',function(){ au.loop=!au.loop;
+      loop.setAttribute('aria-pressed',au.loop); });
+    vel.addEventListener('click',function(){ iv=(iv+1)%velocita.length;
+      au.playbackRate=velocita[iv];
+      vel.querySelector('span').textContent=velocita[iv]+'\u00d7 velocit\u00e0'; });
+    aggiorna();
+  });
+  var tema=document.getElementById('tema');
+  if(tema) tema.addEventListener('click',function(){
+    var ora=document.documentElement.getAttribute('data-tema');
+    var scuro = ora ? ora==='dark'
+      : matchMedia('(prefers-color-scheme:dark)').matches;
+    var nuovo = scuro ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-tema',nuovo);
+    try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
