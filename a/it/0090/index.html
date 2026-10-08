@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="it" class="senza-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Du’a e adkhar da dire prima, durante e dopo la salat · Al-Qalam</title>
+<meta name="description" content="Du’a e adkhar da dire prima, durante e dopo la salat — 23 invocazione con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
+<meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme:light)">
+<meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
+<link rel="icon" href="../../../assets/logo-72.png">
+<script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<style>
+/* ─────────────────────────────────────────────────────────────────────
+   PUNTO 315 · la scala, cinque gradini. Misure su 390px di viewport.
+   I corpi NON sono trasportati dal carosello: sono rifatti sull'altezza
+   ottica di EB Garamond (0,400 em), con i rapporti del carosello.
+   ───────────────────────────────────────────────────────────────────── */
+@font-face{font-family:Gar;src:url(../../../assets/EBGaramond.woff2)format('woff2');
+  font-weight:400 800;font-display:swap}
+@font-face{font-family:Gar;src:url(../../../assets/EBGaramond-Italic.woff2)format('woff2');
+  font-weight:400 800;font-style:italic;font-display:swap}
+@font-face{font-family:DroidNaskh;src:url(../../../assets/DroidNaskh-Regular.woff2)format('woff2');
+  font-display:block}
+/* Noto sta in TUTTE E DUE le pile: e' il solo font del progetto con U+FDFA,
+   e il ﷺ compare nel testo italiano, non nel blocco arabo. */
+@font-face{font-family:NotoNaskh;src:url(../../../assets/NotoNaskh.woff2)format('woff2');
+  font-display:block}
+
+:root,:root[data-tema=light]{
+  --fondo:#f7f3ec;          /* crema: e' il pilastro du'a, punto 190 */
+  --superficie:#fffdf8;     /* bianco caldo: su crema il bianco puro stacca freddo */
+  --testo:#0d203b;          /* 14,75 su crema */
+  --tenue:#485868;          /* ardesia, 6,61. NON #55607a, che da' 5,68 */
+  --fonte:#000000;          /* 18,99 — il contrasto piu' alto, dove serve */
+  --bordo:#e4ded2; --traccia:#ddd6c8; --bordo-controllo:#8a8375;
+  --accento:#0d203b; --su-accento:#fffdf8; --accento-ombra:rgba(13,32,59,.22);
+  --brand:#f78012;          /* 2,36 — SOLO grafica, mai testo */
+  --link:#a95400;           /* 4,80: passa anche il testo piccolo.
+                               #bb5d06 da' 4,06 e NON passa: la decisione del
+                               punto 190 valeva per i TITOLI del carosello */
+  --ombra:0 1px 3px rgba(13,32,59,.07);
+}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;          /* bianco CALDO: in bianco puro le harakat fioriscono */
+}}
+:root[data-tema=dark]{
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;
+}
+
+:root{
+  --t-titolo:clamp(29px,7.6vw,38px);  /* fisso romperebbe su 41 titoli diversi */
+  --t-arabo:32px;      /* punto 343 (era 40): a 40 occupava quasi uno schermo, 3
+                          righe; a 32 sono 2. Se le harakat sparissero su un
+                          display reale, si torna a 34 */
+  --t-quote:22px;      /* la traduzione */
+  --t-prosa:18px;      /* il contesto E la traslitterazione: il 5o gradino */
+  --t-minuto:14px;     /* fonte e occhiello */
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--fondo);color:var(--testo);
+  font:400 var(--t-prosa)/1.65 Gar,NotoNaskh,Georgia,serif;
+  text-wrap:pretty;
+  padding:0 20px calc(28px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center}
+main{width:100%;max-width:560px}
+
+header{display:flex;align-items:flex-start;justify-content:space-between;
+  padding:18px 0 6px;min-height:56px}
+.marchio{text-decoration:none;color:var(--testo);display:inline-block;padding-top:6px}
+.nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
+.filetto{display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--brand);margin-top:6px}
+#tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
+  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
+#tema:hover{background:var(--bordo)}
+#tema svg{width:21px;height:21px}
+
+.occhiello{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;margin:14px 0 4px}
+h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
+  text-wrap:balance}   /* 41 titoli da 23 a 51 caratteri: l'orfana e' certa */
+
+/* ── La voce: un du'a. Da 1 a 23 per pagina. ──
+   NIENTE riquadro attorno al testo: il player e' l'unico oggetto rialzato.
+   Due scatole identiche di fila leggono come un template, e la misura di
+   riga guadagna 40px. */
+.voce{margin:0 0 44px}
+.voce+.voce{border-top:1px solid var(--bordo);padding-top:34px}
+.voce:target{box-shadow:-14px 0 0 -11px var(--brand)}
+
+.player{background:var(--superficie);border:1px solid var(--bordo);
+  border-radius:20px;padding:24px 18px 18px;box-shadow:var(--ombra);
+  display:flex;flex-direction:column;align-items:center;gap:15px;margin-bottom:28px}
+.play{width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--accento);color:var(--su-accento);display:grid;place-items:center;
+  box-shadow:0 4px 14px var(--accento-ombra);transition:transform .12s}
+.play:active{transform:scale(.95)}
+.play:focus-visible{outline:3px solid var(--link);outline-offset:3px}
+.play svg{width:38px;height:38px;fill:currentColor}
+.barra{width:100%;display:flex;align-items:center;gap:12px}
+.avanz{flex:1;height:44px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
+.avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
+  border-radius:50%;background:var(--accento);margin-top:-6px}
+.avanz::-moz-range-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--accento)}
+.avanz:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:8px}
+.tempo{font-variant-numeric:tabular-nums;font-size:var(--t-minuto);
+  color:var(--tenue);min-width:76px;text-align:right}
+.controlli{display:flex;gap:10px;width:100%}
+.ctrl{flex:1;min-height:44px;border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo);border-radius:12px;font:inherit;
+  font-size:var(--t-minuto);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px}
+.ctrl svg{width:17px;height:17px;fill:currentColor}
+.ctrl[aria-pressed=true]{background:var(--accento);color:var(--su-accento);
+  border-color:var(--accento)}
+
+/* ── L'arabo. 40px e interlinea 1,9 ──
+   L'interlinea sta SOPRA la linea-guida 1,6-1,8 di proposito: su Naskh
+   pienamente vocalizzato lo stack shadda+fatha arriva a ~1,25em sopra la
+   linea di base e la kasra scende sotto. A 1,9 restano ~0,4em di franco.
+   E mai `justify`: la giustificazione araba vuole la kashida, che nessun
+   browser fa, e produce vuoti enormi fra le parole. */
+.ar{font-family:DroidNaskh,NotoNaskh,serif;font-size:var(--t-arabo);
+  line-height:1.9;color:var(--arabo,var(--testo));direction:rtl;
+  unicode-bidi:isolate;text-align:right;text-align-last:right;margin:0 0 22px}
+/* la traslitterazione: TONDA e semibold, non corsiva. Il corsivo e' della
+   traduzione. E si legge ad alta voce, quindi interlinea larga. */
+.tr{font-size:var(--t-prosa);font-weight:600;letter-spacing:.03em;
+  line-height:1.7;color:var(--tenue);margin:0 0 16px}
+/* punto 343: la traduzione e' TONDA, con filetto arancio. Il corsivo su piu'
+   righe stanca sullo schermo; il filetto la distingue da traslitterazione e
+   contesto con un segno, non col colore. */
+.it{font-size:var(--t-quote);font-style:normal;font-weight:500;line-height:1.5;
+  color:var(--testo);margin:0;padding-left:14px;border-left:3px solid var(--brand)}
+.fonte{margin-top:20px;padding-top:15px;border-top:1px solid var(--bordo);
+  font-size:var(--t-minuto);font-weight:500;color:var(--fonte);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fonte svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
+.fonte-nota{margin:8px 0 0;font-size:var(--t-minuto);color:var(--tenue);line-height:1.5}
+.grado{background:var(--accento);color:var(--su-accento);padding:2px 9px;
+  border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.04em}
+/* il contesto: la prosa lunga, ed e' il ruolo che il carosello non ha */
+.ctx{margin:22px 0 0;font-size:var(--t-prosa);line-height:1.7;color:var(--testo)}
+.ctx b{font-weight:600;color:var(--tenue);display:block;font-size:var(--t-minuto);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+
+footer{margin:10px 0 30px;font-size:var(--t-minuto);color:var(--tenue);
+  text-align:center;line-height:2}
+footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowrap}
+footer a:hover{text-decoration:underline}
+.sep{opacity:.4;margin:0 7px}
+
+audio{width:100%;margin:8px 0 0;display:block}
+.senza-js .player{display:none}
+:root:not(.senza-js) audio{display:none}
+.guasto{margin:14px 0 0;padding:12px 14px;border-radius:12px;
+  font-size:var(--t-minuto);border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo)}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <a class="marchio" href="/"><span class="nome">AL-QALAM</span><span class="filetto"></span></a>
+  <button id="tema" aria-label="Cambia tema">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+         stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4.5"/>
+      <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
+  </button>
+</header>
+<p class="occhiello">Capitolo 1</p>
+<h1>Du’a e adkhar da dire prima, durante e dopo la salat</h1>
+
+  <section class="voce" id="d0030">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Prima%20della%20salat%2C%20tra%20il%20takbir%20di%20apertura%20e%20la%20recitazione%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَلْحَمْدُ لِلّٰهِ حَمْدًا كَثِيْرًا طَيِّبًا مُّبَارَكًا فِيْه</p>
+    <p class="tr">Alḥamdu li-llāh ḥamdan kathīran ṭayyiban mubārakan fīh</p>
+    <p class="it">Tutta la lode è per Allah, una lode abbondante, sincera e benedetta</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih Muslim 600 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Profeta ﷺ chiese nuovamente: &quot;Chi tra voi ha pronunciato queste parole? Non ha commesso nulla di sbagliato&quot;. Allora un uomo disse: &quot;Sono venuto e avevo difficoltà a respirare, quindi le ho pronunciate&quot;. Il Profeta rispose: &quot;Ho visto dodici angeli che si guardavano l&#x27;un l&#x27;altro per decidere chi li avrebbe portate su (da Allah)&quot;. Anas (ra) narrò che un uomo giunse ansimando e si unì alla fila (dei fedeli nella preghiera) e poi pronunciò [quanto sopra riportato]. Quando il Messaggero di Allah ﷺ terminò la sua preghiera, disse: “...ho visto dodici angeli gareggiare tra loro per ascenderci insieme.&quot;</div>
+  </section>
+  <section class="voce" id="d0031">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Prima%20della%20salat%2C%20tra%20il%20takbir%20di%20apertura%20e%20la%20recitazione%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">سُبْحَانَكَ اللّٰهُمَّ وَبِحَمْدِكَ ، وَتَبَارَكَ اسْمُكَ ، وَتَعَالَىٰ جَدُّك ، وَلَا إِلٰهَ غَيْرُك</p>
+    <p class="tr">Subḥānaka Allāhumma wa bi-ḥamdika wa tabāraka-ismuka wa taʿālā jadduka wa lā ilāha ghayruka</p>
+    <p class="it">Quanto sei Glorioso, o Allah, e Tutte le Lodi sono Tue. Il Tuo Nome è benedetto, la Tua maestà è esaltata e non c&#x27;è altro dio degno di essere adorato all’infuori di Te.</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Jami At-Tirmidhi 243 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Questo hadith è stato narrato da Aishah (ra) che ha detto: &quot;Quando il Profeta ﷺ apriva la Salat, diceva: [quanto sopra riportato]</div>
+  </section>
+  <section class="voce" id="d0032">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Prima%20della%20salat%2C%20tra%20il%20takbir%20di%20apertura%20e%20la%20recitazione%203.3.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ بَاعِدْ بَيْنِي وَبَيْنَ خَطَايَاىَ كَمَا بَاعَدْتَ بَيْنَ الْمَشْرِقِ وَالْمَغْرِبِ، اللَّهُمَّ نَقِّنِي مِنَ الْخَطَايَا كَمَا يُنَقَّى الثَّوْبُ الأَبْيَضُ مِنَ الدَّنَسِ، اللَّهُمَّ اغْسِلْ خَطَايَاىَ بِالْمَاءِ وَالثَّلْجِ وَالْبَرَدِ</p>
+    <p class="tr">Allāhumma bāʿid baynī wa bayna khaṭāyā kamā bāʿadta bayna-l-mashriqi wa-l- maghrib, Allāhumma naq-qinī mina-l-khaṭāyā kamā yunaq-qa-th-thawbul- abyaḍu mina-d-danasi, Allāhumma-ghsilnī min khaṭāyāya bil-māi’ wa-th-thalji wal-baradi</p>
+    <p class="it">O Allah, allontanami dai miei peccati come hai allontanato l&#x27;Oriente dall&#x27;Occidente. O Allah, purificami dai miei peccati come un tessuto bianco viene purificato dalla sporcizia. O Allah, lavami dai miei peccati con acqua, grandine e neve</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Bukhari 744 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Abu Huraira (ra) narrò: Il Messaggero di Allah ﷺ rimaneva in silenzio tra il Takbir e la recitazione del Qur’an, e quel momento di silenzio era breve. Dissi al Profeta ﷺ: &quot;Che cosa dici durante la pausa tra il Takbir e la recitazione?&quot; Il Profeta ﷺ disse: &quot;Dico: [quanto sopra riportato]</div>
+  </section>
+  <section class="voce" id="d0033">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Durante%20il%20ruku%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ لَكَ رَكَعْتُ ، وَبِكَ اٰمَنْتُ ، وَلَكَ أَسْلَمْتُ ، خَشَعَ لَكَ سَمْعِيْ ، وَبَصَرِيْ وَمُخِّيْ ، وَعَظْمِيْ ، وَعَصَبِي</p>
+    <p class="tr">Allāhumma laka rakaʿtu, wa bika āmantu, wa laka aslamtu, khashaʿa laka samʿī, wa baṣarī, wa mukhī, wa ʿaẓmī, wa ʿaṣabī</p>
+    <p class="it">O Allah, solo per Te mi sono inchinato in preghiera, in Te solo ho creduto e solo a Te mi sono sottomesso. Il mio udito, la vista, la mente, le ossa e i nervi si umiliano davanti a Te</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 771 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>ʿAlī b. Abī Tālib (ra) narrò: &quot;Quando il Messaggero di Allah ﷺ faceva rukū, diceva [quanto sopra riportato].&quot;</div>
+  </section>
+  <section class="voce" id="d0034">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Durante%20il%20ruku%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">سُبْحَانَ رَبِّـيَ الْعَظِيْم</p>
+    <p class="tr">Subḥāna Rabiyya-l-ʿAẓīm</p>
+    <p class="it">Gloria al mio Signore, l’Onnipotente</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 772 <span class="grado">sahih</span>
+    </p>
+  </section>
+  <section class="voce" id="d0035">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20essersi%20alzati%20dal%20ruku%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اللّٰهُمَّ رَبَّنَا لَكَ الْحَمْد</p>
+    <p class="tr">Allāhumma Rabbanā laka-l-ḥamd</p>
+    <p class="it">O Allah, Nostro Signore, a Te solo appartiene ogni lode di&#x27;: (اللّٰهُمه رَبهنَا لَكَ الْحَمْد - Allahumma rabbana lakal hamd - O Allah, Signor nostro, a Te solo appartiene ogni lode) perché colui che coincide nel dirlo con gli angeli, i suoi</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Mishkat al-Masabih 874 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ disse: &quot;Quando l&#x27;Imam dice: (سَمِعَ اللَّهُ لِمَنْ حَمِدَه - Samia Allah liman hamidah - Allah ascolta coloro che lo lodano) di&#x27;: (اللّٰهُمَّ رَبَّنَا لَكَ الْحَمْد - Allahumma rabbana lakal hamd - O Allah, Signor nostro, a Te solo appartiene ogni lode) perché colui che coincide nel dirlo con gli angeli, i suoi peccati passati saranno perdonati.&quot;</div>
+  </section>
+  <section class="voce" id="d0036">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20essersi%20alzati%20dal%20ruku%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">رَبَّنَا وَلَكَ الْحَمْدُ، حَمْدًا كَثِيْرًا طَيِّبًا مُّبَارَكًا فِيْه</p>
+    <p class="tr">Rabbana wa laka al-hamd, hamdan kathīran ṭayyiban mubārakan fīh</p>
+    <p class="it">O Signor nostro! A Te appartengono tutte le lodi, molte lodi buone e benedette</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih al-Bukhari 799 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Profeta disse: &quot;Ho visto più di trenta angeli competere per scriverle per primi&quot;. Il Profeta si alzò (dalla posizione di inchino) e rimase in piedi dritto fino a quando tutte le vertebre della sua colonna vertebrale ritornarono in posizione naturale</div>
+  </section>
+  <section class="voce" id="d0037">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Durante%20il%20Sujud%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">سُبْحَانَ رَبِّـيَ الْأَعْلَى</p>
+    <p class="tr">Subḥāna Rabbiya-l-Aʿlā</p>
+    <p class="it">Gloria al mio Signore, l’Altissimo</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih Muslim 772 · Sunan Abi Dawud 871 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Hudhaifah (ra) disse di aver pregato insieme al Profeta ﷺ e che durante l&#x27;inclinazione diceva: &quot; Gloria al mio Signore, l’Onnipotente &quot;, e durante la prosternazione diceva: &quot;Gloria al mio Signore Altissimo&quot;. Quando arrivava a un versetto che parlava di misericordia, si fermava e faceva una supplica, e quando arrivava a un versetto che parlava di punizione, si fermava e cercava rifugio in Allah</div>
+  </section>
+  <section class="voce" id="d0038">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Durante%20il%20Sujud%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">سُبْحَانَكَ اللَّهُمَّ رَبَّنَا وَبِحَمْدِكَ، اللَّهُمَّ اغْفِرْ لِي</p>
+    <p class="tr">Subḥānaka-Allāhumma Rabbanā wa biḥamdika, Allāhumma ighfir li</p>
+    <p class="it">Gloria a Te, o Allah, Signor nostro, e lode a Te, o Allah, perdonami</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih Muslim 484 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ spesso diceva mentre si chinava e si prostrava: &quot;Gloria a Te, o Allah, Signor nostro, e lode a Te, o Allah, perdonami&quot;, adempiendo così al comando nel Qur&#x27;an</div>
+  </section>
+  <section class="voce" id="d0039">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Durante%20il%20Sujud%203.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ اغْفِرْ لِي ذَنْبِي كُلَّهُ، ضِقَّهُ وَجِلَّهُ، وَأَوَّلَهُ وَآخِرَهُ، وَعَلَانِيَتَهُ وَسِرَّه</p>
+    <p class="tr">Allāhumma ighfir lī dhambī kullahu, diqqahu wa jillahu, wa awwalahu wa ākhirahu, wa ʿalāniyatahu wa sirrahu</p>
+    <p class="it">O Allah, perdona tutti i miei peccati: i minori e i maggiori, i primi e gli ultimi, quelli pubblici e quelli privati</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 483 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Abu Hurairah (ra) narra che il Messaggero di Allah ﷺ diceva [quanto sopra riportato] durante la prosternazione&quot;</div>
+  </section>
+  <section class="voce" id="d0040">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Tra%20le%20due%20prosternazioni%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">رَبِّ اغْفِرْ لِيْ ، رَبِّ اغْفِرْ لِي</p>
+    <p class="tr">Rabbi-ghfir lī, Rabbi-ghfir lī</p>
+    <p class="it">O Signor mio, perdonami. O mio Signore, perdonami</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sunan Abi Dawud 874 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Hudhayfah (ra) vide il Messaggero di Allah ﷺ pregare durante la notte... poi alzò la testa dopo la prosternazione, si sedette per tutto il tempo in cui era stato in prosternazione e disse mentre era seduto: &quot;O mio Signore, perdonami.&quot;</div>
+  </section>
+  <section class="voce" id="d0041">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Tra%20le%20due%20prosternazioni%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ اغْفِرْ لِيْ ، وَارْحَمْنِيْ ، وَعَافِنِيْ ، وَاهْدِنِيْ ، وَارْزُقْنِي</p>
+    <p class="tr">Allāhumma-ghfir lī, war-ḥamnī, wa ʿāfinī, wah-dinī war-zuqnī</p>
+    <p class="it">O Allah, perdonami, abbi pietà di me, concedimi il benessere, guidami e provvedimi</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Abi Dawud 850 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Profeta ﷺ usava dire [quanto sopra riportato] tra le due prosternazioni.&quot;</div>
+  </section>
+  <section class="voce" id="d0042">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Salawat%20per%20il%20Profeta%20%28s%29%20da%20dire%20dopo%20il%20Tashahhud.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ اٰلِ مُحَمَّدٍ ، كَمَا صَلَّيْتَ عَلَىٰ إِبْرَاهِيْمَ وَعَلَىٰ اٰلِ إِبْرَاهِيْمَ ، إِنَّكَ حَمِيْدٌ مَّجِيْدٌ ، اَللّٰهُمَّ بَارِكْ عَلَىٰ مُحَمَّدٍ وَّعَلَىٰ اٰلِ مُحَمَّدٍ ، كَمَا بَارَكْتَ عَلَىٰ إِبْرَاهِيْمَ وَعَلَىٰ اٰلِ إِبْرَاهِيْمَ ، إِنَّكَ حَمِيْدٌ مَّجِيْدٌ</p>
+    <p class="tr">Allāhumma ṣalli ʿalā Muḥammad wa ʿalā āli Muḥammad, kamā ṣallayta ʿalā Ibrāhīma wa ʿalā āli Ibrāhīm, innaka Ḥamīdu-m-Majīd, Allāhumma bārik ʿalā Muḥammad, wa ʿalā āli Muḥammad, kamā bārakta ʿalā Ibrāhīma wa ʿalā āli Ibrāhīm, innaka Ḥamīdu-m-Majīd</p>
+    <p class="it">O Allah, benedici Muhammad e la famiglia di Muhammad, come hai benedetto Ibrahim e la famiglia di Ibrahim. Tu sei degno di lode e gloria. O Allah, onora Muhammad e la famiglia di Muhammad, come hai onorato Ibrahim e la famiglia di Ibrahim. Tu sei degno di lode e gloria</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Bukhari 3370 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>ʿAbd al-Raḥmān ibn Abī Laylā (raḥimahullāh) disse: &quot;Kaʿb ibn ʿUjrah (ra) mi incontrò e disse: &#x27;Non ti darò un dono che ho ricevuto dal Messaggero di Allah ﷺ?&#x27; Io risposi: &#x27;Sì, certo, donalo a me.&#x27; Così egli disse: &#x27;Chiedemmo al Messaggero di Allah ﷺ: &quot;O Messaggero di Allah ﷺ, come dovremmo invocare la preghiera su di te e sulla tua famiglia, poiché Allah ci ha insegnato come inviarti i saluti?&quot; Egli ﷺ rispose: &quot;Dite: [quanto sopra riportato]&quot;</div>
+  </section>
+  <section class="voce" id="d0043">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Da%20dire%20tra%20il%20Tashahhud%20e%20la%20fine%20della%20preghiera%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ إِنِّيْ أَعُوْذُ بِكَ مِنْ عَذَاب الْقَبْر ، وَأَعُوْذُ بِكَ مِنْ فِتْنَةِ الْمَسِيْحِ الدَّجَّالِ ، وَأَعُوْذُ بِكَ مِنْ فِتْنَةِ الْمَحْيَا وَفِتْنَةِ الْمَمَاتِ ، اَللّٰهُمَّ إِنِّيْ أَعُوْذُ بِكَ مِنَ الْمَأْثَمِ وَالْمَغْرَم</p>
+    <p class="tr">Allāhumma innī aʿūdhu bika min ʿadhābil-qabr, wa aʿūdhu bika min fitnati-l- Masīḥi-d-Dajjāl, wa aʿūdhu bika min fitnati-l-maḥyā wa fitnati-l-mamāt, Allāhumma innī aʿūdhu bika mina-l-ma’thami wa-l-maghram</p>
+    <p class="it">O Allah, cerco rifugio in Te dal castigo della tomba, cerco rifugio in Te dallo scisma del falso Messia, cerco rifugio in Te dalle prove della vita e della morte. O Allah, cerco rifugio in Te dal peccato e dal debito</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Bukhari 832 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Profeta ﷺ rispose: &quot;Una persona indebitata dice bugie quando parla e rompe le promesse che fa.&quot;</div>
+  </section>
+  <section class="voce" id="d0044">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Da%20dire%20tra%20il%20Tashahhud%20e%20la%20fine%20della%20preghiera%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ اغْفِرْ لِيْ مَا قَدَّمْتُ وَمَا أَخَّرْتُ ، وَمَا أَسْرَرْتُ وَمَا أعْلَنْتُ وَمَا أَسْرَفْتُ وَمَا أَنْتَ أَعْلَمُ بِهِ مِنِّيْ ، أَنْتَ الْمُقَدِّمُ ، وَأَنْتَ الْمُؤَخِّرُ لَا إِلٰهَ إِلَّا أَنْتَ</p>
+    <p class="tr">Allāhumma ighfir lī mā qaddamtu wa mā akhkhartu, wa mā asrartu wa mā aʿlantu, wa mā asraftu wa mā anta aʿlamu bihi minnī. Anta al-muqaddimu, wa anta al-mu&#x27;akhkhiru, lā ilāha illā ant</p>
+    <p class="it">O Allah, perdona ciò che ho fatto in passato e ciò che farò in futuro, ciò che ho tenuto segreto e ciò che ho manifestato, ciò in cui ho ecceduto e ciò che Tu sai meglio di me. Tu sei Colui che avanza e Colui che ritarda, e non c&#x27;è altro dio degno di adorazione se non Te</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 771 <span class="grado">sahih</span>
+    </p>
+  </section>
+  <section class="voce" id="d0045">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Da%20dire%20tra%20il%20Tashahhud%20e%20la%20fine%20della%20preghiera%203.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ إِنِّيْ أَسْألُكَ الْجَنَّة ، وَأَعُوْذُ بِكَ مِنَ النَّار</p>
+    <p class="tr">Allāhumma innī as’aluka-l-jannah, wa aʿūdhu bika mina-n-nār</p>
+    <p class="it">O Allah, ti chiedo il Paradiso e cerco la Tua protezione dall&#x27;Inferno</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Abi Dawud 792 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Abu Sāliḥ riferisce che alcuni Compagni (ra) riferirono che il Profeta ﷺ disse ad una persona: &quot;Cosa dici nella preghiera?&quot; Egli rispose: &quot;Prima recito (il) tashahhud, e poi dico [quanto sopra riportato], ma non capisco il tuo suono e il suono di Muʿādh (cioè ciò che dici tu o lui dice nella preghiera).&quot; Il Profeta ﷺ disse: &quot;Anche noi ne facciamo parte (cioè la nostra supplica è anche legata al Paradiso e all&#x27;Inferno).&quot;</div>
+  </section>
+  <section class="voce" id="d0046">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Da%20dire%20tra%20il%20Tashahhud%20e%20la%20fine%20della%20preghiera%204.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ إِنِّي أَسْأَلُكَ بِأَنَّ لَكَ الْحَمْدَ لَا إِلٰهَ إِلَّا أَنْتَ الْمَنَّانُ، بَدِيعُ السَّمَوَاتِ وَالأَرْضِ، يَا ذَا الْجَلاَلِ وَالإِكْرَامِ ، يَا حَيُّ يَا قَيُّوْم</p>
+    <p class="tr">Allāhumma innī as’aluka bi-anna laka-l-ḥamd, lā ilāha illā Antal-Mannān, Badīʿu-s-samāwāti wal-arḍ, yā Dhal-jalāli wal-ikrām, yā Ḥayyu yā Qayyūm</p>
+    <p class="it">O Allah, Ti imploro poiché a Te appartiene ogni lode. Non c&#x27;è altro dio degno di essere adorato tranne Te, Colui che dona ogni bene, l&#x27;Origine dei cieli e della terra. O Signore della Maestà e dell&#x27;Onore, O l&#x27;Eterno Vivente</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Abi Dawud 1495 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ commentò: &quot;Certamente ha chiesto ad Allah con il Suo Nome più Grande; quando viene invocato con esso, Egli risponde e quando viene chiesto, Egli dà&quot;</div>
+  </section>
+  <section class="voce" id="d0047">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Da%20dire%20tra%20il%20Tashahhud%20e%20la%20fine%20della%20preghiera%205.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ إِنِّي ظَلَمْتُ نَفْسِي ظُلْمًا كَثِيرًا وَلاَ يَغْفِرُ الذُّنُوبَ إِلاَّ أَنْتَ فَاغْفِرْ لِي مَغْفِرَةً مِنْ عِنْدِكَ وَارْحَمْنِي إِنَّكَ أَنْتَ الْغَفُورُ الرَّحِيم</p>
+    <p class="tr">Allāhumma innī ẓalamtu nafsī ẓulman kathīran, wa lā yaghfiru al-ẓunūba illā anta, faghfir lī maghfiratan min &#x27;indika warḥamnī, innaka anta al-ghafūrur-raḥīm</p>
+    <p class="it">O Allah, ho commesso molte ingiustizie contro me stesso e non c&#x27;è nessuno che perdona i peccati se non Tu. Concedimi il perdono da parte Tua e abbi misericordia di me, poiché Tu sei Colui che perdona in abbondanza e sei il più Misericordioso</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sunan an-Nasa&#x27;i 1302 
+    </p>
+    <div class="ctx"><b>Il contesto</b>È stato narrato che &#x27;Abdullah ibn &#x27;Amr, tramite Abu Bakr As-Siddiq, che Allah sia soddisfatto di entrambi, gli chiese al Messaggero di Allah ﷺ: &quot;Insegnami una supplica che posso recitare nella mia preghiera.&quot; Egli ﷺ disse: &quot;Di&#x27;: &#x27;O Allah, veramente ho commesso molte ingiustizie contro me stesso e non c&#x27;è nessuno che perdona i peccati se non Tu. Concedimi il perdono da parte Tua e abbi misericordia di me, poiché Tu sei Colui che perdona in abbondanza e sei il più Misericordioso”</div>
+  </section>
+  <section class="voce" id="d0048">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20la%20salat%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">الله أكبر</p>
+    <p class="tr">Allāhu Akbar</p>
+    <p class="it">Allah è il più Grande</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih Muslim 583 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Ibn &#x27;Abbas disse: Sapevamo che il Messaggero di Allah ﷺ aveva terminato la sua preghiera quando sentivamo il takbir</div>
+  </section>
+  <section class="voce" id="d0049">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20la%20salat%202.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">أَسْتَغْفِرُ اللهَ (x3) اَللّٰهُمَّ أَنْتَ السَّلَامُ ، وَمِنْكَ السَّلَامُ ، تَبَارَكْتَ يَا ذَا الْجَلَالِ وَالْإِكْرَامِ</p>
+    <p class="tr">Astaghfiru-llāh (x3), Allāhumma Anta-s-Salām, wa minka-s-salām, tabārakta yā Dha-l-Jalāli wa-l-Ikrām.</p>
+    <p class="it">Chiedo il perdono di Allah (x3). O Allah, Tu sei Il Perfetto e la Fonte di Pace, e da Te proviene la Pace. Benedetto sei Tu, o Possessore di Maestà e Onore</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 591 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Thawbān (ra) riporta che, quando il Messaggero di Allah ﷺ terminava la sua preghiera, cercava il perdono tre volte e diceva [quanto sopra riportato]</div>
+  </section>
+  <section class="voce" id="d0050">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20la%20salat%203.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيْكَ لَه ، لَهُ الْمُلْكُ وَلَهُ الْحَمْد وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيْر ، اَللّٰهُمَّ لَا مَانِعَ لِمَا أَعْطَيْتَ ، وَلَا مُعْطِيَ لِمَا مَنَعْت ، وَلَا يَنْفَعُ ذَا الْجَـدِّ مِنْكَ الْجَـدُّ</p>
+    <p class="tr">Lā ilāha illā-llāhu waḥdahū lā sharīka lah, lahu-l-mulku, wa lahu-l-ḥamd, wa Huwa ʿalā kulli shay’in Qadīr, Allāhumma lā māniʿa li-mā aʿaṭayta, wa lā muʿṭiya li-mā manʿat, wa lā yanfaʿu dha-l-jaddi minka-l-jaddu.</p>
+    <p class="it">Non c&#x27;è altro dio all’infuori di Allah, Egli è l&#x27;Unico e non ha alcun associato. A Lui appartiene il regno e a Lui appartiene la lode, ed Egli ha potere su ogni cosa. O Allah, non c&#x27;è nessuno che possa trattenere ciò che Tu dai e non c’è nessuno che possa dare ciò che Tu neghi; e la grandezza dei potenti non ha alcun beneficio dinanzi a Te</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Bukhari 844 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Warrād (il segretario di Mughīrah b. Shuʿba) riferì che una volta Mughīrah (ra) mi dettò in una lettera indirizzata a Muʿāwiyya (ra) che il Profeta ﷺ recitava [quanto sopra riportato] dopo ogni preghiera obbligatoria</div>
+  </section>
+  <section class="voce" id="d0051">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20la%20salat%204.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ أَعِنِّيْ عَلَىٰ ذِكْرِكَ ، وَشُكْرِكَ ، وَحُسْنِ عِبَادَتِكَ</p>
+    <p class="tr">Allāhumma aʿinnī ʿalā dhikrika wa shukrika wa ḥusni ʿibādatika</p>
+    <p class="it">O Allah, aiutami a ricordarTi, ad essere grato a Te e ad adorarTi in modo eccellente</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Abi Dawud 1522 
+    </p>
+    <div class="ctx"><b>Il contesto</b>Muʿādh b. Jabal (ra) riferisce che il Messaggero di Allah ﷺ lo prese per mano e disse: &quot;O Muʿādh, giuro per Allah che ti amo. Giuro per Allah che ti amo. O Muʿādh, ti consiglio di non dimenticare di supplicare dopo ogni preghiera dicendo: [quanto sopra riportato]</div>
+  </section>
+  <section class="voce" id="d0052">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls src="../../../Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Dopo%20la%20salat%205.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
+    </div>
+    <p class="ar" lang="ar" dir="rtl">(x33) اَللّٰهُ أَكْبَر (x33) الْحَمْدُ لِلَّه (x33) سُبْحَانَ اللَّهِ لَا إِلٰهَ إِلَّا اللّٰهُ وَحْدَهُ لَا شَرِيْكَ لَهُ ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ ، وَهُوَ عَلَىٰ كُلِّ شَيْءٍ قَدِيْرٌ</p>
+    <p class="tr">Subḥāna-llāh (x33), Alḥamduli-llāh (x33), Allāhu akbar (x33), Lā ilāha illā Allāhu waḥdahū lā sharīka lahu, lahu-l-mulk wa lahu-l-ḥamd, wa Huwa ʿalā kulli shay’in Qadīr.</p>
+    <p class="it">Gloria ad Allah (x33), ogni lode sia ad Allah (x33), Allah è il più Grande (x33). Non c&#x27;è altro dio all&#x27;infuori di Allah, Egli è Unico e non ha alcun associato. A Lui appartiene tutta la sovranità e tutta la lode. Egli è Onnipotente su ogni cosa</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Muslim 597 · Muslim 596 <span class="grado">sahih</span>
+    </p>
+    <div class="ctx"><b>Il contesto</b>Abu Hurairah (ra) narrò che il Messaggero di Allah ﷺ disse: &quot;Colui che recita [quanto sopra riportato] dopo ogni preghiera avrà perdonato tutti i suoi peccati, anche se fossero numerosi come la schiuma del mare.&quot;</div>
+  </section>
+<footer>
+  <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a><span class="sep">·</span>
+  <a href="/recensione/">Lascia una recensione</a><span class="sep">·</span>
+  <a href="/vai/libro.html">Il libro</a>
+</footer>
+</main>
+<script>
+(function(){
+  document.documentElement.className='';
+  var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
+  function mmss(s){ if(!isFinite(s))return'--:--';
+    return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
+  var tutti=[];
+  Array.prototype.forEach.call(document.querySelectorAll('.voce'),function(v){
+    var au=v.querySelector('audio'); if(!au) return;
+    var play=v.querySelector('.play'), icona=play.querySelector('path'),
+        avanz=v.querySelector('.avanz'), tempo=v.querySelector('.tempo'),
+        loop=v.querySelector('.loop'), vel=v.querySelector('.vel'),
+        guasto=v.querySelector('.guasto');
+    au.removeAttribute('controls');
+    tutti.push(au);
+    var velocita=[1,1.25,0.75], iv=0, trascino=false;
+    function aggiorna(){
+      if(!trascino && au.duration) avanz.value=(au.currentTime/au.duration)*100;
+      avanz.style.setProperty('--p', avanz.value+'%');
+      tempo.textContent=mmss(au.currentTime)+' / '+mmss(au.duration);
+    }
+    play.addEventListener('click',function(){
+      if(au.paused){
+        // una voce per volta: chi parla zittisce le altre
+        tutti.forEach(function(a){ if(a!==au) a.pause(); });
+        au.play().catch(function(){ if(guasto) guasto.hidden=false; });
+      } else au.pause();
+    });
+    au.addEventListener('play',function(){ icona.setAttribute('d',PAUSA);
+      play.setAttribute('aria-label','Metti in pausa'); });
+    au.addEventListener('pause',function(){ icona.setAttribute('d',PLAY);
+      play.setAttribute('aria-label','Ascolta'); });
+    au.addEventListener('timeupdate',aggiorna);
+    au.addEventListener('loadedmetadata',aggiorna);
+    au.addEventListener('error',function(){ if(guasto) guasto.hidden=false; });
+    avanz.addEventListener('input',function(){ trascino=true;
+      avanz.style.setProperty('--p', avanz.value+'%'); });
+    avanz.addEventListener('change',function(){ trascino=false;
+      if(au.duration) au.currentTime=(avanz.value/100)*au.duration; });
+    loop.addEventListener('click',function(){ au.loop=!au.loop;
+      loop.setAttribute('aria-pressed',au.loop); });
+    vel.addEventListener('click',function(){ iv=(iv+1)%velocita.length;
+      au.playbackRate=velocita[iv];
+      vel.querySelector('span').textContent=velocita[iv]+'\u00d7 velocit\u00e0'; });
+    aggiorna();
+  });
+  var tema=document.getElementById('tema');
+  if(tema) tema.addEventListener('click',function(){
+    var ora=document.documentElement.getAttribute('data-tema');
+    var scuro = ora ? ora==='dark'
+      : matchMedia('(prefers-color-scheme:dark)').matches;
+    var nuovo = scuro ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-tema',nuovo);
+    try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
+  });
+})();
+</script>
+</body>
+</html>
