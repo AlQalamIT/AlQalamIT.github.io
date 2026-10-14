@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Prova del frammento · Al-Qalam</title>
+<style>
+:root{--fondo:#f7f3ec;--testo:#0d203b;--tenue:#485868;--accento:#0d203b;--evid:#fff1d6;--bordo:#e4ded2}
+@media (prefers-color-scheme:dark){:root{--fondo:#0b1524;--testo:#f2efe8;--tenue:#aeb8c6;--accento:#f2efe8;--evid:#3a2b0f;--bordo:#26344a}}
+body{margin:0;background:var(--fondo);color:var(--testo);font:18px/1.5 Georgia,serif}
+main{max-width:34rem;margin:0 auto;padding:1rem 16px 3rem}
+h1{font-size:1.5rem;margin:.5rem 0}
+.esito{border:2px solid var(--accento);border-radius:10px;padding:.8rem 1rem;margin:1rem 0;font-weight:bold}
+section{border:1px solid var(--bordo);border-radius:10px;padding:1rem;margin:1rem 0;scroll-margin-top:1rem}
+section:target{background:var(--evid);border:3px solid #e8761a}
+section:target::before{content:"HAI SCANSIONATO QUESTA SEZIONE";display:block;font:bold .8rem sans-serif;color:#b45309;letter-spacing:.05em}
+.alto{height:60vh}
+.qr{display:flex;gap:1rem;flex-wrap:wrap}
+.qr figure{margin:0;text-align:center;font:.9rem sans-serif;color:var(--tenue)}
+.qr img{width:200px;height:200px;image-rendering:pixelated;background:#fff;border:1px solid var(--bordo)}
+code{font-size:.85rem;word-break:break-all}
+</style>
+</head>
+<body>
+<main>
+<h1>Prova del frammento</h1>
+<p>Pagina di test, non fa parte del sito. Si scansiona uno dei due codici qui sotto con un <b>altro</b> telefono o dallo schermo del computer.</p>
+<div class="esito" id="esito">Frammento letto dalla pagina: <code id="fr">(JavaScript non attivo)</code></div>
+
+<div class="qr">
+<figure><img src="qr-con-frammento.png" alt="QR con frammento"><figcaption><b>QR 1 — con frammento</b><br><code>/prova-frammento/#sezione-2</code><br>deve aprire e <b>evidenziare la sezione 2</b></figcaption></figure>
+<figure><img src="qr-senza-frammento.png" alt="QR senza frammento"><figcaption><b>QR 2 — senza frammento</b><br><code>/prova-frammento/</code><br>deve aprire la pagina in cima</figcaption></figure>
+</div>
+
+<section id="sezione-1"><h2>Sezione 1</h2><p>Quando si entra in una città.</p><div class="alto"></div></section>
+<section id="sezione-2"><h2>Sezione 2</h2><p>Quando si entra in un mercato.</p><div class="alto"></div></section>
+<section id="sezione-3"><h2>Sezione 3</h2><p>Ritorno dal viaggio.</p><div class="alto"></div></section>
+</main>
+<script>
+(function(){var f=document.getElementById("fr");function m(){f.textContent=location.hash?location.hash:"nessuno (la pagina è stata aperta senza frammento)"}
+m();window.addEventListener("hashchange",m)})();
+</script>
+</body>
+</html>
