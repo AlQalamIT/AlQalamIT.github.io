@@ -1,0 +1,116 @@
+/* Al-Qalam - pagina e2 v492: palette v2 e font del Kit (Fraunces titoli e traslitterazione, Poppins testi). Il testo del du'a non cambia. */
+@font-face{font-family:Poppins;font-weight:400;font-style:normal;font-display:swap;src:url(Poppins-Regular.woff2)format('woff2')}
+@font-face{font-family:Poppins;font-weight:600;font-style:normal;font-display:swap;src:url(Poppins-SemiBold.woff2)format('woff2')}
+@font-face{font-family:Fraunces;font-weight:600;font-style:normal;font-display:swap;src:url(Fraunces-SemiBold.woff2)format('woff2')}
+@font-face{font-family:Fraunces;font-weight:400;font-style:italic;font-display:swap;src:url(Fraunces-Italic.woff2)format('woff2')}
+
+:root,:root[data-tema=light]{
+  --fondo:#F4EFE3;--superficie:#E6DFCD;--testo:#02134B;--tenue:#13286F;--fonte:#02134B;
+  --bordo:#E6DFCD;--traccia:#4F71C6;--bordo-controllo:#1C3C96;
+  --accento:#02134B;--su-accento:#F4EFE3;--accento-ombra:rgba(2,19,75,.22);
+  --brand:#BC9434;--link:#B04B00;--ombra:0 1px 3px rgba(2,19,75,.08);
+  --f-testo:Poppins,Fraunces,NotoNaskh,sans-serif;--f-titolo:Fraunces,Poppins,NotoNaskh,serif;
+  --azione:#B04B00;--su-azione:#F4EFE3;
+}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
+  --fondo:#02134B;--superficie:#13286F;--testo:#F4EFE3;--tenue:#C4D2F3;--fonte:#F4EFE3;
+  --bordo:#1C3C96;--traccia:#2F53B0;--bordo-controllo:#7E98DC;
+  --accento:#F4EFE3;--su-accento:#02134B;--brand:#E1C254;--link:#F78012;
+  --azione:#F78012;--su-azione:#02134B;--arabo:#F4EFE3}}
+:root[data-tema=dark]{
+  --fondo:#02134B;--superficie:#13286F;--testo:#F4EFE3;--tenue:#C4D2F3;--fonte:#F4EFE3;
+  --bordo:#1C3C96;--traccia:#2F53B0;--bordo-controllo:#7E98DC;
+  --accento:#F4EFE3;--su-accento:#02134B;--brand:#E1C254;--link:#F78012;
+  --azione:#F78012;--su-azione:#02134B;--arabo:#F4EFE3}
+:root{--t-titolo:clamp(27px,7.2vw,36px);--t-quote:19px;--t-prosa:16px;--t-minuto:14px}
+
+body{font-family:var(--f-testo);line-height:1.6}
+h1,h2{font-family:var(--f-titolo);font-weight:600;color:var(--testo)}
+h1{font-size:var(--t-titolo);line-height:1.15}
+.occhiello,.pag,.sub{font-family:var(--f-testo)}
+.occhiello{color:var(--link)}
+.tr{font-family:Fraunces,Poppins,NotoNaskh,serif;font-style:italic;font-weight:400;font-size:17px;letter-spacing:0;color:var(--tenue)}
+.it{font-family:var(--f-testo);font-weight:400;font-size:var(--t-quote);line-height:1.55;border-left:3px solid var(--brand)}
+.fonte,.grado,.num,.tempo,.ctrl{font-family:var(--f-testo)}
+.ar{font-size:32px}
+.nome{font-family:var(--f-titolo);font-weight:600;letter-spacing:.06em}
+
+/* marchio: sigillo ufficiale, mai modificato (solo ridotto); su blu serve l'alone crema (regola 4) */
+header{align-items:center;padding:14px 0 6px;min-height:64px}
+.marchio{display:flex;align-items:center;gap:12px;padding-top:0;min-height:48px}
+.marchio .filetto{display:none}
+.sigillo{width:48px;height:48px;display:block;flex:0 0 auto}
+:root[data-tema=dark] .sigillo{filter:drop-shadow(0 0 2px rgba(244,239,227,.95))}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]) .sigillo{filter:drop-shadow(0 0 2px rgba(244,239,227,.95))}}
+
+/* punto di sblocco: una riga sobria sotto l'intestazione, mai sopra il du'a */
+.sb{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+  margin:4px 0 8px;padding:10px 14px;border:1px solid var(--bordo);border-radius:14px;
+  background:var(--superficie);font-size:var(--t-minuto);color:var(--testo)}
+.sb p{margin:0;line-height:1.4}
+.sb-btn{min-height:48px;padding:0 18px;border:1.5px solid var(--bordo-controllo);border-radius:12px;
+  background:transparent;color:var(--testo);font:600 15px/1 var(--f-testo);cursor:pointer}
+.sb-btn:focus-visible,.btn-amz:focus-visible,.fx button:focus-visible,.scan-chiudi:focus-visible,footer a:focus-visible{outline:3px solid var(--azione);outline-offset:2px}
+.senza-js .sb{display:none}
+.sb-on{display:none}
+html.sbloccato .sb-off{display:none}
+html.sbloccato .sb-on{display:flex;align-items:center;gap:12px;flex-wrap:wrap;width:100%;justify-content:space-between}
+.sb-link{min-height:44px;padding:0 6px;border:0;background:none;color:var(--link);font:600 14px/1 var(--f-testo);cursor:pointer;text-decoration:underline}
+
+/* funzioni dei possessori: ascolta e ripeti, progresso personale (solo nel browser) */
+.fx{display:none;align-items:center;gap:8px;flex-wrap:wrap;margin:16px 0 0;font-size:var(--t-minuto)}
+html.sbloccato .fx{display:flex}
+.fx .cont{flex:1 1 auto;min-width:150px;font-weight:600;color:var(--testo)}
+.fx button{min-height:44px;padding:0 14px;border:1.5px solid var(--bordo-controllo);border-radius:12px;
+  background:transparent;color:var(--testo);font:600 14px/1 var(--f-testo);cursor:pointer;
+  display:inline-flex;align-items:center;gap:7px}
+.fx button svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.fx .imp[aria-pressed=true]{background:var(--superficie);border-color:var(--testo)}
+.fx .azz{border-color:transparent;font-weight:400;color:var(--tenue);text-decoration:underline}
+.fx .ok{flex:1 0 100%;margin:0;color:var(--tenue)}
+
+/* invito all'acquisto: solo per chi non ha sbloccato; UN solo arancio per schermata (il bottone) */
+.acquisto{margin:10px 0 28px;padding:18px;border-radius:18px;background:var(--superficie);
+  display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center}
+html.sbloccato .acquisto{display:none}
+.acquisto img{width:100px;height:auto;aspect-ratio:240/457;object-fit:cover;border-radius:6px;display:block;box-shadow:0 2px 8px rgba(2,19,75,.25)}
+.acquisto h2{font-size:21px;line-height:1.25;margin:0 0 6px}
+.acquisto p{margin:0 0 12px;font-size:var(--t-minuto);line-height:1.5;color:var(--testo)}
+.btn-amz{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;
+  background:var(--azione);color:var(--su-azione);font:600 15px/1.2 var(--f-testo);text-decoration:none}
+.acquisto small{display:block;margin-top:8px;color:var(--tenue);font-size:13px}
+@media(max-width:380px){.acquisto{grid-template-columns:1fr}.acquisto img{width:84px}}
+
+footer{line-height:1.4}
+footer a{display:inline-flex;align-items:center;min-height:44px;padding:0 8px}
+
+/* scanner del QR nel browser */
+dialog.scan{width:min(92vw,440px);padding:18px;border:0;border-radius:18px;background:var(--fondo);color:var(--testo);font-family:var(--f-testo)}
+dialog.scan::backdrop{background:rgba(2,19,75,.6)}
+dialog.scan h2{font-size:22px;margin:0 0 8px}
+dialog.scan p{margin:0 0 12px;font-size:15px;line-height:1.5}
+.scan-box{position:relative;border-radius:14px;overflow:hidden;background:#02134B;aspect-ratio:1/1}
+.scan-box video{width:100%;height:100%;object-fit:cover;display:block}
+.scan-box::after{content:"";position:absolute;inset:18%;border:3px solid #F4EFE3;border-radius:14px;box-shadow:0 0 0 2px rgba(2,19,75,.5)}
+.scan-stato{min-height:44px;margin:12px 0 !important;font-weight:600}
+.scan-chiudi{min-height:48px;width:100%;border:1.5px solid var(--bordo-controllo);border-radius:12px;background:transparent;color:var(--testo);font:600 15px/1 var(--f-testo);cursor:pointer}
+.nascosto{display:none !important}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto !important}}
+footer{display:flex;flex-wrap:wrap;justify-content:center;gap:0 6px}
+footer .sep{display:none}
+/* un solo arancio per schermata: il bottone d'acquisto. Link e occhiello in blu */
+.occhiello{color:var(--tenue)}
+footer a{color:var(--testo);text-decoration:underline;text-underline-offset:3px}
+.sb-link{color:var(--testo)}
+
+/* correzioni dal parere 492: prima schermata con il du'a, niente doppioni, riga di sblocco compatta */
+.occhiello .pag{display:none}
+.play{width:64px;height:64px}
+.indice:not(:has(li:nth-child(3))){display:none}
+.sub{margin:0 0 14px}
+html.sbloccato .sb{flex-wrap:nowrap;padding:6px 14px}
+html.sbloccato .sb-on{flex-wrap:nowrap}
+.sb-link,.fx .azz{padding:0}
+@media(min-width:700px){.acquisto{grid-template-columns:150px 1fr}.acquisto img{width:150px}}
+.sb{flex-wrap:nowrap}.sb-off.sb-btn{flex:0 0 auto}.sb p.sb-off{flex:1 1 auto}
+h1{margin-bottom:12px}.voce{margin-bottom:34px}
