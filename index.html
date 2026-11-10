@@ -1,248 +1,479 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-tema="light" class="senza-js">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Al-Qalam · Raccolta di du’a con arabo, traslitterazione e audio</title>
+<meta name="description" content="Raccolta di du’a dal Qur’an e dalla Sunnah: arabo con vocali, traslitterazione, traduzione italiana, fonte e audio con QR. Ascolta tre du’a di esempio.">
+<link rel="canonical" href="https://alqalamit.it/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:site_name" content="Al-Qalam">
+<meta property="og:title" content="Al-Qalam · Raccolta di du’a con arabo, traslitterazione e audio">
+<meta property="og:description" content="Le invocazioni del Qur’an e della Sunnah, con arabo, traslitterazione, traduzione italiana, fonte e audio.">
+<meta property="og:url" content="https://alqalamit.it/">
+<meta property="og:image" content="https://alqalamit.it/assets/kit/og-1200x630.jpg">
+<meta name="theme-color" content="#02134B">
+<link rel="icon" href="assets/logo-72.png">
+<style>
+/* ─────────────────────────────────────────────────────────────────────
+   PUNTO 315 · la scala, cinque gradini. Misure su 390px di viewport.
+   I corpi NON sono trasportati dal carosello: sono rifatti sull'altezza
+   ottica di EB Garamond (0,400 em), con i rapporti del carosello.
+   ───────────────────────────────────────────────────────────────────── */
+@font-face{font-family:Gar;src:url(assets/EBGaramond.woff2)format('woff2');
+  font-weight:400 800;font-display:swap}
+@font-face{font-family:Gar;src:url(assets/EBGaramond-Italic.woff2)format('woff2');
+  font-weight:400 800;font-style:italic;font-display:swap}
+@font-face{font-family:DroidNaskh;src:url(assets/DroidNaskh-Regular.woff2)format('woff2');
+  font-display:block}
+/* Noto sta in TUTTE E DUE le pile: e' il solo font del progetto con U+FDFA,
+   e il ﷺ compare nel testo italiano, non nel blocco arabo. */
+@font-face{font-family:NotoNaskh;src:url(assets/NotoNaskh.woff2)format('woff2');
+  font-display:block}
+
+:root,:root[data-tema=light]{
+  --fondo:#f7f3ec;          /* crema: e' il pilastro du'a, punto 190 */
+  --superficie:#fffdf8;     /* bianco caldo: su crema il bianco puro stacca freddo */
+  --testo:#0d203b;          /* 14,75 su crema */
+  --tenue:#485868;          /* ardesia, 6,61. NON #55607a, che da' 5,68 */
+  --fonte:#000000;          /* 18,99 — il contrasto piu' alto, dove serve */
+  --bordo:#e4ded2; --traccia:#ddd6c8; --bordo-controllo:#8a8375;
+  --accento:#0d203b; --su-accento:#fffdf8; --accento-ombra:rgba(13,32,59,.22);
+  --brand:#f78012;          /* 2,36 — SOLO grafica, mai testo */
+  --link:#a95400;           /* 4,80: passa anche il testo piccolo.
+                               #bb5d06 da' 4,06 e NON passa: la decisione del
+                               punto 190 valeva per i TITOLI del carosello */
+  --ombra:0 1px 3px rgba(13,32,59,.07);
+}
+@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;          /* bianco CALDO: in bianco puro le harakat fioriscono */
+}}
+:root[data-tema=dark]{
+  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
+  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
+  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
+  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
+  --arabo:#fdf8ec;
+}
+
+:root{
+  --t-titolo:clamp(29px,7.6vw,38px);  /* fisso romperebbe su 41 titoli diversi */
+  --t-arabo:32px;      /* punto 343 (era 40): a 40 occupava quasi uno schermo, 3
+                          righe; a 32 sono 2. Se le harakat sparissero su un
+                          display reale, si torna a 34 */
+  --t-quote:22px;      /* la traduzione */
+  --t-prosa:18px;      /* il contesto E la traslitterazione: il 5o gradino */
+  --t-minuto:14px;     /* fonte e occhiello */
+}
+
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;background:var(--fondo);color:var(--testo);
+  font:400 var(--t-prosa)/1.65 Gar,NotoNaskh,Georgia,serif;
+  text-wrap:pretty;
+  padding:0 20px calc(28px + env(safe-area-inset-bottom));
+  display:flex;flex-direction:column;align-items:center}
+main{width:100%;max-width:560px}
+
+header{display:flex;align-items:flex-start;justify-content:space-between;
+  padding:18px 0 6px;min-height:56px}
+.marchio{text-decoration:none;color:var(--testo);display:inline-block;padding-top:6px}
+.nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
+.filetto{display:block;width:34px;height:3px;border-radius:2px;
+  background:var(--brand);margin-top:6px}
+#tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
+  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
+#tema:hover{background:var(--bordo)}
+#tema svg{width:21px;height:21px}
+
+.occhiello{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase;margin:14px 0 4px}
+h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
+  text-wrap:balance}   /* 41 titoli da 23 a 51 caratteri: l'orfana e' certa */
+
+/* ── La voce: un du'a. Da 1 a 23 per pagina. ──
+   NIENTE riquadro attorno al testo: il player e' l'unico oggetto rialzato.
+   Due scatole identiche di fila leggono come un template, e la misura di
+   riga guadagna 40px. */
+.voce{margin:0 0 44px}
+.voce+.voce{border-top:1px solid var(--bordo);padding-top:34px}
+.voce:target{box-shadow:-14px 0 0 -11px var(--brand)}
+/* layout D (punto 382): titolo del libro, folio, elenco in cima, numerazione */
+.pag{color:var(--tenue);font-weight:500;text-transform:none;letter-spacing:.02em}
+.sub{color:var(--tenue);margin:0 0 24px}
+.num{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;letter-spacing:.04em;margin:0 0 8px}
+h2{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 14px;text-wrap:balance}
+.indice{margin:0 0 34px;padding:0;list-style:none;border:1px solid var(--bordo);border-radius:18px;background:var(--superficie);overflow:hidden}
+.indice li+li{border-top:1px solid var(--bordo)}
+.indice a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 16px;color:var(--testo);
+  text-decoration:none;font-size:18px;font-weight:500;line-height:1.3}
+.indice a:hover{background:var(--bordo)}
+.indice .k{margin-left:auto;font-size:var(--t-minuto);color:var(--tenue);white-space:nowrap}
+.indice li.scan{box-shadow:inset 5px 0 0 var(--brand)}
+.indice li.scan a{font-weight:600}
+.indice .sc{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--accento);color:var(--su-accento);padding:2px 9px;border-radius:20px;white-space:nowrap}
+section.gruppo{scroll-margin-top:16px}
+section.gruppo+section.gruppo{border-top:2px solid var(--bordo);padding-top:30px}
+section.gruppo>h2{margin:0 0 18px}
+html{scroll-padding-top:12px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:10px}
+
+.player{background:var(--superficie);border:1px solid var(--bordo);
+  border-radius:20px;padding:24px 18px 18px;box-shadow:var(--ombra);
+  display:flex;flex-direction:column;align-items:center;gap:15px;margin-bottom:28px}
+.play{width:96px;height:96px;border-radius:50%;border:0;cursor:pointer;
+  background:var(--accento);color:var(--su-accento);display:grid;place-items:center;
+  box-shadow:0 4px 14px var(--accento-ombra);transition:transform .12s}
+.play:active{transform:scale(.95)}
+.play:focus-visible{outline:3px solid var(--link);outline-offset:3px}
+.play svg{width:38px;height:38px;fill:currentColor}
+.barra{width:100%;display:flex;align-items:center;gap:12px}
+.avanz{flex:1;height:44px;-webkit-appearance:none;appearance:none;background:none;cursor:pointer}
+.avanz::-webkit-slider-runnable-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-webkit-slider-thumb{-webkit-appearance:none;width:20px;height:20px;
+  border-radius:50%;background:var(--accento);margin-top:-6px}
+.avanz::-moz-range-track{height:8px;border-radius:4px;
+  background:linear-gradient(90deg,var(--brand) var(--p,0%),var(--traccia) var(--p,0%))}
+.avanz::-moz-range-thumb{width:20px;height:20px;border:0;border-radius:50%;background:var(--accento)}
+.avanz:focus-visible{outline:2px solid var(--link);outline-offset:2px;border-radius:8px}
+.tempo{font-variant-numeric:tabular-nums;font-size:var(--t-minuto);
+  color:var(--tenue);min-width:76px;text-align:right}
+.controlli{display:flex;gap:10px;width:100%}
+.ctrl{flex:1;min-height:44px;border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo);border-radius:12px;font:inherit;
+  font-size:var(--t-minuto);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:7px}
+.ctrl svg{width:17px;height:17px;fill:currentColor}
+.ctrl[aria-pressed=true]{background:var(--accento);color:var(--su-accento);
+  border-color:var(--accento)}
+
+/* ── L'arabo. 40px e interlinea 1,9 ──
+   L'interlinea sta SOPRA la linea-guida 1,6-1,8 di proposito: su Naskh
+   pienamente vocalizzato lo stack shadda+fatha arriva a ~1,25em sopra la
+   linea di base e la kasra scende sotto. A 1,9 restano ~0,4em di franco.
+   E mai `justify`: la giustificazione araba vuole la kashida, che nessun
+   browser fa, e produce vuoti enormi fra le parole. */
+.ar{font-family:DroidNaskh,NotoNaskh,serif;font-size:var(--t-arabo);
+  line-height:1.9;color:var(--arabo,var(--testo));direction:rtl;
+  unicode-bidi:isolate;text-align:right;text-align-last:right;margin:0 0 22px}
+/* la traslitterazione: TONDA e semibold, non corsiva. Il corsivo e' della
+   traduzione. E si legge ad alta voce, quindi interlinea larga. */
+.tr{font-size:var(--t-prosa);font-weight:600;letter-spacing:.03em;
+  line-height:1.7;color:var(--tenue);margin:0 0 16px}
+/* punto 343: la traduzione e' TONDA, con filetto arancio. Il corsivo su piu'
+   righe stanca sullo schermo; il filetto la distingue da traslitterazione e
+   contesto con un segno, non col colore. */
+.it{font-size:var(--t-quote);font-style:normal;font-weight:500;line-height:1.5;
+  color:var(--testo);margin:0;padding-left:14px;border-left:3px solid var(--brand)}
+.fonte{margin-top:20px;padding-top:15px;border-top:1px solid var(--bordo);
+  font-size:var(--t-minuto);font-weight:500;color:var(--fonte);
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.fonte svg{width:15px;height:15px;fill:currentColor;flex:0 0 auto}
+.fonte-nota{margin:8px 0 0;font-size:var(--t-minuto);color:var(--tenue);line-height:1.5}
+.grado{background:var(--accento);color:var(--su-accento);padding:2px 9px;
+  border-radius:20px;font-size:12px;font-weight:600;letter-spacing:.04em}
+/* il contesto: la prosa lunga, ed e' il ruolo che il carosello non ha */
+.ctx{margin:22px 0 0;font-size:var(--t-prosa);line-height:1.7;color:var(--testo)}
+.ctx b{font-weight:600;color:var(--tenue);display:block;font-size:var(--t-minuto);
+  letter-spacing:.08em;text-transform:uppercase;margin-bottom:6px}
+
+footer{margin:10px 0 30px;font-size:var(--t-minuto);color:var(--tenue);
+  text-align:center;line-height:2}
+footer a{color:var(--link);text-decoration:none;font-weight:600;white-space:nowrap}
+footer a:hover{text-decoration:underline}
+.sep{opacity:.4;margin:0 7px}
+
+audio{width:100%;margin:8px 0 0;display:block}
+.senza-js .player{display:none}
+:root:not(.senza-js) audio{display:none}
+.guasto{margin:14px 0 0;padding:12px 14px;border-radius:12px;
+  font-size:var(--t-minuto);border:1px solid var(--bordo-controllo);
+  background:var(--superficie);color:var(--testo)}
+.senza-js .player{display:block}.senza-js .play,.senza-js .barra,.senza-js .controlli{display:none}
+</style>
+<link rel="stylesheet" href="assets/kit/e2-492.css">
+<style>
+html{scroll-behavior:smooth}
+body{display:block;padding:0}
+.fascia{padding:0 20px}.in{max-width:680px;margin:0 auto}
+.hero{background:#02134B;color:#F4EFE3;padding-bottom:36px}
+.hero header{padding:14px 0 0;justify-content:space-between}
+.hero .nome{color:#F4EFE3}
+.hero .sigillo{filter:drop-shadow(0 0 2px rgba(244,239,227,.95))}
+.hero .occ{margin:26px 0 8px;font:600 13px/1.3 Poppins,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#E1C254}
+.hero h1{font-size:clamp(31px,8.4vw,46px);line-height:1.1;margin:0 0 14px;color:#F4EFE3}
+.hero h1 em{font-style:italic;font-weight:400}
+.hero p.lead{margin:0 0 22px;font-size:17px;line-height:1.55;color:#F4EFE3}
+.hero-riga{display:grid;grid-template-columns:1fr 112px;gap:18px;align-items:end}
+.hero-cop{width:112px;height:auto;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.45);display:block}
+.cta{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 22px;border-radius:12px;background:#F78012;color:#02134B;font:600 16px/1.2 Poppins,sans-serif;text-decoration:none}
+.cta:focus-visible,.nav a:focus-visible,.lnk:focus-visible{outline:3px solid #FFC27A;outline-offset:2px}
+.sotto-cta{display:block;margin-top:6px}
+.lnk{display:inline-flex;align-items:center;min-height:44px;color:#F4EFE3;font:600 15px/1.2 Poppins,sans-serif;text-decoration:underline;text-underline-offset:3px}
+.nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:#F4EFE3;font:600 15px/1 Poppins,sans-serif;text-decoration:underline;text-underline-offset:3px}
+section.blocco{padding-top:44px;padding-bottom:8px}
+section.blocco>.in>h2{font-size:clamp(25px,6.6vw,32px);line-height:1.2;margin:0 0 10px}
+.intro{margin:0 0 26px;font-size:17px;line-height:1.6}
+.esempio{margin:0 0 26px;padding:6px 0 10px}
+#esempi .voce{margin:0 0 34px}
+#esempi .voce+.voce{padding-top:30px}
+#esempi .voce .num{margin:0 0 10px}
+.passi{margin:0 0 22px;padding:0;list-style:none;counter-reset:p}
+.passi li{counter-increment:p;position:relative;padding:4px 0 14px 46px;font-size:17px;line-height:1.55}
+.passi li::before{content:counter(p);position:absolute;left:0;top:2px;width:32px;height:32px;border-radius:50%;background:#02134B;color:#F4EFE3;display:grid;place-items:center;font:600 15px/1 Poppins,sans-serif}
+.libro-aperto{display:block;width:100%;height:auto;border-radius:14px}
+.did{margin:8px 0 0;font-size:14px;color:var(--tenue)}
+.manca{margin:0 0 22px;padding:0;list-style:none}
+.manca li{padding:12px 0 12px 30px;position:relative;font-size:17px;line-height:1.55;border-top:1px solid var(--bordo)}
+.manca li::before{content:"";position:absolute;left:4px;top:21px;width:10px;height:10px;transform:rotate(45deg);background:#BC9434}
+.fiducia{background:#E6DFCD;margin-top:36px;padding:34px 20px}
+.fiducia .voto{font:600 clamp(34px,9vw,44px)/1 Fraunces,serif;color:#02134B;margin:0 0 6px}
+.fiducia .st{color:#02134B}
+.fiducia p{margin:0 0 6px;font-size:17px}
+.fiducia a{color:#02134B;font-weight:600;display:inline-flex;align-items:center;min-height:44px;text-underline-offset:3px}
+.chiusura{background:#02134B;color:#F4EFE3;padding:40px 20px 32px;margin-top:0}
+.chiusura h2{color:#F4EFE3;font-size:clamp(25px,6.6vw,32px);margin:0 0 14px}
+.chiusura p{margin:0 0 20px;font-size:17px;line-height:1.55}
+.chiusura footer{margin:26px 0 0;text-align:left;display:flex;flex-wrap:wrap;gap:0 14px;font-size:15px}
+.chiusura footer a{color:#F4EFE3;text-decoration:underline;font-weight:600;min-height:44px;display:inline-flex;align-items:center;padding:0}
+@media(min-width:800px){.hero-riga{grid-template-columns:1fr 150px}.hero-cop{width:150px}.in{max-width:760px}}
+</style>
 </head>
 <body>
-    <!-- Aggiungi il logo PNG e la scritta "Al Qalam" all'interno di un div -->
-<div id="header-content">
-    <img id="logo" src="Items/e9i0aa6w.png" alt="Logo">
-    <div id="site-title"><blink></blink></div>
-</div>
-        <ul id="menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="missione.html">Missione</a></li>
-            <li><a href="contatti.html">Contatti</a></li>
-        </ul>
-    </header>
-    <div class="carosello">
-        <img src="Carosello/1.png" alt="Immagine 1">
-        <img src="Carosello/2.png" alt="Immagine 2">
-        <img src="Carosello/4.png" alt="Immagine 3">
-    
-        <a href="#" class="precedente">&#10094;</a>
-        <a href="#" class="successivo">&#10095;</a>
+<div class="hero fascia"><div class="in">
+<header>
+  <a class="marchio" href="/" aria-label="Al-Qalam, pagina iniziale"><img class="sigillo" src="assets/kit/sigillo-192.png" width="48" height="48" alt=""><span class="nome">AL-QALAM</span></a>
+  <nav class="nav" aria-label="Collegamenti"><a href="https://www.instagram.com/alqalam.it/">Instagram</a></nav>
+</header>
+<p class="occ">Raccolta di du’a</p>
+<h1>Le invocazioni del Qur’an e della Sunnah, con <em>audio</em></h1>
+<p class="lead">Arabo con vocali, traslitterazione, traduzione italiana e fonte, per ogni du’a. Il libro ha un QR sotto ogni invocazione: lo inquadri e ascolti.</p>
+<div class="hero-riga"><div>
+<a class="cta" href="/vai/libro.html">Vedi il libro su Amazon.it</a>
+<a class="lnk sotto-cta" href="#esempi">Ascolta tre du’a di esempio</a></div>
+<img class="hero-cop" src="assets/kit/copertina-264.jpg" width="240" height="457" alt="Copertina del libro Raccolta di Du’a, Tesori spirituali dal Qur’an e dalla Sunnah"></div>
+</div></div>
+
+<main>
+<section class="blocco fascia" id="esempi"><div class="in">
+<h2>Tre du’a, completi</h2>
+<p class="intro">Così sono tutti i du’a del libro: arabo, traslitterazione, traduzione, fonte e audio.</p>
+<section class="voce" id="d0003">
+    <p class="num">Dal libro · pag. 19</p>
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
       </div>
-    
-      <script src="styleindex.js"></script>
-    
-    <div id="quotidiani">
-        <h2>Quotidiani</h2>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Cattura-casa.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'casa.html'">Casa</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_mattina_e_sera-removebg-preview.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'giornata.html'">Giorno e notte</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_wudhu-removebg-preview.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'wudhu.html'">Wudhu</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotdiani_-_pasti-removebg-preview.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'pasto.html'">Pasti</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_adhan-removebg-preview.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'adhan.html'">Adhan</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_masjid-removebg-preview.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'masjid.html'">Masjid</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotdiiani_-_viaggi-removebg-preview.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'viaggio.html'">Viaggi</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_atmosfera-removebg-preview.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'atmosfera.html'">Atmosfera</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_salat-removebg-preview.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'salat.html'">Salat</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo quotidiani/Immagini/Quotidiani_-_ira-removebg-preview.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'ira.html'">Ira</button>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Prima%20di%20dormire%201.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
     </div>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ بِاسْمِكَ أَمُوتُ وَأَحْيَا</p>
+    <p class="tr">Allāhumma bismika amūtu wa aḥyā</p>
+    <p class="it">O Allah, nel Tuo Nome muoio e vivo.</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih al-Bukhari 6325 
+    </p>
+  </section>
+<section class="voce" id="d0053">
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20%C3%A8%20in%20preda%20all_ira.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
     </div>
-
-    <div id="capitolo2">
-        <h3>Capitolo 2</h3>
-        <div class="capitolo2-item">
-            <img src="Capitolo 2/Immagini/Capitolo_2_-_provvidenza.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'provvidenza.html'">Provvidenza</button>
-        </div>
-        <div class="capitolo2-item">
-            <img src="Capitolo 2/Immagini/Capitolo_2_-_benedizioni.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'benedizioni.html'">Benedizioni</button>
-        </div>
-        <div class="capitolo2-item">
-            <img src="Capitolo 2/Immagini/Capitolo_2_-_lode.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'lode.html'">Lode</button>
-        </div>
+    <p class="ar" lang="ar" dir="rtl">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
+    <p class="tr">A’udhu billahi minash-shaytanir-rajim</p>
+    <p class="it">Mi rifugio in Allah dal shaytan il maledetto.</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Sahih al-Bukhari 6115 
+    </p>
+  </section>
+<section class="voce" id="d0068">
+    <p class="num">Dal libro · pag. 62</p>
+    <div class="player">
+      <button class="play" aria-label="Ascolta">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+      <div class="barra">
+        <input class="avanz" type="range" min="0" max="100" value="0" step="0.1"
+               aria-label="Avanzamento della traccia">
+        <span class="tempo">0:00 / --:--</span>
+      </div>
+      <div class="controlli">
+        <button class="ctrl loop" aria-pressed="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h10v3l4-4-4-4v3H5v6h2V7zm10 10H7v-3l-4 4 4 4v-3h12v-6h-2v4z"/></svg>
+          Ripeti</button>
+        <button class="ctrl vel"><span>1× velocità</span></button>
+      </div>
+      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%203/Audio/Capitolo%203%20-%20Per%20la%20protezione%20dai%20nemici%20e%20dalle%20influenze%20maligne%204.mp3"></audio>
+      <p class="guasto" hidden>L'audio non si è caricato.
+         Riprova, o controlla la connessione.</p>
     </div>
+    <p class="ar" lang="ar" dir="rtl">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</p>
+    <p class="tr">Hasbunallahu wa ni’mal-wakil</p>
+    <p class="it">Allah è sufficiente per noi ed Egli è il miglior Custode.</p>
+    <p class="fonte">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
+      Qur’an 3:173 
+    </p>
+  </section>
+</div></section>
 
-    <div id="capitolo3">
-        <h3>Capitolo 3</h3>
-        <div class="capitolo3-item">
-            <img src="Capitolo 3/Images/Capitolo_3_-_shaytan.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'controilmale.html'">Protezione</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo 3/Images/Capitolo_3_-_pericoli.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'pericolo.html'">Pericoli</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo 3/Images/Capitolo_3_-_influenze.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'influenze.html'">Influenze</button>
-        </div>
-    </div>
+<section class="blocco fascia" id="qr"><div class="in">
+<h2>Come funziona il QR</h2>
+<ol class="passi">
+<li>Apri il libro a una pagina con un du’a.</li>
+<li>Inquadra il QR con la fotocamera del telefono.</li>
+<li>Si apre la pagina con l’audio: ascolti e ripeti, senza scaricare nulla.</li>
+</ol>
+<picture>
+<source media="(min-width:700px)" srcset="assets/kit/libro-aperto-o.webp" width="1200" height="750">
+<img class="libro-aperto" src="assets/kit/libro-aperto-v.webp" width="810" height="1012" loading="lazy" alt="Un’apertura del libro con le parti numerate: audio con QR, titolo del capitolo, arabo con vocali, traslitterazione, traduzione italiana, contesto della fonte e fonte">
+</picture>
+</div></section>
 
-     <div id="capitolo4">
-        <h3>Capitolo 4</h3>
-        <div class="capitolo4-item">
-            <img src="Capitolo 4/Images/Capitolo_4_-_malati.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'malattie.html'">Malattia</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo 4/Images/Capitolo_4_-_epidemie.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'epidemie.html'">Epidemie</button>
-        </div>
-        <div class="quotidiani-item">
-            <img src="Capitolo 4/Images/mentalefisica.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'mentale.html'">Mente e fisico</button>
-        </div>
-     </div>
+<section class="blocco fascia" id="manca"><div class="in">
+<h2>Cosa non trovi qui</h2>
+<ul class="manca">
+<li>Il contesto di ogni du’a, che nel libro accompagna il testo.</li>
+<li>Le funzioni per chi ha il libro: contatore degli ascolti e progresso personale, che si attivano inquadrando un QR del libro.</li>
+<li>Tutti gli altri du’a: qui ne ascolti tre, il libro ne raccoglie molti di più.</li>
+</ul>
+</div></section>
+</main>
 
-    <div id="capitolo5">
-        <h3>Capitolo 5</h3>
-        <div class="capitolo5-item">
-            <img src="Capitolo 5/Images/Capitolo_5_-_lavoro.png" alt="Quotidiani Image 1">
-    <button onclick="window.location.href = 'benedizione2.html'">Benedizioni</button>
-        </div>
-        <div class="quotidiani-item">
-                <img src="Capitolo 5/Images/Capitolo_5_-_aldilà.png" alt="Quotidiani Image 2">
-                <button onclick="window.location.href = 'successo.html'">Successo</button>
-            </div>
-            <div class="quotidiani-item">
-                <img src="Capitolo 5/Images/Capitolo_5_-_prosperità.png" alt="Quotidiani Image 1">
-                <button onclick="window.location.href = 'prosperita.html'">Prosperità</button>
-            </div>
-    </div>
+<section class="fiducia fascia" aria-labelledby="fid"><div class="in">
+<h2 id="fid" class="nascosto">Valutazioni su Amazon</h2>
+<!-- 4,8 e 32 letti il 2026-09-08 (CLAUDE.md): RILEGGERE su Amazon.it il giorno della pubblicazione -->
+<p class="voto">4,8 <span class="st" aria-hidden="true">★</span><span class="nascosto"> su 5</span></p>
+<p>32 recensioni su Amazon.it</p>
+<a href="/vai/libro.html">Leggi le recensioni sul libro</a>
+</div></section>
 
-            <div id="capitolo6">
-                <h3>Capitolo 6</h3>
-                <div class="capitolo6-item">
-                    <img src="Capitolo 6/Images/Capitolo_6_-_Matrimonio.png" alt="Quotidiani Image 1">
-                    <button onclick="window.location.href = 'matrimonio.html'">Matrimonio</button>
-                </div>
-                <div class="quotidiani-item">
-                    <img src="Capitolo 6/Images/Capitolo_6_-_Figli.png" alt="Quotidiani Image 2">
-                    <button onclick="window.location.href = 'figli.html'">Figli</button>
-            </div>
-            </div>
+<section class="chiusura fascia"><div class="in">
+<h2>Il contesto e le funzioni complete sono nel libro</h2>
+<p>Raccolta di du’a. Disponibile su Amazon.it.</p>
+<a class="cta" href="/vai/libro.html">Vedi il libro su Amazon.it</a>
+<footer>
+<a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a>
+<a href="/recensione/">Lascia una recensione</a>
+<a href="/temi.html">Tutti i temi</a>
+</footer>
+</div></section>
 
-            <div id="capitolo7">
-                <h3>Capitolo 7</h3>
-                <div class="capitolo7-item">
-                    <img src="Capitolo 7/Images/Capitolo_7_-_Saggezza.png" alt="Quotidiani Image 1">
-                    <button onclick="window.location.href = 'saggezza.html'">Saggezza</button>
-                </div>
-                <div class="quotidiani-item">
-                    <img src="Capitolo 7/Images/Capitolo_7_-_conoscenza.png" alt="Quotidiani Image 2">
-                    <button onclick="window.location.href = 'conoscenza.html'">Conoscenza</button>
-                </div>
-            </div>
+<!-- GoatCounter PREDISPOSTO, NON ATTIVO (decisione di Aniss D: gratuito, senza cookie; da installare solo alla pubblicazione).
+     Per attivarlo: sostituire CODICE col nome del conto e togliere i segni di commento.
+<script data-goatcounter="https://CODICE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+-->
+<script>
+(function(){
+  document.documentElement.className='';
+  var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
+  function mmss(s){ if(!isFinite(s))return'--:--';
+    return Math.floor(s/60)+':'+String(Math.floor(s%60)).padStart(2,'0'); }
+  var tutti=[];
+  Array.prototype.forEach.call(document.querySelectorAll('.voce'),function(v){
+    var au=v.querySelector('audio'); if(!au) return;
+    var play=v.querySelector('.play'), icona=play.querySelector('path'),
+        avanz=v.querySelector('.avanz'), tempo=v.querySelector('.tempo'),
+        loop=v.querySelector('.loop'), vel=v.querySelector('.vel'),
+        guasto=v.querySelector('.guasto');
+    au.removeAttribute('controls');
+    tutti.push(au);
+    var velocita=[1,1.25,0.75], iv=0, trascino=false;
+    function aggiorna(){
+      if(!trascino && au.duration) avanz.value=(au.currentTime/au.duration)*100;
+      avanz.style.setProperty('--p', avanz.value+'%');
+      tempo.textContent=mmss(au.currentTime)+' / '+mmss(au.duration);
+    }
+    play.addEventListener('click',function(){
+      if(au.paused){
+        // una voce per volta: chi parla zittisce le altre
+        tutti.forEach(function(a){ if(a!==au) a.pause(); });
+        au.play().catch(function(){ if(guasto) guasto.hidden=false; });
+      } else au.pause();
+    });
+    au.addEventListener('play',function(){ icona.setAttribute('d',PAUSA);
+      play.setAttribute('aria-label','Metti in pausa'); });
+    au.addEventListener('pause',function(){ icona.setAttribute('d',PLAY);
+      play.setAttribute('aria-label','Ascolta'); });
+    au.addEventListener('timeupdate',aggiorna);
+    au.addEventListener('loadedmetadata',aggiorna);
+    au.addEventListener('error',function(){ if(guasto) guasto.hidden=false; });
+    avanz.addEventListener('input',function(){ trascino=true;
+      avanz.style.setProperty('--p', avanz.value+'%'); });
+    avanz.addEventListener('change',function(){ trascino=false;
+      if(au.duration) au.currentTime=(avanz.value/100)*au.duration; });
+    loop.addEventListener('click',function(){ au.loop=!au.loop;
+      loop.setAttribute('aria-pressed',au.loop); });
+    vel.addEventListener('click',function(){ iv=(iv+1)%velocita.length;
+      au.playbackRate=velocita[iv];
+      vel.querySelector('span').textContent=velocita[iv]+'\u00d7 velocit\u00e0'; });
+    aggiorna();
+  });
+  var tema=document.getElementById('tema');
+  if(tema) tema.addEventListener('click',function(){
+    var ora=document.documentElement.getAttribute('data-tema');
+    var scuro = ora ? ora==='dark'
+      : matchMedia('(prefers-color-scheme:dark)').matches;
+    var nuovo = scuro ? 'light' : 'dark';
+    document.documentElement.setAttribute('data-tema',nuovo);
+    try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
+  });
+})();
 
-
-                <div id="capitolo8">
-                <h3>Capitolo 8</h3>
-                    <div class="capitolo8-item">
-                        <img src="Capitolo 8/Images/Capitolo_8_-_Prosperità.png" alt="Quotidiani Image 1">
-                        <button onclick="window.location.href = 'prosperita2.html'">Prosperità</button>
-                    </div>
-                    <div class="quotidiani-item">
-                        <img src="Capitolo 8/Images/Capitolo_8_-_rizq.png" alt="Quotidiani Image 2">
-                        <button onclick="window.location.href = 'rizq.html'">Rizq</button>
-                </div>
-                </div>
-
-                                    <div id="capitolo9">
-                                        <h3>Capitolo 9</h3>
-                                        <div class="capitolo9-item">
-                                            <img src="Capitolo 9/Images/Capitolo_9_-_rettitudine.png" alt="Quotidiani Image 1">
-                                            <button onclick="window.location.href = 'rettitudine.html'">Rettitudine</button>
-                                        </div>
-                                        <div class="quotidiani-item">
-                                            <img src="Capitolo 9/Images/Capitolo_9_-_tentazioni.png" alt="Quotidiani Image 2">
-                                            <button onclick="window.location.href = 'tentazioni.html'">Tentazioni</button>
-                                        </div>
-                                        <div class="quotidiani-item">
-                                            <img src="Capitolo 9/Images/Capitolo_9_-_smarrimento.png" alt="Quotidiani Image 1">
-                                            <button onclick="window.location.href = 'smarrimento.html'">Smarrimento</button>
-                                        </div>
-                                        <div class="quotidiani-item">
-                                            <img src="Capitolo 9/Images/Capitolo_9_-_purificazione.png" alt="Quotidiani Image 2">
-                                            <button onclick="window.location.href = 'purificazione.html'">Purificazione</button>
-                                        </div>
-                                    </div>
-
-                                        <div id="capitolo10">
-                                            <h3>Capitolo 10</h3>
-                                            <div class="capitolo10-item">
-                                                <img src="Capitolo 10/Images/Capitolo_10_-_perdono.png" alt="Quotidiani Image 1">
-                                                <button onclick="window.location.href = 'richiestaperdono.html'">Richiesta di perdono</button>
-                                            </div>
-                                            <div class="quotidiani-item">
-                                                <img src="Capitolo 10/Images/Capitolo_10_-_genitori.png" alt="Quotidiani Image 2">
-                                                <button onclick="window.location.href = 'genitoriedefunti.html'">Genitori e defunti</button>
-                                            </div>
-                                            <div class="quotidiani-item">
-                                                <img src="Capitolo 10/Images/Capitolo_10_-_perdono2.png" alt="Quotidiani Image 1">
-                                                <button onclick="window.location.href = 'capacitaperdono.html'">Capacità di perdono</button>
-                                            </div>
-                                        </div>                       
-
-     <div id="capitolo11">
-       <h3>Capitolo 11</h3>
-       <div class="capitolo11-item">
-          <img src="Capitolo 11/Images/Capitolo_11_-_pace.png" alt="capitolo 11 Image">
-          <button onclick="window.location.href = 'cuoreemente.html'">Pace cuore e mente</button>
-       </div>
-       <div class="capitolo11-item">
-        <img src="Capitolo 11/Images/Capitolo_11_-_difficoltà.png" alt="capitolo 11 Image">
-        <button onclick="window.location.href = 'difficoltaemotiva.html'">Difficolta' emotiva</button>
-    </div>
-    <div class="capitolo11-item">
-        <img src="Capitolo 11/Images/Capitolo_11_-_ansia.png" alt="capitolo 11 Image">
-        <button onclick="window.location.href = 'ansia.html'">Preoccupazioni e ansia</button>
-    </div>
-</div>
-
-    <div id="capitolo12">
-        <h3>Capitolo 12</h3>
-        <div class="capitolo12-item">
-            <img src="Capitolo 12/Immagini/Capitolo_12_-_Famiglia.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'famiglia.html'">Famiglia</button>
-        </div>
-        <div class="capitolo12-item">
-            <img src="Capitolo 12/Immagini/Capitolo_12_-_Visita_malato.png" alt="Quotidiani Image 2">
-            <button onclick="window.location.href = 'visitamalato.html'">Visita un malato</button>
-        </div>
-            <div class="capitolo12-item">
-            <img src="Capitolo 12/Immagini/Capitolo_12_-_Malato_terminale.png" alt="Quotidiani Image 1">
-            <button onclick="window.location.href = 'malatoterminale.html'">Malato terminale</button>
-        </div>
-        </div>
-
-                                        
- </body>
+(function(){
+  var li=document.querySelectorAll('.indice li');
+  if(!li.length) return;
+  function segna(){
+    var h=decodeURIComponent((location.hash||'').slice(1)), g=null;
+    if(h){ var el=document.getElementById(h); g=el&&(el.classList.contains('gruppo')?el:el.closest('.gruppo')); }
+    Array.prototype.forEach.call(li,function(x){
+      var a=x.querySelector('a'), si=g&&a.getAttribute('href')==='#'+g.id;
+      x.classList.toggle('scan',!!si);
+      var sc=x.querySelector('.sc');
+      if(si&&!sc){ sc=document.createElement('span'); sc.className='sc'; sc.textContent='scansionato';
+        a.insertBefore(sc,a.querySelector('.k')); }
+      if(!si&&sc) sc.remove();
+      if(si) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('hashchange',segna); segna();
+})();
+</script>
+</body>
 </html>
-
