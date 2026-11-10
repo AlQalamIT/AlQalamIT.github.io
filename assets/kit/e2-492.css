@@ -73,7 +73,7 @@ html.sbloccato .fx{display:flex}
 .acquisto{margin:10px 0 28px;padding:18px;border-radius:18px;background:var(--superficie);
   display:grid;grid-template-columns:96px 1fr;gap:16px;align-items:center}
 html.sbloccato .acquisto{display:none}
-.acquisto img{width:100px;height:auto;aspect-ratio:240/457;object-fit:cover;border-radius:6px;display:block;box-shadow:0 2px 8px rgba(2,19,75,.25)}
+.acquisto img{width:100px;height:auto;aspect-ratio:828/1277;object-fit:cover;border-radius:6px;display:block;box-shadow:0 2px 8px rgba(2,19,75,.25)}
 .acquisto h2{font-size:21px;line-height:1.25;margin:0 0 6px}
 .acquisto p{margin:0 0 12px;font-size:var(--t-minuto);line-height:1.5;color:var(--testo)}
 .btn-amz{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border-radius:12px;
@@ -114,3 +114,5 @@ html.sbloccato .sb-on{flex-wrap:nowrap}
 @media(min-width:700px){.acquisto{grid-template-columns:150px 1fr}.acquisto img{width:150px}}
 .sb{flex-wrap:nowrap}.sb-off.sb-btn{flex:0 0 auto}.sb p.sb-off{flex:1 1 auto}
 h1{margin-bottom:12px}.voce{margin-bottom:34px}
+
+.hero-cop{aspect-ratio:828/1277}
