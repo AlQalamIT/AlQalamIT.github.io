@@ -245,6 +245,14 @@ section.blocco>.in>h2{font-size:clamp(25px,6.6vw,32px);line-height:1.2;margin:0 
 .chiusura footer a{color:#F4EFE3;text-decoration:underline;font-weight:600;min-height:44px;display:inline-flex;align-items:center;padding:0}
 @media(min-width:800px){.hero-riga{grid-template-columns:1fr 150px}.hero-cop{width:150px}.in{max-width:760px}}
 </style>
+<style>
+#giorno{padding-top:36px}
+#giorno h2{font-size:clamp(25px,6.6vw,32px);line-height:1.2;margin:0 0 14px}
+.giorno{margin:0 0 8px}
+.giorno-tit{font-family:Fraunces,Poppins,serif;font-weight:600;font-size:20px;line-height:1.3;margin:0 0 14px;color:var(--testo)}
+.giorno-link{display:inline-flex;align-items:center;min-height:44px;margin-top:12px;color:var(--testo);font:600 15px/1.2 Poppins,sans-serif;text-decoration:underline;text-underline-offset:3px}
+.chiusura .info-contatore{color:#C4D2F3;text-align:left}
+</style>
 </head>
 <body>
 <div class="hero fascia"><div class="in">
@@ -262,6 +270,10 @@ section.blocco>.in>h2{font-size:clamp(25px,6.6vw,32px);line-height:1.2;margin:0 
 </div></div>
 
 <main>
+<section class="blocco fascia" id="giorno" hidden aria-labelledby="g-t"><div class="in">
+<h2 id="g-t">Il du’a del giorno</h2>
+<div id="giorno-corpo" class="giorno"></div>
+</div></section>
 <section class="blocco fascia" id="esempi"><div class="in">
 <h2>Tre du’a, completi</h2>
 <p class="intro">Così sono tutti i du’a del libro: arabo, traslitterazione, traduzione, fonte e audio.</p>
@@ -392,13 +404,13 @@ section.blocco>.in>h2{font-size:clamp(25px,6.6vw,32px);line-height:1.2;margin:0 
 <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a>
 <a href="/recensione/">Lascia una recensione</a>
 <a href="/temi.html">Tutti i temi</a>
+<p class="info-contatore">Questo sito usa un contatore di visite senza cookie (GoatCounter), che non salva dati personali.</p>
 </footer>
 </div></section>
 
-<!-- GoatCounter PREDISPOSTO, NON ATTIVO (decisione di Aniss D: gratuito, senza cookie; da installare solo alla pubblicazione).
-     Per attivarlo: sostituire CODICE col nome del conto e togliere i segni di commento.
-<script data-goatcounter="https://CODICE.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
--->
+<script data-goatcounter="https://al-qalam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<script src="assets/kit/misure.js" defer></script>
+<script src="assets/kit/giorno-494.js" defer></script>
 <script>
 (function(){
   document.documentElement.className='';

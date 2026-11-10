@@ -116,3 +116,6 @@ html.sbloccato .sb-on{flex-wrap:nowrap}
 h1{margin-bottom:12px}.voce{margin-bottom:34px}
 
 .hero-cop{aspect-ratio:828/1277}
+
+/* 494: nota sul contatore */
+.info-contatore{flex:0 0 100%;margin:6px 0 0;font-size:13px;line-height:1.5;color:var(--tenue);text-align:center}

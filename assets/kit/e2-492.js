@@ -87,7 +87,7 @@
     return jsqrCaricato;
   }
   function apriScanner(){
-    if(!dlg)return;
+    if(!dlg)return;segnalato=false;
     if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia)){
       dlg.showModal();msg('La fotocamera non è disponibile su questo dispositivo o in questo browser.');return;
     }
@@ -104,11 +104,11 @@
       else msg('Non riesco ad aprire la fotocamera.');
     });
   }
-  var ultimoErrore=0;
+  var ultimoErrore=0,segnalato=false;
   function trovato(testo){
-    if(valida(testo)){chiudi();sblocca();var f=$('#sb-stato');if(f){f.focus&&f.focus()}return true}
+    if(valida(testo)){if(window.alqEv)window.alqEv('sblocco-riuscito');chiudi();sblocca();var f=$('#sb-stato');if(f){f.focus&&f.focus()}return true}
     var ora=Date.now();
-    if(ora-ultimoErrore>1500){ultimoErrore=ora;msg('Questo non è il codice di una pagina del libro con audio. Prova con un altro.')}
+    if(ora-ultimoErrore>1500){ultimoErrore=ora;if(window.alqEv&&!segnalato){segnalato=true;window.alqEv('sblocco-fallito')}msg('Questo non è il codice di una pagina del libro con audio. Prova con un altro.')}
     return false;
   }
   function ciclo(){
