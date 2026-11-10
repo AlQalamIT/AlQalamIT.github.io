@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Du’a quando si entra ed esce da casa · Al-Qalam</title>
-<meta name="description" content="Du’a quando si entra ed esce da casa — 2 invocazione con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
+<meta name="description" content="Du’a quando si entra ed esce da casa — 2 invocazioni con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
 <meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
 <link rel="icon" href="../../../assets/logo-72.png">
@@ -96,6 +96,27 @@ h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
 .voce{margin:0 0 44px}
 .voce+.voce{border-top:1px solid var(--bordo);padding-top:34px}
 .voce:target{box-shadow:-14px 0 0 -11px var(--brand)}
+/* layout D (punto 382): titolo del libro, folio, elenco in cima, numerazione */
+.pag{color:var(--tenue);font-weight:500;text-transform:none;letter-spacing:.02em}
+.sub{color:var(--tenue);margin:0 0 24px}
+.num{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;letter-spacing:.04em;margin:0 0 8px}
+h2{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 14px;text-wrap:balance}
+.indice{margin:0 0 34px;padding:0;list-style:none;border:1px solid var(--bordo);border-radius:18px;background:var(--superficie);overflow:hidden}
+.indice li+li{border-top:1px solid var(--bordo)}
+.indice a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 16px;color:var(--testo);
+  text-decoration:none;font-size:18px;font-weight:500;line-height:1.3}
+.indice a:hover{background:var(--bordo)}
+.indice .k{margin-left:auto;font-size:var(--t-minuto);color:var(--tenue);white-space:nowrap}
+.indice li.scan{box-shadow:inset 5px 0 0 var(--brand)}
+.indice li.scan a{font-weight:600}
+.indice .sc{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--accento);color:var(--su-accento);padding:2px 9px;border-radius:20px;white-space:nowrap}
+section.gruppo{scroll-margin-top:16px}
+section.gruppo+section.gruppo{border-top:2px solid var(--bordo);padding-top:30px}
+section.gruppo>h2{margin:0 0 18px}
+html{scroll-padding-top:12px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:10px}
 
 .player{background:var(--superficie);border:1px solid var(--bordo);
   border-radius:20px;padding:24px 18px 18px;box-shadow:var(--ombra);
@@ -183,10 +204,17 @@ audio{width:100%;margin:8px 0 0;display:block}
 </header>
 <p class="occhiello">Capitolo 1</p>
 <h1>Du’a quando si entra ed esce da casa</h1>
+<p class="sub">In questa pagina: 2 du’a</p>
+<ol class="indice" aria-label="Indice della pagina">
+  <li><a href="#g-quando-si-entra"><span>Quando si entra</span><span class="k">1</span></a></li>
+  <li><a href="#g-quando-si-esce"><span>Quando si esce</span><span class="k">1</span></a></li>
+</ol>
 
+<section class="gruppo" id="g-quando-si-entra">
+  <h2>Quando si entra</h2>
   <section class="voce" id="d0001">
-    <!-- translit d0001: dal .docx, campo `testa`, divisa da separa_riga. Il PDF non la separa su questo blocco. -->
-    <!-- rif Sahih muslim 2018 -> Sahih Muslim 2018: la raccolta era in minuscolo: unica su 131 riferimenti distinti. Il libro lo stampa cosi' a pag. 19 e si corregge in riedizione; sul sito si corregge subito. -->
+    <!-- translit e traduzione d0001: dal master, master (sito-sovrascritture.csv) -->
+    <p class="num">du’a 1 di 2</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -206,16 +234,20 @@ audio{width:100%;margin:8px 0 0;display:block}
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى رَبِّنَا تَوَكَّلْنَا</p>
-    <p class="tr">Bismillāhi walajnā, wa bismillāhi kharajnā, wa ʿalā Rabbinā tawakkalnā</p>
-    <p class="it">Nel Nome di Allah entriamo e nel Nome di Allah usciamo, e al nostro Signore affidiamo la nostra fiducia</p>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ الْمَوْلِجِ وَخَيْرَ الْمَخْرَجِ، بِسْمِ اللَّهِ وَلَجْنَا، وَبِسْمِ اللَّهِ خَرَجْنَا، وَعَلَى اللَّهِ رَبِّنَا تَوَكَّلْنَا</p>
+    <p class="tr">Allāhumma innī as&#x27;aluka khayra-l-mawliji wa khayra-l-makhraj, bismillāhi walajnā, wa bismillāhi kharajnā, wa ʿala-llāhi Rabbinā tawakkalnā</p>
+    <p class="it">O Allah, Ti chiedo il bene dell&#x27;entrata e il bene dell&#x27;uscita, nel Nome di Allah entriamo e nel Nome di Allah usciamo, e ad Allah, nostro Signore, ci affidiamo</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Sahih Muslim 2018 <span class="grado">sahih</span>
+      Sunan Abi Dawud 5096 (hasan, Ibn Muflih), Sahih Muslim 2018a 
     </p>
-    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ disse: “Quando una persona entra nella sua casa e ricorda Allah all&#x27;ingresso e prima di mangiare, shaytān dice: (ai suoi compagni shaytān) &#x27;Non c&#x27;è posto per te dove passare la notte e non c&#x27;è cena per te.&#x27; Quando entra nella casa e non ricorda Allah, Shaytān dice: &#x27;Hai trovato un posto dove passare la notte.&#x27; Quando non ricorda Allah prima di mangiare il cibo, shaytān dice: &#x27;Hai trovato un posto dove stare e qualcosa da mangiare.”</div>
   </section>
+</section>
+<section class="gruppo" id="g-quando-si-esce">
+  <h2>Quando si esce</h2>
   <section class="voce" id="d0002">
+    <!-- translit e traduzione d0002: dal master, master (sito-sovrascritture.csv) -->
+    <p class="num">du’a 2 di 2</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -235,15 +267,15 @@ audio{width:100%;margin:8px 0 0;display:block}
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">بِسْمِ اللَّه تَوَكَّلْـتُ عَلَى اللَّهِ، وَلاَ حَوْلَ وَلاَ قُـوَّةَ إِلا بِاللَّهِِ</p>
-    <p class="tr">Bismil-lah, tawakkaltu AAalal-lah, wala ḥawla wala quwwata illa billah</p>
-    <p class="it">Nel Nome di Allah, ripongo la mia fiducia in Allah, e non vi è forza né potere se non in Allah</p>
+    <p class="ar" lang="ar" dir="rtl">بِسْمِ اللَّهِ تَوَكَّلْتُ عَلَى اللَّهِ، لاَ حَوْلَ وَلاَ قُوَّةَ إِلَّا بِاللَّهِ</p>
+    <p class="tr">Bismillāh, tawakkaltu ʿalallāh, lā ḥawla walā quwwata illā billāh</p>
+    <p class="it">Nel Nome di Allah, ripongo la mia fiducia in Allah, non vi è forza né potere se non in Allah</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Abi Dawud 5095 
+      Sunan Abi Dawud 5095 
     </p>
-    <div class="ctx"><b>Il contesto</b>Il Messaggero di Allah ﷺ disse: “Chiunque pronunci [quanto sopra riportato] quando lascia la sua casa gli verrà detto: &#x27;Sei stato guidato, sei stato provveduto e sei stato protetto.&#x27; Poi un diavolo dice a un altro diavolo: &#x27;Come puoi raggiungere un uomo che è stato guidato, provveduto e protetto?”</div>
   </section>
+</section>
 <footer>
   <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a><span class="sep">·</span>
   <a href="/recensione/">Lascia una recensione</a><span class="sep">·</span>
@@ -305,6 +337,25 @@ audio{width:100%;margin:8px 0 0;display:block}
     document.documentElement.setAttribute('data-tema',nuovo);
     try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
   });
+})();
+
+(function(){
+  var li=document.querySelectorAll('.indice li');
+  if(!li.length) return;
+  function segna(){
+    var h=decodeURIComponent((location.hash||'').slice(1)), g=null;
+    if(h){ var el=document.getElementById(h); g=el&&(el.classList.contains('gruppo')?el:el.closest('.gruppo')); }
+    Array.prototype.forEach.call(li,function(x){
+      var a=x.querySelector('a'), si=g&&a.getAttribute('href')==='#'+g.id;
+      x.classList.toggle('scan',!!si);
+      var sc=x.querySelector('.sc');
+      if(si&&!sc){ sc=document.createElement('span'); sc.className='sc'; sc.textContent='scansionato';
+        a.insertBefore(sc,a.querySelector('.k')); }
+      if(!si&&sc) sc.remove();
+      if(si) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('hashchange',segna); segna();
 })();
 </script>
 </body>

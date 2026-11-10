@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Du’a legati al wuduh · Al-Qalam</title>
-<meta name="description" content="Du’a legati al wuduh — 3 invocazione con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
+<meta name="description" content="Du’a legati al wuduh — 3 invocazioni con testo arabo, traslitterazione, traduzione, fonte e recitazione audio.">
 <meta name="theme-color" content="#f7f3ec" media="(prefers-color-scheme:light)">
 <meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
 <link rel="icon" href="../../../assets/logo-72.png">
@@ -96,6 +96,27 @@ h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
 .voce{margin:0 0 44px}
 .voce+.voce{border-top:1px solid var(--bordo);padding-top:34px}
 .voce:target{box-shadow:-14px 0 0 -11px var(--brand)}
+/* layout D (punto 382): titolo del libro, folio, elenco in cima, numerazione */
+.pag{color:var(--tenue);font-weight:500;text-transform:none;letter-spacing:.02em}
+.sub{color:var(--tenue);margin:0 0 24px}
+.num{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;letter-spacing:.04em;margin:0 0 8px}
+h2{font-size:24px;font-weight:600;line-height:1.25;margin:0 0 14px;text-wrap:balance}
+.indice{margin:0 0 34px;padding:0;list-style:none;border:1px solid var(--bordo);border-radius:18px;background:var(--superficie);overflow:hidden}
+.indice li+li{border-top:1px solid var(--bordo)}
+.indice a{display:flex;align-items:center;gap:10px;min-height:52px;padding:10px 16px;color:var(--testo);
+  text-decoration:none;font-size:18px;font-weight:500;line-height:1.3}
+.indice a:hover{background:var(--bordo)}
+.indice .k{margin-left:auto;font-size:var(--t-minuto);color:var(--tenue);white-space:nowrap}
+.indice li.scan{box-shadow:inset 5px 0 0 var(--brand)}
+.indice li.scan a{font-weight:600}
+.indice .sc{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;
+  background:var(--accento);color:var(--su-accento);padding:2px 9px;border-radius:20px;white-space:nowrap}
+section.gruppo{scroll-margin-top:16px}
+section.gruppo+section.gruppo{border-top:2px solid var(--bordo);padding-top:30px}
+section.gruppo>h2{margin:0 0 18px}
+html{scroll-padding-top:12px}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+a:focus-visible,summary:focus-visible{outline:3px solid var(--link);outline-offset:3px;border-radius:10px}
 
 .player{background:var(--superficie);border:1px solid var(--bordo);
   border-radius:20px;padding:24px 18px 18px;box-shadow:var(--ombra);
@@ -181,10 +202,19 @@ audio{width:100%;margin:8px 0 0;display:block}
       <path d="M12 2v2M12 20v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M2 12h2M20 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4"/></svg>
   </button>
 </header>
-<p class="occhiello">Capitolo 1</p>
+<p class="occhiello">Capitolo 1 · <span class="pag">pag. 22</span></p>
 <h1>Du’a legati al wuduh</h1>
+<p class="sub">In questa pagina: 3 du’a</p>
+<ol class="indice" aria-label="Indice della pagina">
+  <li><a href="#g-prima-di-entrare-nel-bagno"><span>Prima di entrare nel bagno</span><span class="k">1</span></a></li>
+  <li><a href="#g-dopo-essere-uscito-dal-bagno"><span>Dopo essere uscito dal bagno</span><span class="k">1</span></a></li>
+  <li><a href="#g-dopo-aver-completato-il-wuduh"><span>Dopo aver completato il wuduh</span><span class="k">1</span></a></li>
+</ol>
 
+<section class="gruppo" id="g-prima-di-entrare-nel-bagno">
+  <h2>Prima di entrare nel bagno</h2>
   <section class="voce" id="d0005">
+    <p class="num">du’a 1 di 3</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -204,16 +234,19 @@ audio{width:100%;margin:8px 0 0;display:block}
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">اَللّٰهُمَّ إِنِّيْ أَعُوْذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِث</p>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنَ الْخُبُثِ وَالْخَبَائِثِ</p>
     <p class="tr">Allāhumma innī aʿūdhu bika mina-l-khubuthi wa Khabā’ith</p>
     <p class="it">O Allah, cerco la Tua protezione dai demoni maschi e femmine</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Bukhari 142 · Muslim 375 <span class="grado">sahih</span>
+      Sahih al-Bukhari 142, Sahih Muslim 375a <span class="grado">sahih</span>
     </p>
-    <div class="ctx"><b>Il contesto</b>Anas b. Mālik (ra) narrò che ogni volta che il Profeta ﷺ andava a rispondere alla chiamata della natura, diceva [quanto sopra riportato]</div>
   </section>
+</section>
+<section class="gruppo" id="g-dopo-essere-uscito-dal-bagno">
+  <h2>Dopo essere uscito dal bagno</h2>
   <section class="voce" id="d0006">
+    <p class="num">du’a 2 di 3</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -233,16 +266,19 @@ audio{width:100%;margin:8px 0 0;display:block}
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">غُفْرَانَك</p>
+    <p class="ar" lang="ar" dir="rtl">غُفْرَانَكَ</p>
     <p class="tr">Ghufrānak</p>
     <p class="it">Chiedo il Tuo perdono</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Abi Dawud 30 
+      Sunan Abi Dawud 30 
     </p>
-    <div class="ctx"><b>Il contesto</b>Aishah (ra) narrò che, quando il Profeta ﷺ usciva dal bagno, diceva: [quanto sopra riportato]</div>
   </section>
+</section>
+<section class="gruppo" id="g-dopo-aver-completato-il-wuduh">
+  <h2>Dopo aver completato il wuduh</h2>
   <section class="voce" id="d0007">
+    <p class="num">du’a 3 di 3</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -262,15 +298,15 @@ audio{width:100%;margin:8px 0 0;display:block}
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلَٰهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهْ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهْ ﷺ</p>
+    <p class="ar" lang="ar" dir="rtl">أَشْهَدُ أَنْ لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، وَأَشْهَدُ أَنَّ مُحَمَّدًا عَبْدُهُ وَرَسُولُهُ ﷺ</p>
     <p class="tr">Ash-hadu al-lā ilāha illā-llāhu waḥdahū lā sharīka lah, wa ash-hadu anna Muḥammadan ʿabduhu wa rasūluh</p>
     <p class="it">Testimonio che non c&#x27;è altro dio all’infuori di Allah. Egli è Unico e non ha alcun partner. E attesto che Muhammad ﷺ è il Suo servo e il Suo Messaggero</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Bulugh al-Maram 57 
+      Sahih Muslim 234b <span class="grado">sahih</span>
     </p>
-    <div class="ctx"><b>Il contesto</b>Umar ibn Al-Khattab (ra) riportò: Il Messaggero di Allah ﷺ disse: “Chiunque di voi compia il wuduh attentamente e poi affermi: [quanto sopra riportato] gli otto cancelli del Paradiso gli vengono aperti. Potrà entrare attraverso qualsiasi di questi cancelli desideri.&quot;</div>
   </section>
+</section>
 <footer>
   <a href="https://www.instagram.com/alqalam.it/">@alqalam.it</a><span class="sep">·</span>
   <a href="/recensione/">Lascia una recensione</a><span class="sep">·</span>
@@ -332,6 +368,25 @@ audio{width:100%;margin:8px 0 0;display:block}
     document.documentElement.setAttribute('data-tema',nuovo);
     try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
   });
+})();
+
+(function(){
+  var li=document.querySelectorAll('.indice li');
+  if(!li.length) return;
+  function segna(){
+    var h=decodeURIComponent((location.hash||'').slice(1)), g=null;
+    if(h){ var el=document.getElementById(h); g=el&&(el.classList.contains('gruppo')?el:el.closest('.gruppo')); }
+    Array.prototype.forEach.call(li,function(x){
+      var a=x.querySelector('a'), si=g&&a.getAttribute('href')==='#'+g.id;
+      x.classList.toggle('scan',!!si);
+      var sc=x.querySelector('.sc');
+      if(si&&!sc){ sc=document.createElement('span'); sc.className='sc'; sc.textContent='scansionato';
+        a.insertBefore(sc,a.querySelector('.k')); }
+      if(!si&&sc) sc.remove();
+      if(si) a.setAttribute('aria-current','true'); else a.removeAttribute('aria-current');
+    });
+  }
+  window.addEventListener('hashchange',segna); segna();
 })();
 </script>
 </body>
