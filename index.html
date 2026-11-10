@@ -279,10 +279,18 @@ main{max-width:none}
   .hero h1{font-size:44px;line-height:1.12}
   .hero p.lead{font-size:18px;max-width:30em}
 }
+#giorno{background:#E6DFCD;margin-top:0;padding-bottom:36px}
+.sotto-cta{margin-top:14px !important}
+.giorno-altro{display:inline-flex;align-items:center;justify-content:center;min-height:48px;margin:6px 0 0 14px;padding:0 18px;border:1.5px solid #1C3C96;border-radius:12px;background:transparent;color:#02134B;font:600 15px/1 Poppins,sans-serif;cursor:pointer}
+.giorno-altro:focus-visible{outline:3px solid #02134B;outline-offset:2px}
+.giorno-azioni{display:flex;flex-wrap:wrap;align-items:center;gap:0 0}
+.legenda{margin:18px 0 0;padding:0;list-style:none;counter-reset:l}
+.legenda li{counter-increment:l;position:relative;padding:6px 0 6px 42px;font-size:15px;line-height:1.45}
+.legenda li::before{content:attr(data-n);position:absolute;left:0;top:4px;width:30px;height:30px;border-radius:50%;background:#F78012;color:#02134B;border:2px solid #02134B;display:grid;place-items:center;font:600 14px/1 Poppins,sans-serif}
+@media(min-width:700px){.legenda{display:none}}
 #qr{background:#E6DFCD;margin-top:44px;padding-bottom:40px}
 #qr .libro-aperto{border-radius:12px}
 section.blocco{padding-top:52px;padding-bottom:12px}
-#giorno{padding-top:48px}
 .fiducia{margin-top:40px}
 </style>
 </head>
@@ -306,6 +314,7 @@ section.blocco{padding-top:52px;padding-bottom:12px}
 <section class="blocco fascia" id="giorno" hidden aria-labelledby="g-t"><div class="in">
 <h2 id="g-t">Il du’a del giorno</h2>
 <div id="giorno-corpo" class="giorno"></div>
+<div class="giorno-azioni"><a class="giorno-link" id="giorno-link" href="#">Apri la pagina del libro per ascoltarlo</a><button type="button" class="giorno-altro" id="giorno-altro">Un altro du’a</button></div>
 </div></section>
 <section class="blocco fascia" id="esempi"><div class="in">
 <h2>Tre du’a, completi</h2>
@@ -339,7 +348,8 @@ section.blocco{padding-top:52px;padding-bottom:12px}
       Sahih al-Bukhari 6325 
     </p>
   </section>
-<section class="voce" id="d0053">
+<section class="voce" id="d0101">
+    <p class="num">Dal libro · pag. 82</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -355,20 +365,20 @@ section.blocco{padding-top:52px;padding-bottom:12px}
           Ripeti</button>
         <button class="ctrl vel"><span>1× velocità</span></button>
       </div>
-      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Quando%20si%20%C3%A8%20in%20preda%20all_ira.mp3"></audio>
+      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%209/Audio/Capitolo%209%20-%20Per%20la%20pace%20interiore%20e%20la%20purificazione%20dell_anima%201.mp3"></audio>
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ</p>
-    <p class="tr">A’udhu billahi minash-shaytanir-rajim</p>
-    <p class="it">Mi rifugio in Allah dal shaytan il maledetto.</p>
+    <p class="ar" lang="ar" dir="rtl">اللَّهُمَّ آتِ نَفْسِي تَقْوَاهَا وَزَكِّهَا أَنْتَ خَيْرُ مَنْ زَكَّاهَا أَنْتَ وَلِيُّهَا وَمَوْلاَهَا</p>
+    <p class="tr">Allāhumma ati nafsi taqwaha wa zakkiha, anta khayru man zakkaha, anta waliyyuha wa maulaha</p>
+    <p class="it">O Allah, conferisci alla mia anima il timore (di Dio) e purificala. Tu sei il Migliore a purificarla. Tu sei il suo protettore e il suo padrone.</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Sahih al-Bukhari 6115 
+      Sahih Muslim 2722 
     </p>
   </section>
-<section class="voce" id="d0068">
-    <p class="num">Dal libro · pag. 62</p>
+<section class="voce" id="d0021">
+    <p class="num">Dal libro · pag. 30</p>
     <div class="player">
       <button class="play" aria-label="Ascolta">
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
@@ -384,16 +394,16 @@ section.blocco{padding-top:52px;padding-bottom:12px}
           Ripeti</button>
         <button class="ctrl vel"><span>1× velocità</span></button>
       </div>
-      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%203/Audio/Capitolo%203%20-%20Per%20la%20protezione%20dai%20nemici%20e%20dalle%20influenze%20maligne%204.mp3"></audio>
+      <audio preload="metadata" controls controlsList="nodownload noplaybackrate" oncontextmenu="return false" src="Capitolo%20quotidiani/Audio/Capitolo%201%20-%20Sicurezza%20del%20viaggio.mp3"></audio>
       <p class="guasto" hidden>L'audio non si è caricato.
          Riprova, o controlla la connessione.</p>
     </div>
-    <p class="ar" lang="ar" dir="rtl">حَسْبُنَا اللَّهُ وَنِعْمَ الْوَكِيلُ</p>
-    <p class="tr">Hasbunallahu wa ni’mal-wakil</p>
-    <p class="it">Allah è sufficiente per noi ed Egli è il miglior Custode.</p>
+    <p class="ar" lang="ar" dir="rtl">سُبْحَانَ الَّذِي سَخَّرَ لَنَا هَذَا وَمَا كُنَّا لَهُ مُقْرِنِينَ وَإِنَّا إِلَى رَبِّنَا لَمُنْقَلِبُونَ اللَّهُمَّ إِنَّا نَسْأَلُكَ فِي سَفَرِنَا هَذَا الْبِرَّ وَالتَّقْوَى وَمِنَ الْعَمَلِ مَا تَرْضَى اللَّهُمَّ هَوِّنْ عَلَيْنَا سَفَرَنَا هَذَا وَاطْوِ عَنَّا بُعْدَهُ اللَّهُمَّ أَنْتَ الصَّاحِبُ فِي السَّفَرِ وَالْخَلِيفَةُ فِي الأَهْلِ اللَّهُمَّ إِنِّي أَعُوذُ بِكَ مِنْ وَعْثَاءِ السَّفَرِ، وَكَآبَةِ الْمَنْظَرِ وَسُوءِ الْمُنْقَلَبِ فِي الْمَالِ وَالأَهْلِ آيِبُونَ تَائِبُونَ عَابِدُونَ لِرَبِّنَا حَامِدُونَ</p>
+    <p class="tr">Subḥānalladhī sakhkhara lanā hādhā wa mā kunnā lahū muqrinīna, wa innā ilā Rabbinā lamunqalibūn. Allāhumma innā nas’aluka fī safarinā hādhā al-birra wa at-taqwā wa min al-’amali mā tarḍā. Allāhumma hawwin ’alaynā safaranā hādhā waṭwi ’annā bu’dahu. Allāhumma anta aṣ-ṣāḥibu fī as-safar wa al-khalīfatu fī al-ahli. Allāhumma innī a’ūdhu bika min wa’thā’i as-safar wa ka’ābati al-manẓar wa sū’i al-munqalabi fī al-māl wa al-ahl. Āyibūna tā’ibūna ’ābidūna li Rabbinā ḥāmidūn</p>
+    <p class="it">Gloria sia a Colui che ci ha messo questo (trasporto) al nostro servizio e noi stessi non saremmo stati capaci di questo. E al nostro Signore faremo ritorno. O Allah, chiediamo in questo nostro viaggio virtù e timor di Te, e tra le azioni quelle che ti soddisfano. O Allah, facilitaci questo nostro viaggio e rendi per noi breve la sua distanza. O Allah, Tu sei il (nostro) Compagno durante il viaggio e Guardiano della (nostra) famiglia. O Allah, cerco rifugio in Te dalle difficoltà del viaggio, dalla tristezza di ciò che si vede e dal trovare cambiamenti negativi in proprietà e famiglia al nostro ritorno. Stiamo tornando, pentiti, adorando il nostro Signore e lodandolo.</p>
     <p class="fonte">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 4 6v6c0 5 3.4 9.4 8 10 4.6-.6 8-5 8-10V6l-8-4z"/></svg>
-      Qur’an 3:173 
+      Sahih Muslim 1342 
     </p>
   </section>
 </div></section>
@@ -407,8 +417,9 @@ section.blocco{padding-top:52px;padding-bottom:12px}
 </ol>
 <picture>
 <source media="(min-width:700px)" srcset="assets/kit/libro-aperto-o.webp" width="1400" height="875">
-<img class="libro-aperto" src="assets/kit/libro-aperto-v.webp" width="1080" height="1350" loading="lazy" alt="Un’apertura del libro con le parti numerate: audio con QR, titolo del capitolo, arabo con vocali, traslitterazione, traduzione italiana, contesto della fonte e fonte">
+<img class="libro-aperto" src="assets/kit/libro-aperto-t.webp" width="1080" height="900" loading="lazy" alt="Un’apertura del libro: le parti sono numerate da 1 a 8 e spiegate nella legenda sotto l’immagine.">
 </picture>
+<ol class="legenda" aria-label="Legenda delle parti numerate"><li data-n="1">Audio con QR (qui dimostrativo)</li><li data-n="2">Numero e titolo del capitolo</li><li data-n="3">Titolo del du’a</li><li data-n="4">Testo arabo con vocali</li><li data-n="5">Traslitterazione e traduzione italiana</li><li data-n="6">Contesto della fonte</li><li data-n="7">Fonte</li><li data-n="8">Titolo e numero di pagina</li></ol>
 </div></section>
 
 <section class="blocco fascia" id="manca"><div class="in">
@@ -443,7 +454,7 @@ section.blocco{padding-top:52px;padding-bottom:12px}
 
 <script data-goatcounter="https://al-qalam.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <script src="assets/kit/misure.js" defer></script>
-<script src="assets/kit/giorno-494.js" defer></script>
+<script src="assets/kit/giorno-495.js" defer></script>
 <script>
 (function(){
   document.documentElement.className='';
