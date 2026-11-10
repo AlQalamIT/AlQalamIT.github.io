@@ -1,0 +1,13 @@
+User-agent: *
+Disallow: /Capitolo%202/Audio/
+Disallow: /Capitolo%203/Audio/
+Disallow: /Capitolo%204/Audio/
+Disallow: /Capitolo%205/Audio/
+Disallow: /Capitolo%206/Audio/
+Disallow: /Capitolo%207/Audio/
+Disallow: /Capitolo%208/Audio/
+Disallow: /Capitolo%209/Audio/
+Disallow: /Capitolo%2010/Audio/
+Disallow: /Capitolo%2011/Audio/
+Disallow: /Capitolo%2012/Audio/
+Disallow: /Capitolo%20quotidiani/Audio/
