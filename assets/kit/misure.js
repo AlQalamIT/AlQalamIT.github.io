@@ -8,8 +8,9 @@
   }
   window.alqEv=ev;
   document.addEventListener('click',function(e){
-    var a=e.target&&e.target.closest&&e.target.closest('a[href="/vai/libro.html"]');
-    if(a)ev('clic-amazon');
+    var t=e.target&&e.target.closest;
+    if(t&&e.target.closest('a[data-amazon]'))ev('clic-amazon');
+    else if(t&&e.target.closest('a[href="/vai/libro.html"]'))ev('clic-pagina-libro');
   },true);
   var visti=typeof WeakSet==='function'?new WeakSet():null;
   document.addEventListener('play',function(e){

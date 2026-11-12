@@ -18,6 +18,7 @@
     if(g)g.addEventListener('click',function(e){var b=e.target.closest&&e.target.closest('button[data-v]');if(!b)return;scrivi(b.getAttribute('data-v'));applica()});
     applica();
   }
+  try{var sb=JSON.parse(localStorage.getItem('alq_sbloccato_v1')||'null');if(sb&&sb.v===1)R.classList.add('sbloccato')}catch(e){}
   applica();
   try{matchMedia('(prefers-color-scheme:dark)').addEventListener('change',applica)}catch(e){}
   window.addEventListener('storage',function(e){if(e.key===K)applica()});
