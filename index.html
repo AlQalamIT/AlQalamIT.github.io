@@ -13,7 +13,8 @@
 <meta property="og:description" content="Le invocazioni del Qur’an e della Sunnah, con arabo, traslitterazione, traduzione italiana, fonte e audio.">
 <meta property="og:url" content="https://alqalamit.it/">
 <meta property="og:image" content="https://alqalamit.it/assets/kit/og-1200x630.jpg">
-<meta name="theme-color" content="#02134B">
+<meta name="theme-color" content="#F4EFE3">
+<script src="assets/kit/temi.js"></script>
 <link rel="icon" href="assets/logo-72.png">
 <style>
 /* ─────────────────────────────────────────────────────────────────────
@@ -46,21 +47,6 @@
                                punto 190 valeva per i TITOLI del carosello */
   --ombra:0 1px 3px rgba(13,32,59,.07);
 }
-@media(prefers-color-scheme:dark){:root:not([data-tema=light]){
-  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
-  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
-  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
-  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
-  --arabo:#fdf8ec;          /* bianco CALDO: in bianco puro le harakat fioriscono */
-}}
-:root[data-tema=dark]{
-  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
-  --fonte:#ffffff; --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
-  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
-  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
-  --arabo:#fdf8ec;
-}
-
 :root{
   --t-titolo:clamp(29px,7.6vw,38px);  /* fisso romperebbe su 41 titoli diversi */
   --t-arabo:32px;      /* punto 343 (era 40): a 40 occupava quasi uno schermo, 3
@@ -85,11 +71,6 @@ header{display:flex;align-items:flex-start;justify-content:space-between;
 .nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
 .filetto{display:block;width:34px;height:3px;border-radius:2px;
   background:var(--brand);margin-top:6px}
-#tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
-  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
-#tema:hover{background:var(--bordo)}
-#tema svg{width:21px;height:21px}
-
 .occhiello{color:var(--tenue);font-size:var(--t-minuto);font-weight:600;
   letter-spacing:.08em;text-transform:uppercase;margin:14px 0 4px}
 h1{font-size:var(--t-titolo);font-weight:500;line-height:1.2;margin:0 0 26px;
@@ -293,12 +274,13 @@ main{max-width:none}
 section.blocco{padding-top:52px;padding-bottom:12px}
 .fiducia{margin-top:40px}
 </style>
+<link rel="stylesheet" href="assets/kit/temi.css">
 </head>
 <body>
 <div class="hero fascia"><div class="in">
 <header>
   <a class="marchio" href="/" aria-label="Al-Qalam, pagina iniziale"><img class="sigillo" src="assets/kit/sigillo-192.png" width="48" height="48" alt=""><span class="nome">AL-QALAM</span></a>
-  <nav class="nav" aria-label="Collegamenti"><a href="https://www.instagram.com/alqalam.it/">Instagram</a></nav>
+  <nav class="nav" aria-label="Collegamenti"><a href="https://www.instagram.com/alqalam.it/">Instagram</a><div class="selettore" id="selettore-tema" role="group" aria-label="Tema del sito"><button type="button" data-v="auto" aria-pressed="false" aria-label="Automatico, segue il telefono">Auto</button><button type="button" data-v="light" aria-pressed="false">Chiaro</button><button type="button" data-v="blu" aria-pressed="false">Blu</button><button type="button" data-v="grigio" aria-pressed="false">Grigio</button></div></nav>
 </header>
 <div class="hero-griglia">
 <p class="occ">Raccolta di du’a</p>
@@ -417,9 +399,9 @@ section.blocco{padding-top:52px;padding-bottom:12px}
 </ol>
 <picture>
 <source media="(min-width:700px)" srcset="assets/kit/libro-aperto-o.webp" width="1400" height="875">
-<img class="libro-aperto" src="assets/kit/libro-aperto-t.webp" width="1080" height="900" loading="lazy" alt="Un’apertura del libro: le parti sono numerate da 1 a 8 e spiegate nella legenda sotto l’immagine.">
+<img class="libro-aperto" src="assets/kit/libro-aperto-t.webp" width="1080" height="900" loading="lazy" alt="Un’apertura del libro: le parti sono numerate da 1 a 10 e spiegate nella legenda sotto l’immagine.">
 </picture>
-<ol class="legenda" aria-label="Legenda delle parti numerate"><li data-n="1">Audio con QR (qui dimostrativo)</li><li data-n="2">Numero e titolo del capitolo</li><li data-n="3">Titolo del du’a</li><li data-n="4">Testo arabo con vocali</li><li data-n="5">Traslitterazione e traduzione italiana</li><li data-n="6">Contesto della fonte</li><li data-n="7">Fonte</li><li data-n="8">Titolo e numero di pagina</li></ol>
+<ol class="legenda" aria-label="Legenda delle parti numerate"><li data-n="1">Audio con QR (qui dimostrativo)</li><li data-n="2">Numero e titolo del capitolo</li><li data-n="3">Titolo del du’a</li><li data-n="4">Contesto della fonte</li><li data-n="5">Fonte</li><li data-n="6">Titolo e numero di pagina</li><li data-n="7">Testo arabo con vocali</li><li data-n="8">Traslitterazione</li><li data-n="9">Traduzione italiana</li><li data-n="10">Un secondo du’a nella pagina</li></ol>
 </div></section>
 
 <section class="blocco fascia" id="manca"><div class="in">
@@ -500,15 +482,6 @@ section.blocco{padding-top:52px;padding-bottom:12px}
       au.playbackRate=velocita[iv];
       vel.querySelector('span').textContent=velocita[iv]+'\u00d7 velocit\u00e0'; });
     aggiorna();
-  });
-  var tema=document.getElementById('tema');
-  if(tema) tema.addEventListener('click',function(){
-    var ora=document.documentElement.getAttribute('data-tema');
-    var scuro = ora ? ora==='dark'
-      : matchMedia('(prefers-color-scheme:dark)').matches;
-    var nuovo = scuro ? 'light' : 'dark';
-    document.documentElement.setAttribute('data-tema',nuovo);
-    try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
   });
 })();
 

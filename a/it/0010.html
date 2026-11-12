@@ -5,10 +5,9 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Quando si entra in casa · Al-Qalam</title>
 <meta name="description" content="Du’a da recitare entrando in casa — arabo, traslitterazione, traduzione e recitazione audio. Sahih Muslim 2018.">
-<meta name="theme-color" content="#f5f3f5" media="(prefers-color-scheme:light)">
-<meta name="theme-color" content="#0b1524" media="(prefers-color-scheme:dark)">
+<meta name="theme-color" content="#F4EFE3">
 <link rel="icon" href="../../assets/logo-72.png">
-<script>try{var t=localStorage.getItem("alq_tema");if(t)document.documentElement.setAttribute("data-tema",t)}catch(e){}</script>
+<script src="../../assets/kit/temi.js"></script>
 <style>
 /* ---------- Font sottoinsiemati: 30,2 KB in tutto, zero CDN ---------- */
 @font-face{font-family:Poppins;src:url(../../assets/Poppins-Regular.woff2)format('woff2');font-weight:400;font-display:swap}
@@ -34,25 +33,6 @@
                                      il testo non passa: e' un vincolo, non un gusto */
   --ombra:0 1px 3px rgba(13,32,59,.08);
 }
-@media(prefers-color-scheme:dark){
-  :root:not([data-tema=light]){
-    --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
-    --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
-    --accento:#eef2f8;            /* invertito: chiaro sul fondo scuro */
-    --su-accento:#0d203b;
-    --accento-ombra:rgba(0,0,0,.55);
-    --brand:#f78012;
-    --link:#f78012;               /* nello scuro passa l'arancio VERO: 5,84:1 sul riquadro */
-    --ombra:0 1px 3px rgba(0,0,0,.45);
-  }
-}
-:root[data-tema=dark]{
-  --fondo:#0b1524; --superficie:#16263d; --testo:#eef2f8; --tenue:#a9b7cc;
-  --bordo:#2b3e5c; --traccia:#2b3e5c; --bordo-controllo:#6d7c96;
-  --accento:#eef2f8; --su-accento:#0d203b; --accento-ombra:rgba(0,0,0,.55);
-  --brand:#f78012; --link:#f78012; --ombra:0 1px 3px rgba(0,0,0,.45);
-}
-
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 body{margin:0;background:var(--fondo);color:var(--testo);
   font:400 16px/1.6 Poppins,system-ui,sans-serif;
@@ -72,11 +52,6 @@ header{display:flex;align-items:flex-start;justify-content:space-between;
 .nome{font-weight:600;font-size:16px;letter-spacing:.09em;display:block}
 .filetto{display:block;width:34px;height:3px;border-radius:2px;
   background:var(--brand);margin-top:6px}
-#tema{width:44px;height:44px;border:0;background:none;cursor:pointer;
-  color:var(--tenue);border-radius:12px;display:grid;place-items:center}
-#tema:hover{background:var(--bordo)}
-#tema svg{width:21px;height:21px}
-
 /* ---------- Titolo ---------- */
 .occhiello{color:var(--tenue);font-size:13px;letter-spacing:.06em;
   text-transform:uppercase;margin:12px 0 3px}
@@ -148,6 +123,7 @@ audio{width:100%;margin:8px 0 0;display:block}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
+<link rel="stylesheet" href="../../assets/kit/temi.css">
 </head>
 <body>
 <main>
@@ -157,12 +133,7 @@ audio{width:100%;margin:8px 0 0;display:block}
     <span class="nome">AL-QALAM</span>
     <span class="filetto" aria-hidden="true"></span>
   </a>
-  <button id="tema" aria-label="Cambia tema chiaro o scuro">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.7"/>
-      <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor"/>
-    </svg>
-  </button>
+  <div class="selettore" id="selettore-tema" role="group" aria-label="Tema del sito"><button type="button" data-v="auto" aria-pressed="false" aria-label="Automatico, segue il telefono">Auto</button><button type="button" data-v="light" aria-pressed="false">Chiaro</button><button type="button" data-v="blu" aria-pressed="false">Blu</button><button type="button" data-v="grigio" aria-pressed="false">Grigio</button></div>
 </header>
 
 <p class="occhiello">Capitolo 1 · Du'a quotidiani</p>
@@ -218,8 +189,7 @@ audio{width:100%;margin:8px 0 0;display:block}
   var au=document.getElementById('au'), play=document.getElementById('play'),
       icona=document.getElementById('icona').firstElementChild,
       avanz=document.getElementById('avanz'), tempo=document.getElementById('tempo'),
-      loop=document.getElementById('loop'), vel=document.getElementById('vel'),
-      tema=document.getElementById('tema');
+      loop=document.getElementById('loop'), vel=document.getElementById('vel');
   au.removeAttribute('controls');            // ora il nostro player esiste
   var guasto=document.getElementById('guasto');
   var PLAY='M8 5v14l11-7z', PAUSA='M6 5h4v14H6zM14 5h4v14h-4z';
@@ -263,14 +233,6 @@ audio{width:100%;margin:8px 0 0;display:block}
   vel.addEventListener('click',function(){
     iv=(iv+1)%velocita.length; au.playbackRate=velocita[iv];
     vel.textContent=velocita[iv]+'× velocità';
-  });
-  tema.addEventListener('click',function(){
-    var r=document.documentElement;
-    var ora=r.getAttribute('data-tema') ||
-      (matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
-    var nuovo=ora==='dark'?'light':'dark';
-    r.setAttribute('data-tema',nuovo);
-    try{ localStorage.setItem('alq_tema',nuovo); }catch(e){}
   });
 })();
 </script>

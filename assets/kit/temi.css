@@ -1,0 +1,33 @@
+/* Al-Qalam - temi del sito (506). Tre temi: Chiaro (crema), Blu, Grigio. L'attributo data-tema (light|blu|grigio) lo imposta temi.js prima del disegno della pagina. */
+:root[data-tema=light]{--fondo:#F4EFE3;--superficie:#E6DFCD;--testo:#02134B;--tenue:#13286F;--fonte:#02134B;--bordo:#E6DFCD;--traccia:#4F71C6;--bordo-controllo:#1C3C96;--accento:#02134B;--su-accento:#F4EFE3;--brand:#BC9434;--link:#A04300;--azione:#B04B00;--su-azione:#F4EFE3;--arabo:#02134B;--accento-ombra:rgba(2,19,75,.22);--ombra:0 1px 3px rgba(2,19,75,.08);color-scheme:light}
+:root[data-tema=blu]{--fondo:#02134B;--superficie:#13286F;--testo:#F4EFE3;--tenue:#C4D2F3;--fonte:#F4EFE3;--bordo:#1C3C96;--traccia:#5C7BCE;--bordo-controllo:#7E98DC;--accento:#F4EFE3;--su-accento:#02134B;--brand:#E1C254;--link:#F78012;--azione:#F78012;--su-azione:#02134B;--arabo:#F4EFE3;--accento-ombra:rgba(0,0,0,.55);--ombra:0 1px 3px rgba(0,0,0,.45);color-scheme:dark}
+:root[data-tema=grigio]{--fondo:#1B1D21;--superficie:#272A30;--testo:#F4EFE3;--tenue:#C9CDD4;--fonte:#F4EFE3;--bordo:#444851;--traccia:#838B98;--bordo-controllo:#99A1AE;--accento:#F4EFE3;--su-accento:#1B1D21;--brand:#E1C254;--link:#F78012;--azione:#F78012;--su-azione:#1B1D21;--arabo:#FBF6EA;--accento-ombra:rgba(0,0,0,.6);--ombra:0 1px 3px rgba(0,0,0,.45);color-scheme:dark}
+/* senza JavaScript le pagine seguono il telefono: sistema scuro = Grigio (la home resta chiara: ha data-tema="light" fisso nell'HTML) */
+@media(prefers-color-scheme:dark){:root:not([data-tema]){--fondo:#1B1D21;--superficie:#272A30;--testo:#F4EFE3;--tenue:#C9CDD4;--fonte:#F4EFE3;--bordo:#444851;--traccia:#838B98;--bordo-controllo:#99A1AE;--accento:#F4EFE3;--su-accento:#1B1D21;--brand:#E1C254;--link:#F78012;--azione:#F78012;--su-azione:#1B1D21;--arabo:#FBF6EA;--accento-ombra:rgba(0,0,0,.6);--ombra:0 1px 3px rgba(0,0,0,.45);color-scheme:dark}}
+
+/* selettore a quattro voci (Automatico, Chiaro, Blu, Grigio): la scelta resta nel dispositivo (localStorage), nessun cookie */
+header{flex-wrap:wrap;row-gap:4px}
+.selettore{display:inline-flex;border:1.5px solid var(--bordo-controllo);border-radius:12px;overflow:hidden;flex:0 0 auto;margin-left:auto}
+.selettore button{min-width:46px;min-height:44px;padding:0 10px;border:0;background:transparent;color:var(--testo);font:600 13px/1 Poppins,system-ui,sans-serif;cursor:pointer}
+.selettore button+button{border-left:1.5px solid var(--bordo-controllo)}
+.selettore button[aria-pressed=true]{background:var(--accento);color:var(--su-accento)}
+.selettore button:focus-visible{outline:3px solid var(--azione);outline-offset:-3px}
+html[data-scuro] .sigillo{filter:drop-shadow(0 0 2px rgba(244,239,227,.95))}
+
+/* home: costruita con colori fissi; nei temi scuri (Blu e Grigio) si riporta alle variabili */
+html[data-scuro] .hero{background:var(--fondo);border-bottom-color:var(--bordo)}
+html[data-scuro] .hero .occ::before{background:var(--testo)}
+html[data-scuro] .hero .cta{background:var(--azione);color:var(--su-azione)}
+html[data-scuro] .hero-cop{box-shadow:0 6px 18px rgba(0,0,0,.6),0 0 0 1px var(--bordo)}
+html[data-scuro] #giorno,html[data-scuro] #qr,html[data-scuro] .fiducia{background:var(--superficie)}
+html[data-scuro] .fiducia .voto,html[data-scuro] .fiducia .st,html[data-scuro] .fiducia a{color:var(--testo)}
+html[data-scuro] .chiusura{background:var(--superficie);color:var(--testo)}
+html[data-scuro] .chiusura h2,html[data-scuro] .chiusura footer a{color:var(--testo)}
+html[data-scuro] .chiusura .info-contatore{color:var(--tenue)}
+html[data-scuro] .passi li::before{background:var(--testo);color:var(--fondo)}
+html[data-scuro] .legenda li::before{color:#0A0A0A;border-color:var(--fondo)}
+html[data-scuro] .giorno-altro{border-color:var(--bordo-controllo);color:var(--testo)}
+html[data-scuro] .giorno-altro:focus-visible,html[data-scuro] .lnk:focus-visible,html[data-scuro] .hero .lnk:focus-visible{outline-color:var(--azione)}
+html[data-scuro] #esempi .voce{background:transparent}
+.hero .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;width:100%}.hero .nome{white-space:nowrap}
+@media(min-width:700px){.hero .nav{width:auto}}
