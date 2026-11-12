@@ -5,10 +5,10 @@
 /* senza JavaScript le pagine seguono il telefono: sistema scuro = Grigio (la home resta chiara: ha data-tema="light" fisso nell'HTML) */
 @media(prefers-color-scheme:dark){:root:not([data-tema]){--fondo:#1B1D21;--superficie:#272A30;--testo:#F4EFE3;--tenue:#C9CDD4;--fonte:#F4EFE3;--bordo:#444851;--traccia:#838B98;--bordo-controllo:#99A1AE;--accento:#F4EFE3;--su-accento:#1B1D21;--brand:#E1C254;--link:#F78012;--azione:#F78012;--su-azione:#1B1D21;--arabo:#FBF6EA;--accento-ombra:rgba(0,0,0,.6);--ombra:0 1px 3px rgba(0,0,0,.45);color-scheme:dark}}
 
-/* selettore a quattro voci (Automatico, Chiaro, Blu, Grigio): la scelta resta nel dispositivo (localStorage), nessun cookie */
+/* selettore a tre icone (sole = Chiaro, nuvola = Blu, luna = Grigio; icone Lucide, licenza ISC): la scelta resta nel dispositivo (localStorage), nessun cookie; senza scelta salvata il tema segue il telefono */
 header{flex-wrap:wrap;row-gap:4px}
 .selettore{display:inline-flex;border:1.5px solid var(--bordo-controllo);border-radius:12px;overflow:hidden;flex:0 0 auto;margin-left:auto}
-.selettore button{min-width:46px;min-height:44px;padding:0 10px;border:0;background:transparent;color:var(--testo);font:600 13px/1 Poppins,system-ui,sans-serif;cursor:pointer}
+.selettore button{width:46px;height:44px;padding:0;border:0;background:transparent;color:var(--testo);cursor:pointer;display:flex;align-items:center;justify-content:center}
 .selettore button+button{border-left:1.5px solid var(--bordo-controllo)}
 .selettore button[aria-pressed=true]{background:var(--accento);color:var(--su-accento)}
 .selettore button:focus-visible{outline:3px solid var(--azione);outline-offset:-3px}

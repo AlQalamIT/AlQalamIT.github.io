@@ -11,7 +11,7 @@
     if(t==='light')R.removeAttribute('data-scuro');else R.setAttribute('data-scuro','1');
     var m=document.querySelector('meta[name=theme-color]');if(m)m.setAttribute('content',BG[t]);
     var b=document.querySelectorAll('#selettore-tema button');
-    for(var i=0;i<b.length;i++)b[i].setAttribute('aria-pressed',b[i].getAttribute('data-v')===s?'true':'false');
+    for(var i=0;i<b.length;i++)b[i].setAttribute('aria-pressed',b[i].getAttribute('data-v')===t?'true':'false');
   }
   function avvia(){
     var g=document.getElementById('selettore-tema');
